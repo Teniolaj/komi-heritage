@@ -2,7 +2,7 @@
 
 import { PageWrapper } from "@/components/PageWrapper";
 import { PrimaryButton, IconButton } from "@/components/ui/Button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 import { Plus, Minus, X, ArrowRight, ShoppingBag } from "lucide-react";
@@ -54,7 +54,7 @@ const menuItems = [
   }
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -63,7 +63,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
