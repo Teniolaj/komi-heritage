@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "surface-container-highest": "#e5e2dd",
+                    "primary-container": "#c0272d",
+                    "error": "#ba1a1a",
+                    "background": "#fcf9f4",
+                    "surface-container": "#f0ede9",
+                    "inverse-primary": "#ffb3ae",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface": "#1c1c19",
+                    "on-secondary-container": "#745500",
+                    "on-primary-fixed": "#410004",
+                    "surface-dim": "#dcdad5",
+                    "outline": "#8f706d",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "inverse-on-surface": "#f3f0eb",
+                    "tertiary-fixed": "#e5e2e1",
+                    "tertiary-container": "#656464",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#31302d",
+                    "secondary-fixed-dim": "#f2bf50",
+                    "surface-container-high": "#ebe8e3",
+                    "surface-tint": "#b72028",
+                    "secondary-container": "#feca5a",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "tertiary": "#4d4c4c",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#ffdea1",
+                    "on-tertiary-container": "#e4e1e1",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "secondary": "#7a5900",
+                    "primary": "#9d0518",
+                    "on-background": "#1c1c19",
+                    "on-surface-variant": "#5a403e",
+                    "surface-bright": "#fcf9f4",
+                    "outline-variant": "#e3bebb",
+                    "on-primary": "#ffffff",
+                    "surface": "#fcf9f4",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#930015",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "on-secondary-fixed": "#261900",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#ffdad7",
+                    "surface-variant": "#e5e2dd",
+                    "surface-container-low": "#f6f3ee"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- Checkout Modal Shell -->
+<div class="flex flex-col min-h-screen max-w-md mx-auto bg-surface shadow-2xl relative overflow-hidden">
+<!-- TopAppBar (Based on JSON instructions) -->
+<header class="fixed top-0 w-full z-50 bg-[#fcf9f4]/80 backdrop-blur-md flex justify-between items-center px-6 py-4">
+<button class="p-2 transition-transform active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[#9d0518]">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tighter text-[#9d0518] uppercase">Your Order</h1>
+<button class="p-2 transition-transform active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[#9d0518]">close</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-20 pb-32 px-6 overflow-y-auto">
+<!-- Fulfillment Toggle -->
+<section class="mb-10">
+<div class="flex bg-surface-container-low p-1 gap-1">
+<button class="flex-1 py-3 text-sm font-bold uppercase tracking-wider bg-primary-container text-on-primary">
+                        Delivery
+                    </button>
+<button class="flex-1 py-3 text-sm font-bold uppercase tracking-wider text-on-surface-variant hover:bg-surface-container-high transition-colors">
+                        Pickup
+                    </button>
+</div>
+</section>
+<!-- Cart Item List -->
+<section class="mb-10 space-y-8">
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 bg-surface-container overflow-hidden">
+<img alt="Heritage Bowl" class="w-full h-full object-cover" data-alt="Gourmet Ghanaian heritage bowl with jollof rice, plantains, and grilled proteins served in an artisanal clay bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3_tKS4Zc6B770TRgDC9QeXBfAoqMIPaSn1O27lHartshL-RLcPliDSqEUGd5RqWwvQmKDhieJeCzgFtXrqfqvzcX8bCPUHoLHbzpUVnUMwsgOsTnIewuMjndMhtnBq_AV-gAPPxqiNEMAQbeiisKBX6HwqRC-FlLG0hwCGwK3Frdrt1fdmLxkkzTSamKDjeFW5MHcskudlPi_4fMZsTOaNLUGQe07bdSZzRUIM7vebhMA4lUW_BcthyCDgweg-mGfU7DpPLceDsI"/>
+</div>
+<div class="flex-grow">
+<span class="text-[10px] uppercase font-bold text-secondary tracking-widest block mb-1">Heritage Recipe</span>
+<h3 class="text-lg leading-tight mb-1">Komi Traditional Platter</h3>
+<div class="flex justify-between items-end">
+<p class="text-sm font-medium text-on-surface-variant">Qty: 01</p>
+<p class="font-bold text-primary">₵ 120.00</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 bg-surface-container overflow-hidden">
+<img alt="Spicy Shito Jar" class="w-full h-full object-cover" data-alt="Close up of artisanal black shito pepper sauce in a premium glass jar with gold lettering on a stone surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUMgaS0DiTC-IOloOojlq4zYWJlZSnTeI0-I-kRCemmNqcDgbn_kk-BCRHsI-fddEvNXY006Gy0dY_vDGZpzXzKKE-UJzoxsR6E9GXsCjde0Xqb3_P85POgapwi_nq_Oq77FDTCA-PLbeEr6lcuVcXCbJm6bMIISsO2wvVjRtWdmqDmOTqTFXGU1NWVO-44_PFVx8F0ymL74uNVtoLWOYGbe_02xtOWOlakmnihFVibqE4U9QEwmu8N7yXUpo7_4X-wAC46RNxHLQ"/>
+</div>
+<div class="flex-grow">
+<span class="text-[10px] uppercase font-bold text-secondary tracking-widest block mb-1">Street-Side Classic</span>
+<h3 class="text-lg leading-tight mb-1">Signature Black Shito</h3>
+<div class="flex justify-between items-end">
+<p class="text-sm font-medium text-on-surface-variant">Qty: 02</p>
+<p class="font-bold text-primary">₵ 45.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Delivery Address -->
+<section class="mb-8 bg-surface-container-low p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<h2 class="text-xl">Delivery Address</h2>
+</div>
+<div class="relative group">
+<input class="w-full bg-transparent border-b-2 border-outline-variant py-2 focus:border-primary outline-none text-on-surface font-medium transition-colors" type="text" value="Osu Oxford St, Accra"/>
+<label class="absolute -top-4 left-0 text-[10px] uppercase font-bold text-secondary tracking-widest">Main Location</label>
+</div>
+</section>
+<!-- Order Note -->
+<section class="mb-10">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary">edit_note</span>
+<h2 class="text-xl">Special Instructions</h2>
+</div>
+<div class="relative">
+<textarea class="w-full bg-transparent border-b-2 border-outline-variant py-2 focus:border-primary outline-none text-on-surface font-medium transition-colors resize-none h-12">Extra shito please</textarea>
+</div>
+</section>
+<!-- Order Summary -->
+<section class="border-t-2 border-primary/5 pt-8 mb-12">
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant font-medium">Subtotal</span>
+<span class="font-bold">₵ 210.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant font-medium">Delivery Fee</span>
+<span class="font-bold">₵ 15.00</span>
+</div>
+<div class="flex justify-between items-baseline pt-4">
+<span class="text-lg font-bold text-primary uppercase tracking-tighter">Total Payable</span>
+<span class="text-2xl font-black text-primary">₵ 225.00</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed CTA Area -->
+<footer class="fixed bottom-0 w-full max-w-md bg-[#fcf9f4] p-6 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] z-50">
+<button class="w-full bg-primary-container text-on-primary py-5 text-sm font-bold uppercase tracking-[0.2em] active:scale-95 transition-all duration-200">
+                Place Order
+            </button>
+<div class="mt-4 flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified_user</span>
+<span class="text-[10px] uppercase font-bold text-on-surface-variant tracking-wider">Secure Heritage Checkout</span>
+</div>
+</footer>
+</div>
+<!-- Hidden Drawer Illustration (As per JSON structure but logic dictates hiding for checkout focus) -->
+<div class="hidden">
+<div class="style_active_navigation">text-[#9d0518] font-bold bg-[#fcf9f4]</div>
+</div>
+</body></html>

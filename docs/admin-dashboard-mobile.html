@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Living Archive - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#9d0518",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#e4e1e1",
+                    "on-surface-variant": "#5a403e",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "surface-container-low": "#f6f3ee",
+                    "on-background": "#1c1c19",
+                    "inverse-primary": "#ffb3ae",
+                    "secondary-fixed-dim": "#f2bf50",
+                    "surface-variant": "#e5e2dd",
+                    "on-secondary-fixed": "#261900",
+                    "surface-container": "#f0ede9",
+                    "secondary": "#7a5900",
+                    "on-secondary-container": "#745500",
+                    "surface-container-highest": "#e5e2dd",
+                    "on-error": "#ffffff",
+                    "tertiary": "#4d4c4c",
+                    "surface-tint": "#b72028",
+                    "outline-variant": "#e3bebb",
+                    "on-surface": "#1c1c19",
+                    "tertiary-fixed": "#e5e2e1",
+                    "surface": "#fcf9f4",
+                    "secondary-fixed": "#ffdea1",
+                    "inverse-on-surface": "#f3f0eb",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#410004",
+                    "surface-container-high": "#ebe8e3",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#ffdad7",
+                    "tertiary-container": "#656464",
+                    "error-container": "#ffdad6",
+                    "outline": "#8f706d",
+                    "on-primary-container": "#ffdad7",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fcf9f4",
+                    "background": "#fcf9f4",
+                    "secondary-container": "#feca5a",
+                    "inverse-surface": "#31302d",
+                    "surface-dim": "#dcdad5",
+                    "on-primary-fixed-variant": "#930015",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "primary-container": "#c0272d",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-background selection:bg-primary selection:text-on-primary">
+<header class="sticky top-0 z-40 bg-[#fcf9f4]/80 backdrop-blur-md border-b border-stone-200/15 flex justify-between items-center w-full px-6 py-4">
+<div class="flex flex-col">
+<span class="text-xl font-black text-stone-900 font-serif italic">The Living Archive</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Cultural Monolith Admin</span>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-stone-600" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-stone-600" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<div class="bg-primary px-4 py-2 text-center">
+<p class="text-[10px] font-bold uppercase tracking-[0.2em] text-white">Full dashboard experience on desktop.</p>
+</div>
+<main class="p-6 mb-20 space-y-8">
+<section>
+<div class="flex items-baseline gap-2 mb-6">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Overview</span>
+<h2 class="text-3xl font-medium italic">Today's Pulse</h2>
+</div>
+<div class="grid grid-cols-2 gap-px bg-outline-variant/15">
+<div class="bg-surface-container-low p-5 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="receipt_long">receipt_long</span>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Orders</p>
+<p class="text-2xl font-bold font-headline italic">128</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="payments">payments</span>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Revenue</p>
+<p class="text-2xl font-bold font-headline italic">₵4.2k</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="bolt">bolt</span>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Active</p>
+<p class="text-2xl font-bold font-headline italic">34</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="group">group</span>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-tighter text-on-surface-variant">Customers</p>
+<p class="text-2xl font-bold font-headline italic">892</p>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<h3 class="text-xl font-bold italic border-b border-outline-variant/20 pb-2">Orders by Hour</h3>
+<div class="bg-surface-container-lowest p-6 h-48 flex items-end justify-between gap-2">
+<div class="bg-stone-200 w-full h-[30%]"></div>
+<div class="bg-stone-200 w-full h-[45%]"></div>
+<div class="bg-stone-200 w-full h-[25%]"></div>
+<div class="bg-stone-300 w-full h-[60%]"></div>
+<div class="bg-primary w-full h-[85%]"></div>
+<div class="bg-primary-container w-full h-[100%]"></div>
+<div class="bg-primary w-full h-[70%]"></div>
+<div class="bg-stone-300 w-full h-[40%]"></div>
+<div class="bg-stone-200 w-full h-[15%]"></div>
+</div>
+<div class="flex justify-between text-[8px] font-bold uppercase text-stone-400 tracking-widest px-2">
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+</div>
+</section>
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<h3 class="text-xl font-bold italic">Recent Activity</h3>
+<span class="text-[10px] font-bold text-primary border-b-2 border-primary leading-none cursor-pointer">View All</span>
+</div>
+<div class="space-y-1">
+<div class="bg-surface-container p-4 flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest">Order #8821</p>
+<p class="font-headline text-lg italic">Kofi Mensah</p>
+</div>
+<div class="bg-primary text-white px-2 py-1 text-[8px] font-black uppercase tracking-tighter">Preparing</div>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-outline-variant/10">
+<span class="text-xs text-stone-500">2 Items • Jollof Pot</span>
+<span class="font-bold text-on-surface">₵85.00</span>
+</div>
+</div>
+<div class="bg-surface-container p-4 flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-stone-300"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest">Order #8819</p>
+<p class="font-headline text-lg italic">Ama Serwaa</p>
+</div>
+<div class="bg-stone-200 text-stone-600 px-2 py-1 text-[8px] font-black uppercase tracking-tighter">Delivered</div>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-outline-variant/10">
+<span class="text-xs text-stone-500">1 Item • Red Red Special</span>
+<span class="font-bold text-on-surface">₵42.50</span>
+</div>
+</div>
+<div class="bg-surface-container p-4 flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-stone-300"></div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-bold text-secondary uppercase tracking-widest">Order #8818</p>
+<p class="font-headline text-lg italic">David Osei</p>
+</div>
+<div class="bg-stone-200 text-stone-600 px-2 py-1 text-[8px] font-black uppercase tracking-tighter">Delivered</div>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-outline-variant/10">
+<span class="text-xs text-stone-500">3 Items • Banku &amp; Tilapia</span>
+<span class="font-bold text-on-surface">₵120.00</span>
+</div>
+</div>
+</div>
+</section>
+<section class="pt-4">
+<div class="bg-surface-container-high p-8 flex flex-col items-center text-center space-y-4">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="desktop_windows">desktop_windows</span>
+<div>
+<h4 class="font-headline text-xl italic mb-1">Deep Dive Required?</h4>
+<p class="text-xs text-stone-500 leading-relaxed">Access full inventory management, staff roles, and advanced heatmaps on your desktop dashboard.</p>
+</div>
+<button class="bg-stone-900 text-white w-full py-3 text-[10px] font-black uppercase tracking-[0.2em] transition-all active:scale-95">Open Live Store</button>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pb-safe bg-[#fcf9f4] border-t-2 border-stone-100 dark:border-stone-800">
+<a class="flex flex-col items-center justify-center bg-[#9d0518] text-white p-2 flex-1 h-16" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-sans uppercase text-[10px] font-bold mt-1">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 p-2 flex-1 h-16 active:bg-stone-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-sans uppercase text-[10px] font-bold mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 p-2 flex-1 h-16 active:bg-stone-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-sans uppercase text-[10px] font-bold mt-1">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 p-2 flex-1 h-16 active:bg-stone-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-sans uppercase text-[10px] font-bold mt-1">Settings</span>
+</a>
+</nav>
+
+```</body></html>

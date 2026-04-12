@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE LIVING ARCHIVE | Staff Operations Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&amp;family=Manrope:wght@400;500;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-background": "#1c1c19",
+                        "surface": "#fcf9f4",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#e3bebb",
+                        "surface-bright": "#fcf9f4",
+                        "tertiary-fixed": "#e5e2e1",
+                        "tertiary-container": "#656464",
+                        "inverse-on-surface": "#f3f0eb",
+                        "secondary-fixed": "#ffdea1",
+                        "inverse-surface": "#31302d",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "primary-container": "#c0272d",
+                        "secondary": "#7a5900",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "secondary-container": "#feca5a",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0ede9",
+                        "secondary-fixed-dim": "#f2bf50",
+                        "on-primary": "#ffffff",
+                        "background": "#fcf9f4",
+                        "error": "#ba1a1a",
+                        "outline": "#8f706d",
+                        "primary-fixed": "#ffdad7",
+                        "on-secondary-container": "#745500",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3ae",
+                        "surface-container-highest": "#e5e2dd",
+                        "on-secondary-fixed": "#261900",
+                        "on-primary-container": "#ffdad7",
+                        "on-tertiary-container": "#e4e1e1",
+                        "on-surface": "#1c1c19",
+                        "surface-dim": "#dcdad5",
+                        "surface-container-low": "#f6f3ee",
+                        "surface-variant": "#e5e2dd",
+                        "on-primary-fixed": "#410004",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-surface-variant": "#5a403e",
+                        "surface-tint": "#b72028",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#4d4c4c",
+                        "surface-container-high": "#ebe8e3",
+                        "on-primary-fixed-variant": "#930015",
+                        "primary": "#9d0518",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb3ae"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #111111; color: #fcf9f4; font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-[#111111] text-surface overflow-hidden h-screen flex">
+<!-- SideNavBar (Authority: JSON) -->
+<nav class="fixed left-0 top-0 h-full flex flex-col pt-20 bg-stone-50 dark:bg-stone-950 docked left-0 h-full w-64 border-r-0 z-40">
+<!-- Logo Area -->
+<div class="px-8 pb-12">
+<h1 class="text-red-700 dark:text-red-500 font-['Newsreader'] text-2xl font-bold tracking-tighter leading-none">
+                KOMI<br/>HERITAGE
+            </h1>
+<div class="mt-8">
+<p class="font-['Manrope'] font-bold uppercase tracking-widest text-[10px] text-stone-500">Kitchen Station 01</p>
+<p class="text-xs text-stone-400">Staff Active</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex flex-col flex-grow">
+<!-- Active Tab: Orders -->
+<a class="border-l-4 border-red-700 dark:border-red-500 bg-stone-200 dark:bg-stone-800 text-red-700 dark:text-red-500 py-4 px-6 flex items-center gap-4 transition-all scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-['Manrope'] font-bold uppercase tracking-widest text-xs">Orders</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 py-4 px-6 flex items-center gap-4 hover:bg-stone-200 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-['Manrope'] font-bold uppercase tracking-widest text-xs">Menu Availability</span>
+</a>
+<div class="mt-auto pb-8">
+<a class="text-stone-600 dark:text-stone-400 py-4 px-6 flex items-center gap-4 hover:bg-stone-200 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-['Manrope'] font-bold uppercase tracking-widest text-xs">Logout</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col h-full bg-[#111111]">
+<!-- Top Header Area (Instruction: LIVE ORDERS) -->
+<header class="h-24 px-10 flex items-center justify-between border-b border-white/5 bg-[#111111]/80 backdrop-blur-md sticky top-0 z-30">
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<h2 class="font-headline text-3xl font-bold tracking-tight text-surface">LIVE ORDERS</h2>
+<div class="flex items-center gap-2 px-2 py-1 bg-green-500/10 rounded-full border border-green-500/20">
+<span class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>
+<span class="text-[10px] font-bold uppercase tracking-tighter text-green-500">Live</span>
+</div>
+</div>
+<p class="text-[10px] font-label font-medium uppercase tracking-[0.2em] text-stone-500 mt-1">Oct 24, 2023 • 12:45 PM • STATION 01</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] font-label font-bold uppercase tracking-widest text-stone-500">Service Status</p>
+<p class="text-sm font-bold text-green-500 uppercase">Optimal Flow</p>
+</div>
+<div class="w-10 h-10 bg-stone-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-stone-400" data-icon="notifications">notifications</span>
+</div>
+</div>
+</header>
+<!-- Order Tabs Navigation (Bento Logic) -->
+<div class="px-10 py-6">
+<div class="flex gap-1 bg-stone-900 p-1 w-fit">
+<button class="px-6 py-3 bg-[#111111] text-primary font-bold text-xs uppercase tracking-widest border border-white/5">
+                    New (3)
+                </button>
+<button class="px-6 py-3 text-stone-500 hover:text-surface font-bold text-xs uppercase tracking-widest transition-colors">
+                    Preparing
+                </button>
+<button class="px-6 py-3 text-stone-500 hover:text-surface font-bold text-xs uppercase tracking-widest transition-colors">
+                    Ready
+                </button>
+<button class="px-6 py-3 text-stone-500 hover:text-surface font-bold text-xs uppercase tracking-widest transition-colors">
+                    Out for Delivery
+                </button>
+<button class="px-6 py-3 text-stone-500 hover:text-surface font-bold text-xs uppercase tracking-widest transition-colors">
+                    Done Today
+                </button>
+</div>
+</div>
+<!-- Scrollable Order Grid -->
+<section class="flex-1 overflow-y-auto px-10 pb-12">
+<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
+<!-- Order Card #1 (New Delivery) -->
+<article class="bg-stone-900/50 border border-white/5 flex flex-col group hover:border-primary/30 transition-all">
+<div class="p-6 border-b border-white/5 flex justify-between items-start">
+<div>
+<span class="text-[10px] font-label font-bold text-secondary uppercase tracking-[0.2em] mb-1 block">ASAP Order</span>
+<h3 class="font-headline text-2xl font-extrabold text-surface">#KH-0045</h3>
+<p class="font-body text-stone-400 font-bold text-lg mt-1">Kwesi A.</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-primary px-3 py-1 text-[10px] font-bold uppercase text-white tracking-widest">Delivery</span>
+<span class="text-primary text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+                                5 min ago
+                            </span>
+</div>
+</div>
+<div class="p-6 space-y-4 flex-1">
+<div class="space-y-2">
+<p class="text-[10px] font-label font-bold text-stone-500 uppercase tracking-widest">Order Details</p>
+<div class="flex justify-between items-center bg-[#111111] p-3 border border-white/5">
+<span class="text-sm font-bold text-surface">Party Pack x1</span>
+<span class="text-stone-500 text-xs">Custom</span>
+</div>
+<div class="flex justify-between items-center bg-[#111111] p-3 border border-white/5">
+<span class="text-sm font-bold text-surface">One Man Kenkey x2</span>
+<span class="text-stone-500 text-xs">Standard</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-stone-400">
+<span class="material-symbols-outlined text-stone-600" data-icon="location_on">location_on</span>
+<p class="text-xs font-medium italic">Osu Oxford St, Accra</p>
+</div>
+</div>
+<div class="p-6 pt-0 mt-auto flex gap-3">
+<button class="flex-1 bg-primary text-white font-label font-extrabold uppercase tracking-widest text-xs py-4 hover:bg-primary-container transition-colors">
+                            Mark Preparing
+                        </button>
+<button class="px-6 border border-stone-700 text-stone-300 font-label font-bold uppercase tracking-widest text-[10px] hover:bg-stone-800 transition-colors">
+                            View Details
+                        </button>
+</div>
+</article>
+<!-- Order Card #2 (Pickup Delayed) -->
+<article class="bg-stone-900/50 border border-white/5 flex flex-col group hover:border-primary/30 transition-all opacity-90">
+<div class="p-6 border-b border-white/5 flex justify-between items-start">
+<div>
+<span class="text-[10px] font-label font-bold text-stone-500 uppercase tracking-[0.2em] mb-1 block">Scheduled 13:00</span>
+<h3 class="font-headline text-2xl font-extrabold text-surface">#KH-0042</h3>
+<p class="font-body text-stone-400 font-bold text-lg mt-1">Ama Serwaa</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-stone-700 px-3 py-1 text-[10px] font-bold uppercase text-white tracking-widest">Pickup</span>
+<span class="text-primary text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                                22 min ago
+                            </span>
+</div>
+</div>
+<div class="p-6 space-y-4 flex-1">
+<div class="space-y-2">
+<p class="text-[10px] font-label font-bold text-stone-500 uppercase tracking-widest">Order Details</p>
+<div class="flex justify-between items-center bg-[#111111] p-3 border border-white/5">
+<span class="text-sm font-bold text-surface">Heritage Tilapia Platter x1</span>
+<span class="text-stone-500 text-xs">Standard</span>
+</div>
+<div class="flex justify-between items-center bg-[#111111] p-3 border border-white/5">
+<span class="text-sm font-bold text-surface">Yam Fries (Large) x2</span>
+<span class="text-stone-500 text-xs">Extra Sauce</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-stone-400">
+<span class="material-symbols-outlined text-stone-600" data-icon="store">store</span>
+<p class="text-xs font-medium italic">Pickup - Tantra Hills Station</p>
+</div>
+</div>
+<div class="p-6 pt-0 mt-auto flex gap-3">
+<button class="flex-1 bg-primary text-white font-label font-extrabold uppercase tracking-widest text-xs py-4 hover:bg-primary-container transition-colors">
+                            Mark Preparing
+                        </button>
+<button class="px-6 border border-stone-700 text-stone-300 font-label font-bold uppercase tracking-widest text-[10px] hover:bg-stone-800 transition-colors">
+                            View Details
+                        </button>
+</div>
+</article>
+<!-- Order Card #3 (Preparing State Example) -->
+<article class="bg-stone-900 border border-primary/20 flex flex-col group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-1 bg-primary text-white">
+<span class="material-symbols-outlined text-xs" data-icon="progress_activity">progress_activity</span>
+</div>
+<div class="p-6 border-b border-white/5 flex justify-between items-start">
+<div>
+<span class="text-[10px] font-label font-bold text-secondary uppercase tracking-[0.2em] mb-1 block">In Progress</span>
+<h3 class="font-headline text-2xl font-extrabold text-surface">#KH-0044</h3>
+<p class="font-body text-stone-400 font-bold text-lg mt-1">Ekow Mensah</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="bg-primary px-3 py-1 text-[10px] font-bold uppercase text-white tracking-widest">Delivery</span>
+<span class="text-stone-400 text-xs font-bold">12 min ago</span>
+</div>
+</div>
+<div class="p-6 space-y-4 flex-1">
+<div class="space-y-2">
+<p class="text-[10px] font-label font-bold text-stone-500 uppercase tracking-widest">Order Details</p>
+<div class="flex justify-between items-center bg-[#111111] p-3 border border-white/5">
+<span class="text-sm font-bold text-surface">Red Red (Special) x3</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-stone-400">
+<span class="material-symbols-outlined text-stone-600" data-icon="location_on">location_on</span>
+<p class="text-xs font-medium italic">East Legon, Block C</p>
+</div>
+</div>
+<div class="p-6 pt-0 mt-auto flex gap-3">
+<button class="flex-1 bg-stone-700 text-stone-400 font-label font-extrabold uppercase tracking-widest text-xs py-4 cursor-not-allowed">
+                            Mark Ready
+                        </button>
+<button class="px-6 border border-stone-700 text-stone-300 font-label font-bold uppercase tracking-widest text-[10px] hover:bg-stone-800 transition-colors">
+                            View Details
+                        </button>
+</div>
+</article>
+</div>
+</section>
+<!-- Kitchen Status Bar -->
+<footer class="h-16 px-10 border-t border-white/5 flex items-center justify-between bg-stone-950">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Avg Prep Time:</span>
+<span class="text-xs font-bold text-surface">18m 45s</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-bold text-stone-500 uppercase tracking-widest">Kitchen Load:</span>
+<span class="text-xs font-bold text-secondary">MODERATE</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 text-[10px] font-bold text-stone-400 hover:text-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+                    STATION SETTINGS
+                </button>
+<button class="flex items-center gap-2 text-[10px] font-bold text-stone-400 hover:text-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="help_outline">help_outline</span>
+                    SUPPORT
+                </button>
+</div>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "surface-container-high": "#ebe8e3",
+                        "on-primary-fixed-variant": "#930015",
+                        "primary": "#9d0518",
+                        "on-surface-variant": "#5a403e",
+                        "surface-tint": "#b72028",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#4d4c4c",
+                        "surface-container-low": "#f6f3ee",
+                        "surface-variant": "#e5e2dd",
+                        "on-primary-fixed": "#410004",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-primary-container": "#ffdad7",
+                        "on-tertiary-container": "#e4e1e1",
+                        "on-surface": "#1c1c19",
+                        "surface-dim": "#dcdad5",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#ffb3ae",
+                        "surface-container-highest": "#e5e2dd",
+                        "on-secondary-fixed": "#261900",
+                        "primary-fixed": "#ffdad7",
+                        "on-secondary-container": "#745500",
+                        "on-primary": "#ffffff",
+                        "background": "#fcf9f4",
+                        "error": "#ba1a1a",
+                        "outline": "#8f706d",
+                        "secondary-container": "#feca5a",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0ede9",
+                        "secondary-fixed-dim": "#f2bf50",
+                        "primary-container": "#c0272d",
+                        "secondary": "#7a5900",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "inverse-surface": "#31302d",
+                        "tertiary-fixed": "#e5e2e1",
+                        "tertiary-container": "#656464",
+                        "inverse-on-surface": "#f3f0eb",
+                        "secondary-fixed": "#ffdea1",
+                        "surface-bright": "#fcf9f4",
+                        "on-error": "#ffffff",
+                        "on-background": "#1c1c19",
+                        "surface": "#fcf9f4",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#e3bebb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulsing-red {
+            box-shadow: 0 0 0 0 rgba(157, 5, 24, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(157, 5, 24, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(157, 5, 24, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(157, 5, 24, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full flex justify-between items-center px-6 py-4 mx-auto bg-[#fcf9f4] dark:bg-stone-950/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-4">
+<span class="font-serif text-2xl font-bold text-[#9d0518] uppercase tracking-tighter">The Living Archive</span>
+<div class="h-6 w-px bg-outline-variant/30 hidden md:block"></div>
+<span class="font-headline text-xl text-on-surface hidden md:block">Komi Heritage</span>
+</div>
+<div class="flex items-center gap-6">
+<h1 class="font-headline text-lg tracking-tight text-primary">Track Your Order</h1>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-stone-100 transition-colors p-2" data-icon="shopping_bag">shopping_bag</button>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+<!-- Left Column: Order Summary & Info -->
+<div class="w-full md:w-5/12 space-y-8">
+<section class="bg-surface-container-low p-8 border-none relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 -mr-16 -mt-16 rotate-45"></div>
+<span class="font-label text-xs uppercase tracking-widest text-secondary mb-2 block">Order Identity</span>
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-1">#KH-0042</h2>
+<p class="font-body text-on-surface-variant mb-8">Placed on Oct 24, 2023 • 2:15 PM</p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1" data-icon="delivery_dining">delivery_dining</span>
+<div>
+<p class="font-label text-sm font-bold uppercase tracking-tight">Fulfillment</p>
+<p class="font-body text-on-surface-variant">Standard Delivery</p>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="font-label text-sm font-bold uppercase tracking-tight mb-2">Items</p>
+<ul class="font-body text-on-surface space-y-1">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary"></span> Party Park x1</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary"></span> Golden Twist x1</li>
+</ul>
+</div>
+<button class="text-primary font-label text-sm underline underline-offset-4 font-bold decoration-2 hover:text-primary-container transition-colors">See full order</button>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20 flex justify-between items-center">
+<span class="font-headline text-xl">Total Amount</span>
+<span class="font-headline text-3xl font-bold text-primary">GHC 130.00</span>
+</div>
+</div>
+</section>
+<!-- Estimated Time Banner -->
+<div class="bg-secondary-container p-6 flex items-center gap-6 border-none">
+<div class="bg-on-secondary-container/10 p-3">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="font-label text-xs uppercase tracking-widest text-on-secondary-container/80 mb-1">Status: On Track</p>
+<p class="font-headline text-xl font-bold text-on-secondary-container">Estimated delivery in 25–35 minutes</p>
+</div>
+</div>
+<!-- WhatsApp CTA -->
+<button class="w-full bg-[#25D366] text-white py-5 flex items-center justify-center gap-3 font-label font-extrabold uppercase tracking-widest hover:brightness-95 transition-all group">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                Need help? WhatsApp us
+            </button>
+</div>
+<!-- Right Column: Status Timeline (Bento Style) -->
+<div class="w-full md:w-7/12">
+<div class="bg-surface-container p-8 md:p-12 h-full">
+<div class="flex justify-between items-center mb-12">
+<h3 class="font-headline text-3xl font-bold">Live Status</h3>
+<div class="flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary font-label text-xs font-bold uppercase tracking-tighter">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Live Update
+                    </div>
+</div>
+<div class="relative space-y-0">
+<!-- Vertical Line Connector -->
+<div class="absolute left-[19px] top-4 bottom-4 w-0.5 bg-surface-variant"></div>
+<div class="absolute left-[19px] top-4 h-[25%] w-0.5 bg-primary"></div>
+<!-- Step 1: Received (Completed) -->
+<div class="relative flex gap-8 pb-12 items-start">
+<div class="z-10 w-10 h-10 flex items-center justify-center bg-primary text-white border-4 border-surface-container">
+<span class="material-symbols-outlined text-xl" data-icon="check" style="font-variation-settings: 'FILL' 0, 'wght' 700;">check</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-4">
+<h4 class="font-headline text-xl text-on-surface opacity-60">Received</h4>
+<span class="font-label text-sm text-on-surface-variant">2:15 PM</span>
+</div>
+</div>
+</div>
+<!-- Step 2: Preparing (Active) -->
+<div class="relative flex gap-8 pb-12 items-start">
+<div class="z-10 w-10 h-10 flex items-center justify-center bg-primary text-white border-4 border-surface-container pulsing-red">
+<span class="material-symbols-outlined text-xl" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-4 mb-2">
+<h4 class="font-headline text-2xl font-bold text-primary">Preparing</h4>
+<span class="font-label text-sm font-bold text-primary">2:34 PM</span>
+</div>
+<p class="font-body text-on-surface-variant max-w-sm">Your order is being prepared fresh — sit tight! Our chefs are artisanal craftsmen ensuring heritage quality.</p>
+<div class="mt-4 overflow-hidden h-64 w-full relative">
+<img alt="Artisan food preparation" class="w-full h-full object-cover" data-alt="Close-up of chef hands meticulously plating traditional West African street food in a modern kitchen with warm lighting and steam rising" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH-c-M-Tq3ojOPDk5q99S7EHlcsebcN1Zm3iLTPMXRm86SBOc1x-tPSJcNFSnNfuzU19-7fObil3x58r2yjAuRf1Vvfq3ZKlnlWJB30o0Op-6O7hb_HTgE3iw37LwNCjO3PEPodvyzA-iV-8qd9HMaBVKYIlJfslssFH7NPM8UBIfltjzfiXEdX1RIt2IMDLgiXwOQZNubgP5WTVGRLEqv7VlOHdLMhklXoQtM3jfJHnXEOgDMU-6SP3VV6t0fEiIzbfkniX4LErI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+</div>
+</div>
+</div>
+<!-- Step 3: Ready (Upcoming) -->
+<div class="relative flex gap-8 pb-12 items-start opacity-40">
+<div class="z-10 w-10 h-10 flex items-center justify-center bg-surface-container border-4 border-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-4">
+<h4 class="font-headline text-xl text-on-surface">Ready</h4>
+<span class="font-label text-sm">--:--</span>
+</div>
+</div>
+</div>
+<!-- Step 4: Out for Delivery (Upcoming) -->
+<div class="relative flex gap-8 pb-12 items-start opacity-40">
+<div class="z-10 w-10 h-10 flex items-center justify-center bg-surface-container border-4 border-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="moped">moped</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-4">
+<h4 class="font-headline text-xl text-on-surface">Out for Delivery</h4>
+<span class="font-label text-sm">--:--</span>
+</div>
+</div>
+</div>
+<!-- Step 5: Delivered (Upcoming) -->
+<div class="relative flex gap-8 items-start opacity-40">
+<div class="z-10 w-10 h-10 flex items-center justify-center bg-surface-container border-4 border-surface-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="task_alt">task_alt</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-4">
+<h4 class="font-headline text-xl text-on-surface">Delivered</h4>
+<span class="font-label text-sm">--:--</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Map/Location Teaser Section -->
+<section class="max-w-7xl mx-auto px-6 pb-24">
+<div class="h-[400px] w-full bg-surface-container-highest relative overflow-hidden">
+<div class="absolute inset-0 grayscale contrast-125 brightness-75 opacity-50">
+<img alt="Map background" class="w-full h-full object-cover" data-alt="A stylized minimalist street map of Accra Ghana with heavy linework and deep contrast in sepia tones" data-location="Accra, Ghana" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7dmRXrGX3abJO7SnEh3eRS490qf6Xy0OtqyLJF8TMzE0_mmh--gTOFC6pmia1EQaxluJduekh5W5_M8kt6hS58RKfTyn1GMSnqu09nLxm_SQplgLOAc9GH5IDJX_dzq2ktAe1QquN4tqnOpSZCN5-UFoiYGUwFCTf3215QShCRhLyjynoYgQJGqaQKPLP7NRNxGYcmZJh_VCIWsb3ZLJDhbHdYWhVb7P8P464r9vmvOa22rSHU-K6JsSELhhlf8LDwL5eMJhSdW4"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent"></div>
+<div class="relative h-full flex flex-col justify-center px-12 z-10">
+<span class="font-label text-xs uppercase tracking-[0.3em] text-primary mb-4 block">Delivery Destination</span>
+<h3 class="font-headline text-4xl font-bold text-on-surface max-w-md leading-tight mb-6">Oxford St, Osu,<br/>Accra, Ghana</h3>
+<div class="flex gap-4">
+<button class="bg-primary text-white px-8 py-3 font-label font-bold uppercase tracking-widest text-xs hover:bg-primary-container transition-all">Change Address</button>
+<button class="bg-on-surface text-surface px-8 py-3 font-label font-bold uppercase tracking-widest text-xs hover:bg-on-surface-variant transition-all">View on Map</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SideNavBar (Hidden on desktop as per Shell visibility rules for transactional pages, but implemented if needed by container) -->
+<aside class="hidden fixed left-0 top-0 h-screen w-64 py-8 bg-[#fcf9f4] dark:bg-stone-900 flex-col border-r-0 tonal-shift bg-stone-100 dark:bg-stone-800 transition-all duration-300 ease-in-out">
+<div class="px-6 mb-12">
+<span class="font-serif italic text-xl text-[#9d0518]">The Collector</span>
+<p class="font-sans uppercase tracking-widest text-[10px] text-stone-500 mt-1">Accra, Ghana</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 text-stone-500 dark:text-stone-500 pl-4 py-3 hover:bg-stone-200 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-sans uppercase tracking-widest text-xs">Menu</span>
+</a>
+<a class="flex items-center gap-4 text-stone-500 dark:text-stone-500 pl-4 py-3 hover:bg-stone-200 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-sans uppercase tracking-widest text-xs">Archive</span>
+</a>
+<a class="flex items-center gap-4 text-[#9d0518] border-l-4 border-[#c0272d] pl-4 py-3 bg-stone-200/50" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-sans uppercase tracking-widest text-xs">Orders</span>
+</a>
+<a class="flex items-center gap-4 text-stone-500 dark:text-stone-500 pl-4 py-3 hover:bg-stone-200 dark:hover:bg-stone-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="font-sans uppercase tracking-widest text-xs">Support</span>
+</a>
+</nav>
+</aside>
+</body></html>

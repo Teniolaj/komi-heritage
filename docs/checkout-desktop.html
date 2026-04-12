@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e5e2dd",
+                    "on-primary-container": "#ffdad7",
+                    "tertiary-fixed": "#e5e2e1",
+                    "secondary-fixed-dim": "#f2bf50",
+                    "primary-container": "#c0272d",
+                    "background": "#fcf9f4",
+                    "surface": "#fcf9f4",
+                    "outline": "#8f706d",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#ffdea1",
+                    "secondary": "#7a5900",
+                    "inverse-surface": "#31302d",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e5e2dd",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#e4e1e1",
+                    "on-primary-fixed-variant": "#930015",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#f3f0eb",
+                    "tertiary-container": "#656464",
+                    "secondary-container": "#feca5a",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "on-secondary-fixed": "#261900",
+                    "surface-container-high": "#ebe8e3",
+                    "on-background": "#1c1c19",
+                    "on-surface": "#1c1c19",
+                    "outline-variant": "#e3bebb",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dcdad5",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "primary": "#9d0518",
+                    "primary-fixed": "#ffdad7",
+                    "on-surface-variant": "#5a403e",
+                    "surface-container-low": "#f6f3ee",
+                    "inverse-primary": "#ffb3ae",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#fcf9f4",
+                    "on-secondary-container": "#745500",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "surface-container": "#f0ede9",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#410004",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "tertiary": "#4d4c4c",
+                    "surface-tint": "#b72028",
+                    "on-secondary-fixed-variant": "#5c4300"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; }
+        input:focus, textarea:focus { outline: none; border-color: #9d0518 !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-[#fcf9f4]/80 dark:bg-stone-950/80 backdrop-blur-md text-[#9d0518] font-serif italic text-2xl uppercase tracking-tighter flex justify-between items-center w-full px-12 h-24 sticky top-0 z-50">
+<div class="font-serif font-black text-3xl text-[#9d0518] uppercase">THE LIVING ARCHIVE</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-stone-600 font-medium hover:text-[#9d0518] transition-colors duration-300" href="#">STREET-SIDE</a>
+<a class="text-stone-600 font-medium hover:text-[#9d0518] transition-colors duration-300" href="#">HERITAGE</a>
+<a class="text-stone-600 font-medium hover:text-[#9d0518] transition-colors duration-300" href="#">THE ARCHIVE</a>
+<a class="text-stone-600 font-medium hover:text-[#9d0518] transition-colors duration-300" href="#">LOCATIONS</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="hover:text-[#c0272d] transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="hover:text-[#c0272d] transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</nav>
+<main class="flex-grow max-w-7xl mx-auto w-full px-6 py-12 md:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-10 gap-16 items-start">
+<!-- Left Column: Checkout Details (60%) -->
+<div class="lg:col-span-6 space-y-16">
+<header>
+<p class="text-secondary font-label font-bold uppercase tracking-widest text-xs mb-2">Checkout</p>
+<h1 class="text-5xl md:text-6xl font-headline italic tracking-tight text-primary">Komi Heritage</h1>
+</header>
+<!-- Fulfillment Selection -->
+<section class="space-y-6">
+<h2 class="text-2xl font-headline border-b border-outline-variant pb-4">Order Method</h2>
+<div class="flex bg-surface-container p-1 w-full md:w-fit">
+<button class="px-12 py-3 font-label font-bold uppercase tracking-wider text-sm bg-primary text-on-primary">Delivery</button>
+<button class="px-12 py-3 font-label font-bold uppercase tracking-wider text-sm text-on-surface-variant hover:bg-surface-container-high transition-colors">Pickup</button>
+</div>
+</section>
+<!-- Delivery Address Section -->
+<section class="space-y-8">
+<h2 class="text-2xl font-headline border-b border-outline-variant pb-4">Fulfillment Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:col-span-2 flex flex-col space-y-2">
+<label class="text-[10px] font-label font-bold uppercase tracking-widest text-secondary">Street Address</label>
+<input class="bg-transparent border-0 border-b-2 border-outline-variant py-2 font-body text-lg focus:ring-0" placeholder="12 Osu Badu Street" type="text"/>
+</div>
+<div class="flex flex-col space-y-2">
+<label class="text-[10px] font-label font-bold uppercase tracking-widest text-secondary">Area</label>
+<input class="bg-transparent border-0 border-b-2 border-outline-variant py-2 font-body text-lg focus:ring-0" placeholder="Airport Residential Area" type="text"/>
+</div>
+<div class="flex flex-col space-y-2">
+<label class="text-[10px] font-label font-bold uppercase tracking-widest text-secondary">City</label>
+<input class="bg-transparent border-0 border-b-2 border-outline-variant py-2 font-body text-lg focus:ring-0" type="text" value="Accra"/>
+</div>
+</div>
+</section>
+<!-- Contact Info -->
+<section class="space-y-8">
+<h2 class="text-2xl font-headline border-b border-outline-variant pb-4">Contact Information</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col space-y-2">
+<label class="text-[10px] font-label font-bold uppercase tracking-widest text-secondary">Full Name</label>
+<input class="bg-transparent border-0 border-b-2 border-outline-variant py-2 font-body text-lg focus:ring-0" placeholder="Kwame Mensah" type="text"/>
+</div>
+<div class="flex flex-col space-y-2">
+<label class="text-[10px] font-label font-bold uppercase tracking-widest text-secondary">Phone Number</label>
+<div class="flex items-center">
+<span class="text-lg font-body text-on-surface-variant mr-2">+233</span>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant py-2 font-body text-lg focus:ring-0" placeholder="24 123 4567" type="tel"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Special Instructions -->
+<section class="space-y-6">
+<h2 class="text-2xl font-headline border-b border-outline-variant pb-4">Special Instructions</h2>
+<div class="flex flex-col space-y-2">
+<label class="text-[10px] font-label font-bold uppercase tracking-widest text-secondary">Order Notes</label>
+<textarea class="bg-transparent border-0 border-b-2 border-outline-variant py-2 font-body text-lg focus:ring-0 resize-none" placeholder="Any preferences? e.g. Extra spicy, no onions..." rows="3"></textarea>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary (40%) -->
+<aside class="lg:col-span-4 sticky top-36">
+<div class="bg-surface-container p-8 space-y-8">
+<h2 class="text-3xl font-headline italic text-on-surface">Your Order</h2>
+<!-- Items List -->
+<div class="space-y-6">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="w-20 h-20 flex-shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Ghanian komi platter with steamed corn dough, grilled fish, spicy shito sauce and sliced onions on artisan plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCho0uUOqP2Cs8wXowPOenXdv_TR8aq9nyFBT1S5aX3bzv23Smt9Sq4HYM8GKZNxVv9emuOYLmVaJG-KIM4sNzihQByjiSSo1uFJKgY-BiM5iJau5sGl1XQtTC_cO37Erj-wpc4pfev8gTshYR40x1f63hze_ZUlLD8cbzYfTNYFv4avFKIVSS-LOp-uRVHulEZBOEYizN4i50WiuDvvKbR4bbIq6OXQYAY7vsQS2LfeeDHvrpEXRoMhGwAtnwP5xIlnXV59FuBTDA"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<h3 class="font-body font-bold text-sm leading-tight uppercase">Komi Traditional Platter</h3>
+<p class="text-xs font-label text-on-surface-variant mt-1">Qty: 01</p>
+</div>
+<p class="font-body font-bold text-sm text-primary">C 120.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="w-20 h-20 flex-shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Artisanal glass jar of dark spicy Ghanian black shito sauce with textured oil and visible pepper flakes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv4CPwwS6Cne7LMV5MmGcXNLWaGxq-AbpZzqhKtSmjHdONDRQvmmObcwn9Zi0OEnkTyckPSI8faNqyM_RtCZ5YL8nZjf3Wa2SBwpB69UoNCALnbjp0IqM-8VTtMS9ZikUaCnN0FXaaYTfz7LbRUJ8e0RP0Puw6Wklo63eSs-WBCZ2iidPrSXc8NAr9G5usiy_kzVjAaeP_wkyCY5NrPWbd9hkMw4TsvIuX-PUC0_j9VCljWSrPz1i4atBwm7Ua64QqBnBgtHh3YBc"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<h3 class="font-body font-bold text-sm leading-tight uppercase">Signature Black Shito</h3>
+<p class="text-xs font-label text-on-surface-variant mt-1">Qty: 02</p>
+</div>
+<p class="font-body font-bold text-sm text-primary">C 45.00</p>
+</div>
+</div>
+</div>
+<!-- Price Breakdown -->
+<div class="border-t border-outline-variant pt-8 space-y-4">
+<div class="flex justify-between text-sm font-label text-on-surface-variant">
+<span>Subtotal</span>
+<span>C 210.00</span>
+</div>
+<div class="flex justify-between text-sm font-label text-on-surface-variant">
+<span>Delivery Fee</span>
+<span>C 15.00</span>
+</div>
+<div class="flex justify-between items-baseline pt-4 border-t border-outline-variant/30">
+<span class="font-headline text-xl">Total Payable</span>
+<span class="font-body font-extrabold text-3xl text-primary">C 225.00</span>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary text-on-primary py-5 font-label font-bold uppercase tracking-widest text-lg hover:bg-primary-container transition-all active:scale-[0.98]">
+                        PLACE ORDER
+                    </button>
+<!-- Trust Badge -->
+<div class="flex items-center justify-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-sm" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="text-[10px] font-label font-bold uppercase tracking-widest">Secure Heritage Checkout</span>
+</div>
+</div>
+<!-- Secondary Promotion (Editorial touch) -->
+<div class="mt-8 p-8 bg-secondary-container/10 border-l-4 border-secondary">
+<p class="text-[10px] font-label font-bold text-secondary uppercase tracking-widest mb-1">Our Promise</p>
+<p class="font-headline italic text-lg text-on-surface-variant">"Authenticity in every grain, tradition in every flame."</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-12 flex flex-col md:flex-row justify-between items-center mt-auto bg-stone-100 dark:bg-stone-900 border-t-0">
+<div class="text-[#9d0518] font-sans uppercase tracking-widest text-[10px]">
+            © 2024 THE LIVING ARCHIVE. GHANA BUILT.
+        </div>
+<div class="flex space-x-8 mt-6 md:mt-0">
+<a class="text-stone-500 font-sans uppercase tracking-widest text-[10px] hover:text-[#c0272d]" href="#">PRIVACY</a>
+<a class="text-stone-500 font-sans uppercase tracking-widest text-[10px] hover:text-[#c0272d]" href="#">TERMS</a>
+<a class="text-stone-500 font-sans uppercase tracking-widest text-[10px] hover:text-[#c0272d]" href="#">ACCRA HQ</a>
+<a class="text-stone-500 font-sans uppercase tracking-widest text-[10px] hover:text-[#c0272d]" href="#">CONTACT</a>
+</div>
+</footer>
+</body></html>

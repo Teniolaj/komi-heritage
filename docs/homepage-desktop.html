@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Komi Heritage | Rooted in Flavor. Wrapped in Heritage.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#feca5a",
+                        "surface-dim": "#dcdad5",
+                        "primary-fixed": "#ffdad7",
+                        "on-primary-fixed-variant": "#930015",
+                        "surface": "#fcf9f4",
+                        "surface-container-high": "#ebe8e3",
+                        "surface-variant": "#e5e2dd",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "tertiary-container": "#656464",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "inverse-on-surface": "#f3f0eb",
+                        "surface-container-low": "#f6f3ee",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "surface-container": "#f0ede9",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#745500",
+                        "error": "#ba1a1a",
+                        "tertiary": "#4d4c4c",
+                        "surface-tint": "#b72028",
+                        "on-primary-fixed": "#410004",
+                        "surface-bright": "#fcf9f4",
+                        "outline": "#8f706d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e5e2dd",
+                        "secondary-fixed-dim": "#f2bf50",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-primary-container": "#ffdad7",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1c1c19",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-tertiary-container": "#e4e1e1",
+                        "error-container": "#ffdad6",
+                        "background": "#fcf9f4",
+                        "on-background": "#1c1c19",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#9d0518",
+                        "outline-variant": "#e3bebb",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb3ae",
+                        "secondary-fixed": "#ffdea1",
+                        "secondary": "#7a5900",
+                        "inverse-surface": "#31302d",
+                        "on-secondary-fixed": "#261900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .newsreader { font-family: 'Newsreader', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-shadow-hero { text-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md">
+<div class="text-2xl font-black tracking-tighter text-red-700 dark:text-red-500 uppercase">Komi Heritage</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-red-700 dark:text-red-500 font-bold border-b-2 border-red-700 transition-colors duration-300" href="#">Menu</a>
+<a class="text-zinc-800 dark:text-zinc-200 hover:text-red-600 transition-colors duration-300" href="#">Heritage</a>
+<a class="text-zinc-800 dark:text-zinc-200 hover:text-red-600 transition-colors duration-300" href="#">Locations</a>
+<a class="text-zinc-800 dark:text-zinc-200 hover:text-red-600 transition-colors duration-300" href="#">Press</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-zinc-800 dark:text-zinc-200 hover:text-red-600 transition-colors duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<img alt="User Account" class="w-10 h-10 object-cover border-2 border-primary" data-alt="close up headshot of a person with minimalist jewelry and soft neutral lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhP4gI7-h3RK2aShKVIXxxA2qBmIKJ9kMPOx3w1mYyY5GCM4khYvmthSIkXfw0_6NA1Upd5PxAOMkCLurfdQ0sbILp2BY7FOrKz6y9BtHqcHNIE-ZSF7ER4DCK5qsPR3LPGB7qIyvfiOSEcEfPOSm8dIGNdtofhKkm3IswkbHDPYtmLbktcvK284oLrcMIp-SYi-Bau1SuZWuM3GEhVPoWOsV8JymW6RP_M6rJ90yu2B11nNBB9OgL6G7hnY-hF4fjuWqRBGZZt2c"/>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="top-down high-end professional food photography of authentic ghanaian kenkey platter with grilled tilapia, fried eggs, and spicy shito pepper sauce" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2sU59o0PFcSr6ZsSsa3gQdbM1HchIF88ofEZ8i0QLUg53-RkRLr0pOhwwmVe06PIH5K30JirX4dsx9p__MsWBuScxdJmO7udkDBnLqcEElKvTQOVFSmV94Rm8NP-K6Lo17wK-SynQcO34MRKqiYKv7QKheW8oLsb1p4uaOFy1mZlG1wy5HluMJA7uK5yz6ohJLy2qUlsU_w9RH9V2GmrOow74rnRn6z2uxRDUsnIdvlDh1fOcpF48l0JMBCnpGuU6yjwzcWOrurs"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
+</div>
+<!-- Floating Texture Strips -->
+<div class="absolute left-0 top-1/4 h-3/5 w-16 hidden lg:flex flex-col gap-4 z-10">
+<img class="w-full h-1/3 object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="macro texture of vibrant red crushed chili peppers and aromatic spices in a stone mortar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmUYbSNobr4IljmCkHlCOa0PE_CxDGW9V4U3PUy5OeHu4xsRHpiCj7aI8YAhxuuFRk39Pom9v2J4izpvJ380aONkSouMpTFcxukJ77u5RAvIYlf_B1gR53h7CzTvWKoXS7jIjzIh8ozWBNNl3Rubw5ma674KAojujTWr35OSxWSJ6cLewl6VoM2papU74ecQGxKjsKRjbBZi4coOed3CZKpArJscfXNeOvqsm-ILcjmcXklxvfJTe4UoXP8GNsWF6jDVtJZzBTtIo"/>
+<img class="w-full h-1/3 object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="close up of perfectly fried golden brown octopus tentacles with a glossy char and herb garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB07nH7JIAt0AQRP7wUB8a23Eq_EztVCV_yS7jFSPcWOnh3ajfon2TR32KtoWBE43K4ToVj_KkBDIuS9q2l9jS9nxESnCUtOJbuQZGbout069ol5uIHTus9GqoP7CUViW8QnQlCc4n15GbBMnLyBCItNnhqa2o7bgdM9-BNOCy9zWc_Yc2Oq_UG3ulv3dgzOE-x6GiIvn4UUAt21mSpWn4fuol-EA40Rvju05ZbgSHloam76wz3aH2cdqSKziSjr9uCKlFAMSwb-iE"/>
+<img class="w-full h-1/3 object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="macro shot of a sunny side up egg with glistening yolk and crispy lacy edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ8f0pWrcH2nK-jhHm5UupO94uyZJwJnQYWe5kpQwdsBW5JhJnQl0Xri3Vh1v-CWZg5zUolZwJnWxPxb5_1SPbxiVuDjomVy-yOyDldrPwivlzsuGQXbyIbMlBjpAu1XHqgpaY6Tv5s6PPJOn156k73y9ppIJXopVxjkwlGjtVjE_2WQ00eksHgMrjd-MEeBrdwsaqE2a-D2-WvdPuOsvocpGveB1L9I-ThtvV1mfv8Mpj3CUffsdf_8CzWVRzwK4ioWYpaNBy8FI"/>
+</div>
+<div class="absolute right-0 top-1/4 h-3/5 w-16 hidden lg:flex flex-col gap-4 z-10">
+<img class="w-full h-1/2 object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="close up of textured fermented corn dough being shaped by hand in a traditional ghanaian kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvYeI1_IVM2PfcQCQ6ij1jaQ3eC7fDjvIfY5lKa91_gxHn98lM365dIA0X5rLRdGJCQ-5lLXRixNZ-7ae3_FSQWjCZGcCd_QDA7q2sxicGUnkFwZ6355LtHRVFagm-sAcvXd-2dWiN3-JWmcRrcfYM1LKwGw_-SUYOBmcemZHTLL8qxLzgow33fPx953S713OW4eKpYwiPMnQu9uCU9loJooMqccHCGoP9RDCiNJ9nrykRU1Mk3qnn9nHUN_NBBN_PeBtf10_fLLQ"/>
+<img class="w-full h-1/2 object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="vibrant green herbs and onions being chopped on a dark slate surface with dramatic natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5J8aOsRazMEoj6SdTaj24BZK9BOQ1zLDoyES963A1HnjEjut2iuJOp4aLUfb8ItZf83GaEJLKP9aN_IQp7mrz2KGByAq1MS7hOe1IjrtQklzKrU8Xy9FLqPZ1siOduW4C_pSrOUCt4WTGdVSc9ungXjSyypx01QoX8dWjj6VdUvSRb4UOPh861dEADiSEk3xq_pIqDe6FuIcav1EhI_C8fqwCXfSiK3FP9EWboR2Vf0chUVcQTKHro8eyl_St7h1kb5uo14EW8L8"/>
+</div>
+<!-- Content Overlay -->
+<div class="relative z-20 text-center text-white px-4">
+<h1 class="text-7xl md:text-9xl font-black tracking-tighter uppercase leading-none mb-2 text-shadow-hero">KOMI HERITAGE</h1>
+<p class="text-xl md:text-3xl font-light italic mb-2 tracking-wide opacity-90">Rooted in Flavor. Wrapped in Heritage.</p>
+<p class="label-md font-bold tracking-[0.2em] uppercase mb-10 opacity-75">Real kenkey. Real Accra.</p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold px-10 py-5 transition-transform active:scale-95 uppercase tracking-widest text-sm">
+                    Order Now
+                </button>
+<button class="border-2 border-white hover:bg-white hover:text-black text-white font-bold px-10 py-5 transition-colors uppercase tracking-widest text-sm backdrop-blur-sm">
+                    View Menu
+                </button>
+</div>
+</div>
+<!-- Delivery Band -->
+<div class="absolute bottom-0 w-full bg-primary py-3 text-center z-20">
+<p class="text-white text-xs md:text-sm font-bold tracking-[0.3em] uppercase">Now delivering across Accra — Tantra Hills &amp; beyond</p>
+</div>
+</header>
+<!-- Menu Preview Strip -->
+<section class="bg-surface py-24 px-6 md:px-12">
+<div class="max-w-7xl mx-auto">
+<div class="flex items-center gap-6 mb-16">
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter uppercase">WHAT WE'RE COOKING</h2>
+<div class="h-1 flex-1 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Card 1 -->
+<div class="group">
+<div class="aspect-square overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="top down view of a single serve kenkey bowl with blackened tilapia and colorful vegetables on a ceramic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrUfr87McCDa2QdE9rW4vdqDKSoyyKfGUkrs5qPifd-i6mHfeW5NtuhALYbCn_ZhWl4V76yhLghUKJgTuhjqN-pzDqyiwj76MoR4rt2rhudunWPHv3DOS26Hjxi642Amp6nOWbkOtyLSXAy8FiKip_TQoGrhsyYbnSxE5vZuXAolF7ndd7mgH-fq92oD6p5JyL7e-gh32MCLBDFr2HUdZv7x49_iz4bVCQtXNQ_S6SHnAaWpCJjjff5hFeHYTeqVuLEYAxDQ42W4s"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">One Man Kenkey</h3>
+<span class="font-bold text-secondary text-xl">GHC 30</span>
+</div>
+<p class="text-zinc-600 mb-6 font-medium">The classic solo mission. One ball of fermented kenkey with hot pepper sauce and fried fish.</p>
+<button class="w-full py-4 bg-primary text-on-primary font-bold uppercase tracking-widest transition-opacity hover:opacity-90">Add to Cart</button>
+</div>
+<!-- Card 2 -->
+<div class="group">
+<div class="aspect-square overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="a large sharing platter of multiple kenkey balls, various grilled meats, and vibrant sauces in a festive arrangement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwIuYPCmU2Gcrj2ACGjd9sxZD4sBDd0_orcCuwsEUUKMrlUbIld6IBvUxg7_Nh8cQ2_hJGl3yaG21fpBxtOJvE4xjh0C0zSsOeDW2PD35fmyAFpRJsBySaoySzJImZjZps4fWos-I1fVxWj67ZyKuRSUd2YAYFrqPPjDELjd9hTt1makEkkznS5CbV0mWVaT-kWB-8coqNaWSrk2m7y_G9Wnw_BNGja6pIECOnjmpviih8rJ6uxykUb6wmXJCpOFJeVaVmaxaKWn4"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Party Pack</h3>
+<span class="font-bold text-secondary text-xl">GHC 65</span>
+</div>
+<p class="text-zinc-600 mb-6 font-medium">Built for the squad. Three balls of kenkey with double helpings of fish, eggs, and extra octopus.</p>
+<button class="w-full py-4 bg-primary text-on-primary font-bold uppercase tracking-widest transition-opacity hover:opacity-90">Add to Cart</button>
+</div>
+<!-- Card 3 -->
+<div class="group">
+<div class="aspect-square overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="close up of a spicy seafood bowl with rich dark shito sauce and intense lighting on red chili accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoONJSdLS9UyXi7AFjDLnAVJmJ7s79oMAY404eJlRLhKiEmv7xXZSeE1lQW8vehXd5Iw0bGEtNA5_6TE_BM9R1F1fwYR40YpMWN5xzInPHJKEd65qKNebf91iKb3MaQ6q1CjKmIryHEzcwMzitGTLB3-JqtXGsRS2GIIz5EnKeBq0YW6SQMAvAmDBqu6pDwTOCTGUwlAwzZrKGv0iDYiVqbWHQcyiL1p5aMTHwEUx_7kTjW9EiTDPuRCXpHhAaipfo05epBSYJr3M"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-bold uppercase tracking-tight">Spicy Heat</h3>
+<span class="font-bold text-secondary text-xl">GHC 260</span>
+</div>
+<p class="text-zinc-600 mb-6 font-medium">Family feast. Twelve balls of kenkey, assorted sea-food platter, and our signature heritage pepper.</p>
+<button class="w-full py-4 bg-primary text-on-primary font-bold uppercase tracking-widest transition-opacity hover:opacity-90">Add to Cart</button>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Strip -->
+<section class="bg-zinc-950 text-white py-20 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+<div class="flex flex-col items-center">
+<div class="text-6xl font-light text-primary/40 mb-4 newsreader">01</div>
+<h4 class="text-xl font-bold uppercase tracking-widest mb-2">Choose Your Combo</h4>
+<p class="text-zinc-400 font-medium">Select from our artisanal kenkey pairings or build your own from scratch.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="text-6xl font-light text-primary/40 mb-4 newsreader">02</div>
+<h4 class="text-xl font-bold uppercase tracking-widest mb-2">Pay Securely</h4>
+<p class="text-zinc-400 font-medium">Fast and secure checkout via Momo, Visa, or Mastercard with full encryption.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="text-6xl font-light text-primary/40 mb-4 newsreader">03</div>
+<h4 class="text-xl font-bold uppercase tracking-widest mb-2">Get It Delivered</h4>
+<p class="text-zinc-400 font-medium">Hot and fresh heritage delivered to your doorstep in Tantra Hills and beyond.</p>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="bg-surface py-32 px-6 overflow-hidden">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<img class="w-full aspect-[4/5] object-cover" data-alt="professional photo of modern brand packaging with a minimalist round red and white Komi Heritage logo sticker on a clean eco-friendly container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-VrgEDxBgd5D-z2Q7SqrgEoLri0bQfc_9x5z6qDQiYBvteAvyCOjd1nJoEIV_anM3df-Pzj4lFxYQanLhvT1usVrS4f2uX-y1qGF3Vw4OLl1QbGHudl2k6la4x_r5SjUu_-VfmzyEbgWV1y1ufaAqQnRKVWn-6BOBDGrDGR0ORYWxbqZQGwSSIwbhaSFiEPr7aq41vftQeZMpcgnzvVIdlumIGm_tFVOux3qvKE5wLZnYSx0xnW_a9AfOkOMwiq5l_RxvXNcGkIA"/>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary p-6 hidden md:flex flex-col justify-end">
+<p class="text-white text-4xl font-black newsreader">Est.</p>
+<p class="text-white text-5xl font-black tracking-tighter">2020</p>
+</div>
+</div>
+<div>
+<div class="w-20 h-1 bg-primary mb-8"></div>
+<h2 class="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-tight mb-10">Serving Heritage Since Day One</h2>
+<div class="space-y-6 text-xl text-zinc-700 leading-relaxed">
+<p>Komi Heritage was born from a simple desire: to elevate the humble Kenkey into a gourmet experience that respects the Ga tradition while embracing the energy of modern Accra.</p>
+<p>Every ball of kenkey is hand-wrapped, every pepper sauce is slow-cooked for hours, and every piece of fish is sourced fresh from the coast. This is not just street food—it's a tribute to our ancestors' kitchen.</p>
+</div>
+<button class="mt-12 group flex items-center gap-4 text-primary font-bold uppercase tracking-widest">
+                    Our Full Story
+                    <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" data-icon="arrow_right_alt">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Footer (Shared Component) -->
+<footer class="bg-zinc-950 text-white py-24 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
+<div class="max-w-xs">
+<div class="text-3xl font-black text-red-700 uppercase mb-6">Komi Heritage</div>
+<p class="text-zinc-500 font-medium leading-relaxed">Accra's premier kenkey destination. Fusing timeless recipes with modern street culture.</p>
+</div>
+<div class="grid grid-cols-2 gap-12">
+<div class="flex flex-col gap-4">
+<h5 class="text-primary font-bold uppercase tracking-widest text-sm mb-2">Connect</h5>
+<a class="text-zinc-400 hover:text-white transition-colors" href="tel:+2330000000">Call Us</a>
+<a class="text-zinc-400 hover:text-white transition-colors" href="#">WhatsApp</a>
+<a class="text-zinc-400 hover:text-white transition-colors" href="#">Instagram</a>
+<a class="text-zinc-400 hover:text-white transition-colors" href="#">TikTok</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="text-primary font-bold uppercase tracking-widest text-sm mb-2">Quick Links</h5>
+<a class="text-zinc-400 hover:text-white transition-colors" href="#">Sustainability</a>
+<a class="text-zinc-400 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-zinc-400 hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex flex-col items-start gap-4">
+<h5 class="text-primary font-bold uppercase tracking-widest text-sm mb-2">Find Us</h5>
+<div class="flex items-center gap-3 text-zinc-400">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span>Tantra Hills, Accra</span>
+</div>
+<div class="mt-4 border-2 border-primary/20 p-1">
+<img class="w-48 h-32 object-cover grayscale opacity-50 hover:opacity-100 transition-opacity" data-alt="stylized monochrome map view of the tantra hills neighborhood in accra ghana" data-location="Accra" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSrTR8gLt6MZhLGV-0sLmcCMeBrIqxvM4Icd_1fHO6IEz-51hP3ClfTT3edQXOnn7E3UfsQEtkSZNBBUAYpanmEAVOI_sxjEg_ap-KkQ_PCSAYb14L6qd_9-Xd2tQMKpV5j_8bIhHNo7WWjn3q9QG92lME3jYUsQ_RZII273dlTkapF0c7r1Ht7EMTBitUp-KL98DKQZiQBjyZM4LSSS0EDFVremIHCkAvZ1eCr0yqPaU8nCUVkOryReI49dmQSAlD0kdxXeCz1Ig"/>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-20 pt-10 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-zinc-600 text-xs font-bold tracking-[0.2em]">© 2024 KOMI HERITAGE ACCRA. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-8">
+<span class="material-symbols-outlined text-zinc-600 hover:text-primary transition-colors cursor-pointer" data-icon="payments">payments</span>
+<span class="material-symbols-outlined text-zinc-600 hover:text-primary transition-colors cursor-pointer" data-icon="restaurant">restaurant</span>
+<span class="material-symbols-outlined text-zinc-600 hover:text-primary transition-colors cursor-pointer" data-icon="delivery_dining">delivery_dining</span>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Shared Component - Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center md:hidden pb-safe bg-surface dark:bg-zinc-900 border-t-2 border-zinc-100 dark:border-zinc-800 shadow-2xl">
+<a class="flex flex-col items-center justify-center bg-red-700 text-white p-4 flex-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 p-4 flex-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 p-4 flex-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 p-4 flex-1 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter mt-1">Cart</span>
+</a>
+</nav>
+</body></html>

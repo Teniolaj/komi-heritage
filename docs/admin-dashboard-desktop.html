@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#9d0518",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#e4e1e1",
+                    "on-surface-variant": "#5a403e",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "surface-container-low": "#f6f3ee",
+                    "on-background": "#1c1c19",
+                    "inverse-primary": "#ffb3ae",
+                    "secondary-fixed-dim": "#f2bf50",
+                    "surface-variant": "#e5e2dd",
+                    "on-secondary-fixed": "#261900",
+                    "surface-container": "#f0ede9",
+                    "secondary": "#7a5900",
+                    "on-secondary-container": "#745500",
+                    "surface-container-highest": "#e5e2dd",
+                    "on-error": "#ffffff",
+                    "tertiary": "#4d4c4c",
+                    "surface-tint": "#b72028",
+                    "outline-variant": "#e3bebb",
+                    "on-surface": "#1c1c19",
+                    "tertiary-fixed": "#e5e2e1",
+                    "surface": "#fcf9f4",
+                    "secondary-fixed": "#ffdea1",
+                    "inverse-on-surface": "#f3f0eb",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#410004",
+                    "surface-container-high": "#ebe8e3",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#ffdad7",
+                    "tertiary-container": "#656464",
+                    "error-container": "#ffdad6",
+                    "outline": "#8f706d",
+                    "on-primary-container": "#ffdad7",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fcf9f4",
+                    "background": "#fcf9f4",
+                    "secondary-container": "#feca5a",
+                    "inverse-surface": "#31302d",
+                    "surface-dim": "#dcdad5",
+                    "on-primary-fixed-variant": "#930015",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "primary-container": "#c0272d",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulsing-indicator {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="bg-stone-950 docked left-0 h-screen w-64 hidden md:flex flex-col fixed z-50 p-6 transition-all duration-200 ease-in-out">
+<div class="mb-12">
+<h1 class="text-white font-serif italic text-lg">The Living Archive</h1>
+<p class="text-stone-500 font-sans uppercase tracking-widest text-[10px] mt-1 font-bold">Cultural Monolith Admin</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active State Logic: Overview is active -->
+<a class="flex items-center gap-3 px-4 py-3 text-white border-l-4 border-[#9d0518] bg-stone-900/50 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[#c0272d]">dashboard</span>
+<span class="font-sans uppercase tracking-widest text-xs font-bold">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-sans uppercase tracking-widest text-xs font-bold">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-sans uppercase tracking-widest text-xs font-bold">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-sans uppercase tracking-widest text-xs font-bold">Menu Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-sans uppercase tracking-widest text-xs font-bold">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-stone-800/50">
+<button class="flex items-center gap-3 px-4 py-3 w-full text-stone-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-sans uppercase tracking-widest text-xs font-bold">Logout</span>
+</button>
+<div class="mt-6 flex items-center gap-3">
+<div class="w-10 h-10 bg-stone-800 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a confident male executive with short dark hair in professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTVVUUKFEXxHK4CqGXf8yo8CyynKH519XnUMvp1i4oXcRpA3tJI9V06_mSbL5yTFkjj0BbyIR9HLL5dDhmm-INzeyWyf-gh54M6CGhdstHcf8pzVCgHMRoylq6uVATjnuYML6oMXEl6aEO_lX0fHGZJgb2FBYOTXKfwR-kNeB5_r13DpSpygG3aXboBTqu5f_m0LzpMe8ka1wYk-Iz_siMcPmMhpxLrMag9cgUEzFkZwgPNgY6bIbQCQgsp8VGWfZ5WJ77ViOCjzg"/>
+</div>
+<div>
+<p class="text-xs font-bold text-white uppercase tracking-tighter">Admin Profile</p>
+<p class="text-[10px] text-stone-500">View Live Store</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 ml-0 md:ml-64 bg-surface min-h-screen">
+<!-- TopNavBar (Execution from JSON) -->
+<header class="bg-[#fcf9f4]/80 docked full-width top-0 sticky backdrop-blur-md border-b border-stone-200/15 flex justify-between items-center w-full px-8 py-6 z-40">
+<div class="flex items-center gap-8">
+<div class="flex flex-col">
+<h2 class="font-headline text-3xl font-bold tracking-tight">Good morning, Boss 👋</h2>
+<p class="text-on-surface-variant font-label text-xs uppercase tracking-widest">October 24, 2023 | Tuesday</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container px-4 py-2">
+<span class="material-symbols-outlined text-stone-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-label w-48" placeholder="Search archives..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-12 max-w-[1600px] mx-auto">
+<!-- Overview Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-outline-variant/15">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 border-r border-outline-variant/15 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant">Total Orders Today</span>
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">shopping_cart</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-4xl font-black">142</span>
+<span class="text-emerald-700 text-xs font-bold mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12% from yesterday
+                        </span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-8 border-r border-outline-variant/15 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant">Revenue Today</span>
+<span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-4xl font-black">GHC 12,450</span>
+<span class="text-on-surface-variant text-xs font-bold mt-2">Target: GHC 15,000</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-8 border-r border-outline-variant/15 hover:bg-surface-container-low transition-colors group relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant">Active Orders</span>
+<div class="w-2 h-2 rounded-full bg-primary pulsing-indicator"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-4xl font-black">28</span>
+<span class="text-on-surface-variant text-xs font-bold mt-2">12 in kitchen • 16 out for delivery</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-8 hover:bg-surface-container-low transition-colors group">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant">Total Customers</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:scale-110 transition-transform">person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline text-4xl font-black">1,892</span>
+<span class="text-on-surface-variant text-xs font-bold mt-2 flex items-center gap-1">
+                            84 new today
+                        </span>
+</div>
+</div>
+</section>
+<!-- Charts Row (Asymmetric Layout) -->
+<section class="grid grid-cols-1 lg:grid-cols-10 gap-8">
+<!-- Bar Chart: Orders by Hour (60%) -->
+<div class="lg:col-span-6 bg-surface-container-low p-8">
+<div class="flex justify-between items-center mb-10">
+<div>
+<p class="font-label text-[10px] text-secondary font-bold uppercase tracking-[0.2em] mb-1">Performance Analytics</p>
+<h3 class="font-headline text-2xl font-bold">Orders by Hour</h3>
+</div>
+<select class="bg-transparent border-b-2 border-outline-variant font-label text-xs uppercase font-bold focus:ring-0">
+<option>Today</option>
+<option>Yesterday</option>
+</select>
+</div>
+<div class="flex items-end justify-between h-64 gap-2">
+<!-- Bar chart dummy representation -->
+<div class="w-full bg-primary/20 h-[30%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full transition-all duration-300"></div>
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label text-[10px] font-bold opacity-0 group-hover:opacity-100">8am</span>
+</div>
+<div class="w-full bg-primary/20 h-[45%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+</div>
+<div class="w-full bg-primary/20 h-[85%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label text-[10px] font-bold">12pm</span>
+</div>
+<div class="w-full bg-primary/20 h-[60%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+</div>
+<div class="w-full bg-primary/20 h-[40%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+</div>
+<div class="w-full bg-primary/20 h-[95%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label text-[10px] font-bold">6pm</span>
+</div>
+<div class="w-full bg-primary/20 h-[75%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+</div>
+<div class="w-full bg-primary/20 h-[35%] group relative">
+<div class="absolute bottom-0 w-full bg-primary h-full"></div>
+</div>
+</div>
+</div>
+<!-- Donut Chart: Top Items (40%) -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-8 border border-outline-variant/15">
+<div class="mb-8">
+<p class="font-label text-[10px] text-secondary font-bold uppercase tracking-[0.2em] mb-1">Menu Popularity</p>
+<h3 class="font-headline text-2xl font-bold">Top Items Today</h3>
+</div>
+<div class="flex flex-col items-center">
+<!-- Custom Donut SVG -->
+<div class="relative w-48 h-48 mb-8">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#f0ede9" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#9d0518" stroke-dasharray="45, 100" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#7a5900" stroke-dasharray="25, 100" stroke-dashoffset="-45" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="16" stroke="#1c1c19" stroke-dasharray="30, 100" stroke-dashoffset="-70" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline text-xl font-bold">Total</span>
+<span class="font-label text-xs font-bold uppercase">Volume</span>
+</div>
+</div>
+<div class="w-full space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="font-label text-xs font-bold uppercase">Heritage Jollof</span>
+</div>
+<span class="font-label text-xs">45%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-secondary"></div>
+<span class="font-label text-xs font-bold uppercase">Suya Platter</span>
+</div>
+<span class="font-label text-xs">25%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-on-surface"></div>
+<span class="font-label text-xs font-bold uppercase">Kelewele Box</span>
+</div>
+<span class="font-label text-xs">30%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Orders Table -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-label text-[10px] text-secondary font-bold uppercase tracking-[0.2em] mb-1">Live Transaction Log</p>
+<h3 class="font-headline text-3xl font-bold">Recent Orders</h3>
+</div>
+<a class="font-label text-xs font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition-colors" href="#">View All Orders</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-on-surface/10">
+<th class="py-4 px-4 font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Order #</th>
+<th class="py-4 px-4 font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Customer</th>
+<th class="py-4 px-4 font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Items</th>
+<th class="py-4 px-4 font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Total</th>
+<th class="py-4 px-4 font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Fulfillment</th>
+<th class="py-4 px-4 font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="py-4 px-4 font-label text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Time</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-on-surface/5">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-6 px-4 font-label text-xs font-bold">#AR-9241</td>
+<td class="py-6 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up headshot of a smiling woman with braids and natural skin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW_eNEZQjv0s5pEti9tN54rpG2rkIG2J3-zBPvmgpoFr9IlrOlNJk7lIogGXA3JPO92JNgCx9im6B96V3OegEmHsM1j4P3b1kmVmVD-G1pGEkQu_v-JjrVrxEC8uO8jM3-sifl7wIvCWdJm1wYRvBhCbLhzPHiak4NG-ZNzFOEwysy9AEnyTm0GypYxX5Z5QS7NltDgGgA8utgIKxvHbAPlXdhCcUXXHJefXKhkWvEGSCwopFoYPg55P2DNMb676IAIDjvmIoPyf4"/>
+</div>
+<span class="font-label text-xs font-bold uppercase">Ama Osei</span>
+</div>
+</td>
+<td class="py-6 px-4 font-label text-xs text-on-surface-variant">2x Jollof, 1x Sobolo</td>
+<td class="py-6 px-4 font-label text-xs font-bold">GHC 185.00</td>
+<td class="py-6 px-4 font-label text-xs uppercase tracking-tight">Delivery</td>
+<td class="py-6 px-4">
+<span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 font-label text-[10px] font-bold uppercase tracking-widest">Active</span>
+</td>
+<td class="py-6 px-4 font-label text-[10px] font-bold text-on-surface-variant text-right uppercase">2 mins ago</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-6 px-4 font-label text-xs font-bold">#AR-9240</td>
+<td class="py-6 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a distinguished older man with graying hair and glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmB76r5Crd43GrQPpE2ifArwK8XQp2YFwkuouxQSiJJmnSVEBopk3G5-0UKyyRgEqtyA1z922zo3ZCzqf9gvCzS2ZZRGJRo1Y9rVxM5rJgQr4I9A2Dd1CaBfBIP5ULiETxPEDnhU82LukGQLu6pKy1S06ibkQLEoTnZY-MZKHjTrXndXqnOZ2ObxAJcVcNuogx0FMNa5UruwsHROA_TxGqk1LeakfIL1LZxTqMN9doH3cwtonjmD3TWBLzHnsK5qLUF7IV_FGVXBo"/>
+</div>
+<span class="font-label text-xs font-bold uppercase">Kofi Mensah</span>
+</div>
+</td>
+<td class="py-6 px-4 font-label text-xs text-on-surface-variant">1x Banku, 1x Tilapia</td>
+<td class="py-6 px-4 font-label text-xs font-bold">GHC 240.00</td>
+<td class="py-6 px-4 font-label text-xs uppercase tracking-tight">Pickup</td>
+<td class="py-6 px-4">
+<span class="inline-block px-3 py-1 bg-primary text-white font-label text-[10px] font-bold uppercase tracking-widest">In Kitchen</span>
+</td>
+<td class="py-6 px-4 font-label text-[10px] font-bold text-on-surface-variant text-right uppercase">12 mins ago</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-6 px-4 font-label text-xs font-bold">#AR-9239</td>
+<td class="py-6 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="profile shot of a creative person with stylish glasses and accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUGXNWSberju79Sid6OCgVhh5nbKo6OpkiaGac3opx-_P-Bll_WSOPVEm5ieQVvqWhZ_hg169ad8K4yNXNQ6L3mYnHsSSikY-9fDkSN0ovkElIdtsrYwr0M6p3r0SUA9IiN5-QynVtngQae9cc5NEEXnyiVF5OFCVJtKDmGmwSQ2aiWi8msiAr5uNtNt1Eo5Rfj4lnNKPwJ_ZIGNqiNB_dO_yXDz6rw2zP8n1cHC_nkvg-F-0DKM8KrOx1mMZJ6Hb6gs45MQTAsbA"/>
+</div>
+<span class="font-label text-xs font-bold uppercase">Esi Amankwah</span>
+</div>
+</td>
+<td class="py-6 px-4 font-label text-xs text-on-surface-variant">4x Suya Sticks, Kelewele</td>
+<td class="py-6 px-4 font-label text-xs font-bold">GHC 310.00</td>
+<td class="py-6 px-4 font-label text-xs uppercase tracking-tight">Delivery</td>
+<td class="py-6 px-4">
+<span class="inline-block px-3 py-1 bg-stone-200 text-stone-600 font-label text-[10px] font-bold uppercase tracking-widest">Completed</span>
+</td>
+<td class="py-6 px-4 font-label text-[10px] font-bold text-on-surface-variant text-right uppercase">25 mins ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Nav Bar (Bottom) - Triggered by screen size -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pb-safe bg-[#fcf9f4] border-t-2 border-stone-100 md:hidden h-16">
+<a class="flex flex-col items-center justify-center bg-[#9d0518] text-white p-2 h-full w-full active:scale-95 duration-100" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-sans uppercase text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 p-2 h-full w-full active:bg-stone-200 duration-100" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-sans uppercase text-[10px] font-bold">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 p-2 h-full w-full active:bg-stone-200 duration-100" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-sans uppercase text-[10px] font-bold">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 p-2 h-full w-full active:bg-stone-200 duration-100" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-sans uppercase text-[10px] font-bold">More</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Komi Heritage</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e5e2dd",
+                    "on-primary-fixed": "#410004",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "surface-container-low": "#f6f3ee",
+                    "surface-dim": "#dcdad5",
+                    "on-primary-container": "#ffdad7",
+                    "on-tertiary-container": "#e4e1e1",
+                    "on-surface": "#1c1c19",
+                    "inverse-primary": "#ffb3ae",
+                    "surface-container-highest": "#e5e2dd",
+                    "on-secondary-fixed": "#261900",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#745500",
+                    "primary-fixed": "#ffdad7",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "primary": "#9d0518",
+                    "surface-container-high": "#ebe8e3",
+                    "on-primary-fixed-variant": "#930015",
+                    "surface-tint": "#b72028",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#4d4c4c",
+                    "on-surface-variant": "#5a403e",
+                    "inverse-surface": "#31302d",
+                    "inverse-on-surface": "#f3f0eb",
+                    "secondary-fixed": "#ffdea1",
+                    "tertiary-fixed": "#e5e2e1",
+                    "tertiary-container": "#656464",
+                    "surface-bright": "#fcf9f4",
+                    "outline-variant": "#e3bebb",
+                    "on-error": "#ffffff",
+                    "on-background": "#1c1c19",
+                    "surface": "#fcf9f4",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "outline": "#8f706d",
+                    "on-primary": "#ffffff",
+                    "background": "#fcf9f4",
+                    "surface-container": "#f0ede9",
+                    "secondary-fixed-dim": "#f2bf50",
+                    "secondary-container": "#feca5a",
+                    "on-error-container": "#93000a",
+                    "secondary": "#7a5900",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "primary-container": "#c0272d",
+                    "tertiary-fixed-dim": "#c8c6c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center">
+<!-- Top Navigation Shell (Hidden for Login focus as per mandate) -->
+<main class="w-full max-w-md px-0 flex flex-col min-h-screen">
+<!-- Logo Section -->
+<div class="pt-12 pb-8 flex justify-center w-full bg-surface">
+<h1 class="text-3xl font-black uppercase tracking-tighter text-primary">
+                Komi Heritage
+            </h1>
+</div>
+<!-- Food Photo Strip -->
+<div class="w-full h-[150px] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up of traditional West African Kenkey wrapped in husks served with vibrant red hot pepper sauce on a rustic ceramic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJvtQ4Cf40D5523TBcjahyHr7pIeFoJ3gdyBdPpwLIQbAHERG09gXe_6ZNY-1eXfhboeu3MZ0nzYrtDaXOpxtSrZ_G2Fg8we22TB54HaUe36GNONe9szHVd_vjgwp1ZxitzOcF5n7kUoQyJOtYxhqlywPDBJKuiUooHv7aQQSTLPJB9qBmPmtnuxA2FxI776SyG2wkVx4xjVaavGbFVSxz2OC5QA2r9hf0QTc09Mr_BdSlMqMOiIbSofxklFyi2Orj4V3D6GCK4qI"/>
+</div>
+<!-- Login Card -->
+<!-- Note: The user requested 'rounded corners' but the Design System 'Organic Brutalism' mandate strictly PROHIBITS them (0px). Following the Authority Source (Design System) for the UI identity. -->
+<div class="flex-1 bg-surface-container-lowest mt-[-20px] relative z-10 p-8 shadow-[0_24px_48px_rgba(28,28,25,0.06)]">
+<header class="mb-10">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-secondary mb-2 block font-bold">Heritage Awaits</span>
+<h2 class="text-4xl font-headline italic font-medium leading-tight">Welcome Back</h2>
+</header>
+<form class="space-y-8">
+<!-- Email Input -->
+<div class="relative">
+<label class="block font-label text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1" for="email">Email Address</label>
+<input class="w-full bg-transparent border-b-2 border-outline-variant py-3 px-0 focus:outline-none focus:border-primary placeholder:text-surface-dim transition-colors font-body" id="email" name="email" placeholder="kofi@accra.com" type="email"/>
+</div>
+<!-- Password Input -->
+<div class="relative">
+<label class="block font-label text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1" for="password">Password</label>
+<input class="w-full bg-transparent border-b-2 border-outline-variant py-3 px-0 focus:outline-none focus:border-primary placeholder:text-surface-dim transition-colors font-body" id="password" name="password" placeholder="••••••••" type="password"/>
+<div class="flex justify-end mt-2">
+<a class="text-xs text-primary font-bold uppercase tracking-widest hover:underline underline-offset-4" href="#">Forgot password?</a>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 space-y-4">
+<button class="w-full bg-primary text-on-primary font-label font-black uppercase tracking-widest py-5 px-6 flex items-center justify-center transition-all hover:bg-primary-container active:opacity-80" type="submit">
+                        Log In
+                    </button>
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink mx-4 text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Or continue with</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<button class="w-full bg-surface-container-high text-on-surface font-label font-bold uppercase tracking-widest py-4 px-6 flex items-center justify-center gap-3 transition-colors hover:bg-surface-container-highest" type="button">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                        Google
+                    </button>
+</div>
+</form>
+<footer class="mt-12 text-center">
+<p class="text-on-surface-variant font-body text-sm">
+                    New here? 
+                    <a class="text-primary font-black uppercase tracking-widest text-xs ml-1 hover:underline underline-offset-4" href="#">Create an account</a>
+</p>
+</footer>
+</div>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="w-full flex flex-col md:flex-row justify-between items-center px-8 py-6 gap-4 bg-[#fcf9f4] dark:bg-stone-950">
+<div class="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500">
+            © THE LIVING ARCHIVE. ACCRA HERITAGE.
+        </div>
+<div class="flex gap-6">
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 hover:text-[#c0272d] underline-offset-4 hover:underline" href="#">Privacy</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 hover:text-[#c0272d] underline-offset-4 hover:underline" href="#">Terms</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 hover:text-[#c0272d] underline-offset-4 hover:underline" href="#">Support</a>
+</div>
+</footer>
+</body></html>

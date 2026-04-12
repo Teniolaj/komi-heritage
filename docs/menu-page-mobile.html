@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&amp;family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "outline": "#8f706d",
+                "on-primary-container": "#ffdad7",
+                "surface-container-high": "#ebe8e3",
+                "primary": "#9d0518",
+                "on-tertiary-container": "#e4e1e1",
+                "secondary-container": "#feca5a",
+                "tertiary": "#4d4c4c",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#ffb3ae",
+                "surface-tint": "#b72028",
+                "on-background": "#1c1c19",
+                "surface-dim": "#dcdad5",
+                "on-tertiary-fixed-variant": "#474646",
+                "on-secondary-fixed-variant": "#5c4300",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "surface-container-highest": "#e5e2dd",
+                "on-secondary-container": "#745500",
+                "secondary-fixed-dim": "#f2bf50",
+                "inverse-primary": "#ffb3ae",
+                "on-error": "#ffffff",
+                "on-primary-fixed": "#410004",
+                "tertiary-container": "#656464",
+                "surface-container-low": "#f6f3ee",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed": "#261900",
+                "secondary": "#7a5900",
+                "on-tertiary-fixed": "#1c1b1b",
+                "on-surface": "#1c1c19",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "surface-bright": "#fcf9f4",
+                "surface": "#fcf9f4",
+                "surface-variant": "#e5e2dd",
+                "outline-variant": "#e3bebb",
+                "on-primary-fixed-variant": "#930015",
+                "on-primary": "#ffffff",
+                "primary-container": "#c0272d",
+                "on-error-container": "#93000a",
+                "background": "#fcf9f4",
+                "primary-fixed": "#ffdad7",
+                "on-surface-variant": "#5a403e",
+                "inverse-on-surface": "#f3f0eb",
+                "secondary-fixed": "#ffdea1",
+                "inverse-surface": "#31302d",
+                "tertiary-fixed": "#e5e2e1",
+                "surface-container": "#f0ede9"
+            },
+            "borderRadius": {
+                "DEFAULT": "0px",
+                "lg": "0px",
+                "xl": "0px",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Newsreader", "serif"],
+                "body": ["Manrope", "sans-serif"],
+                "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { -webkit-tap-highlight-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Anchor -->
+<header class="flex justify-between items-center px-6 py-4 w-full sticky top-0 bg-surface/80 backdrop-blur-md z-50 border-0">
+<h1 class="text-2xl font-black text-primary tracking-tighter uppercase font-headline">The Living Archive</h1>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface">shopping_bag</span>
+</div>
+</header>
+<main class="pb-40">
+<!-- Compact Banner -->
+<section class="relative h-[220px] w-full flex flex-col justify-end p-6 overflow-hidden">
+<img alt="The Menu Background" class="absolute inset-0 w-full h-full object-cover grayscale brightness-50" data-alt="Close up of traditional Ghanaian earthenware cooking pots on a rustic background with cinematic low lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8NVEgmt2rGyqL3ua3RRSGTluphSle0k9UO7b07wVeEQD4dPQ58k01399aBcsOhDBZJi4zMzWWYKOsSooBfyaa-eFOOSIzfB4CafCKt-A3mYH8zu1NSimDNWZIM06C2EmX_xZ78QOY4HggvauVYrtwsVYmq9qvvvystOSjygIqTck36yi4rkCp8_JL52vu2ofH6XWcMXONgip_rlNhfzUVb1wWCRPXnTpUR-s6YwCq4jiFfSsE2yNnsWTC6tL2IGQF4XXI4cLhKug"/>
+<div class="relative z-10">
+<p class="font-label text-[10px] uppercase tracking-[0.3em] text-secondary-fixed mb-1">Authentic Accra</p>
+<h2 class="font-headline text-5xl font-extrabold text-white leading-none tracking-tighter">THE MENU</h2>
+</div>
+</section>
+<!-- Category Pills (Horizontal Scroll) -->
+<section class="sticky top-[64px] bg-surface z-40 py-4 overflow-x-auto no-scrollbar flex gap-2 px-6">
+<button class="bg-primary text-white px-6 py-2 whitespace-nowrap font-label text-sm font-bold border-0">Heritage Bowls</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 whitespace-nowrap font-label text-sm border-0">Street Sides</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 whitespace-nowrap font-label text-sm border-0">Flame Grilled</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 whitespace-nowrap font-label text-sm border-0">Archive Drinks</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 whitespace-nowrap font-label text-sm border-0">Desserts</button>
+</section>
+<!-- Item Grid -->
+<section class="grid grid-cols-2 gap-px bg-surface-container-highest/20 mt-2">
+<!-- Card 1 -->
+<div class="bg-surface p-4 flex flex-col group">
+<div class="h-40 w-full bg-surface-container-low overflow-hidden mb-4">
+<img alt="Heritage Jollof" class="w-full h-full object-cover" data-alt="Gourmet Jollof rice with grilled chicken and plantain served in a traditional clay bowl, top view, vibrant colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjs3Yy3MX-Tud5vc-XE0H5IZJwccxNzedR1uPqXK-tajYQlVRzGVzNri1USR_dcESzYHEl5Nd1Y2MP_F-M81OZ3pTn2xOb1FYqKh5epR9cXgSqlf3J44fIwc8Pkcyqd5z8GAicOqMfiRKEKVs2ufaIGYRRAyCMDadYs0ptD_o5sUKv2yeZfEkbCmcN87JmG-Ad0KG7Xyw3ikBeh9t5N1NbTVqVRvl0mLHSqkCo1WYcou5TkUG22DqQZtlKWEEtRKitFrdeapONzGs"/>
+</div>
+<p class="font-label text-[9px] text-secondary font-bold uppercase tracking-widest mb-1">Bestseller</p>
+<h3 class="font-headline text-lg font-bold text-on-surface leading-tight mb-2">Heritage Jollof Bowl</h3>
+<div class="mt-auto flex justify-between items-end">
+<span class="font-label font-bold text-secondary text-sm">GH₵ 85.00</span>
+<button class="w-10 h-10 bg-primary text-white flex items-center justify-center transition-transform active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface p-4 flex flex-col group">
+<div class="h-40 w-full bg-surface-container-low overflow-hidden mb-4">
+<img alt="Kelewele Supreme" class="w-full h-full object-cover" data-alt="Roasted spiced plantains with groundnuts, served on a textured stone plate, dramatic side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmYNdbUKa-WXmO64vZmqCiYovr4-BpuvS19SviEA0Snvkkp5wIjZVtnQP3ERWc-UU4wooMPK0SVgg4Jhg9IqYUFLQOQR3e7ogANnKGRdLzaBwA7qgwpuo_CyHQnEQQsAvGket_U9jXtTE0omzEGwMtL3_CjlBpz6ifA_o4vlNngNPT2wf9sa63JTIL5EUneTSIal7GyJ3ZTTySMsEKS4M2NjaR1K2WNhodn_4hjbIE8lQ6nRq1aLQteTEm1gy711Gk8QZBc3WcyJI"/>
+</div>
+<p class="font-label text-[9px] text-secondary font-bold uppercase tracking-widest mb-1">Spicy</p>
+<h3 class="font-headline text-lg font-bold text-on-surface leading-tight mb-2">Kelewele Supreme</h3>
+<div class="mt-auto flex justify-between items-end">
+<span class="font-label font-bold text-secondary text-sm">GH₵ 45.00</span>
+<button class="w-10 h-10 bg-primary text-white flex items-center justify-center transition-transform active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface p-4 flex flex-col group">
+<div class="h-40 w-full bg-surface-container-low overflow-hidden mb-4">
+<img alt="Flame Tilapia" class="w-full h-full object-cover" data-alt="Flame grilled tilapia with banku and hot pepper sauce, garnished with fresh onions and tomatoes, high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJtNWu8_Lvu7jFvG_j4sWUcr25PG_JzJnxKBKh_RKqzh0exTF1o8tgdW8WcQlx35SNcWzBPnTYFJiRu7LHl1WChKIqWkAsbMFHsspLscWoRtJVZFF5qOuhtPKLQwj0NNyFTl3JwPZuNCNKlXX7xLUt1ClO2ekJMU2Ij7Dd1Pg51hhR4Bc3J_VKI9OI1aZX5brsaQ5ApODX1cbV5qDndXAUtGWsfWsLVsrdxjpr8r64WLD6ctRKiZr97LL3tKfyCP_OXeTr3hnb5aA"/>
+</div>
+<p class="font-label text-[9px] text-secondary font-bold uppercase tracking-widest mb-1">Heritage</p>
+<h3 class="font-headline text-lg font-bold text-on-surface leading-tight mb-2">Flame Tilapia &amp; Banku</h3>
+<div class="mt-auto flex justify-between items-end">
+<span class="font-label font-bold text-secondary text-sm">GH₵ 120.00</span>
+<button class="w-10 h-10 bg-primary text-white flex items-center justify-center transition-transform active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface p-4 flex flex-col group">
+<div class="h-40 w-full bg-surface-container-low overflow-hidden mb-4">
+<img alt="Red-Red Heritage" class="w-full h-full object-cover" data-alt="Close up of red-red stew with fried plantain, rich tomato base, steam rising, warm earthen tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_itHY1-74GxXhHhNn8WgoJQb3vlTNESmBz_UFXDfbO2J7gHNeDl70z7hctqFj1Rh8yMb_9Hs8ma_K2wxuQLztCZ4BbA5pTMqLuyU-dL-ET5gtLen2fGVYip8O-_wvbceOpFW-KC0kvnIMFOMN0VSiKiyNsrIPn2XrLpuB9qEKd0t5AGONNHBFAsXPqoaiNeEc0EMsQFhP_LuYXgo49cxJZIRTScGyfHarflj85fsh7YGLT9iKuACHDt11E1P3AO3DGuR7jUq5gBM"/>
+</div>
+<p class="font-label text-[9px] text-secondary font-bold uppercase tracking-widest mb-1">Vegan Option</p>
+<h3 class="font-headline text-lg font-bold text-on-surface leading-tight mb-2">Red-Red Bean Stew</h3>
+<div class="mt-auto flex justify-between items-end">
+<span class="font-label font-bold text-secondary text-sm">GH₵ 65.00</span>
+<button class="w-10 h-10 bg-primary text-white flex items-center justify-center transition-transform active:scale-90">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom Sheet Mockup (Detail State) -->
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-end">
+<div class="w-full bg-surface-bright flex flex-col max-h-[795px]">
+<div class="h-1 bg-surface-container-highest w-12 self-center mt-3 mb-1"></div>
+<div class="relative h-64 w-full">
+<img alt="Product Detail Large" class="w-full h-full object-cover" data-alt="High quality food photography of Ghanaian Jollof rice in a dark background, soft steam, rich textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN8k3AlOFofzI3Ep0AWXEa-qpAF1vKzvES1qcsZb5Y2A6VBmpT4yS1lqJ3gFQyU-9tssoJHe7wDIQu-_AlBwH77a81kEW1jgGljbkTpWqJWjSce6hDl-P5wSHvgcuQqwZFhB_u5vvjERr9axc7o2pl8CWv1A87eFJwmT1YJ_HsigIfj-UG7DbmJK-ixlH-kGWwdFNUmhGTDeHnaed-ZCkjYAAn9k2HhSFlXGF7muwaSQLWYQyNLZJjpuzex51m9-SwR7Dx8NpEzqA"/>
+<button class="absolute top-4 right-4 bg-surface/50 p-2 text-on-surface backdrop-blur-md">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="font-label text-[10px] text-secondary font-bold uppercase tracking-[0.2em] mb-1">Traditional Recipe</p>
+<h2 class="font-headline text-3xl font-bold text-on-surface tracking-tight">Heritage Jollof Bowl</h2>
+</div>
+<span class="font-headline text-2xl font-bold text-secondary">GH₵ 85</span>
+</div>
+<p class="text-on-surface-variant font-body leading-relaxed mb-8">
+                        Our signature long-grain rice, slow-cooked in a rich, smoked tomato and habanero base. Served with heritage grilled chicken, sweet plantains, and a side of archival shito.
+                    </p>
+<div class="flex items-center justify-between gap-6 mb-8">
+<div class="flex items-center border-2 border-outline-variant py-2 px-4 gap-6">
+<button class="text-on-surface"><span class="material-symbols-outlined">remove</span></button>
+<span class="font-label font-extrabold text-lg">1</span>
+<button class="text-on-surface"><span class="material-symbols-outlined">add</span></button>
+</div>
+<button class="flex-1 bg-primary text-white py-4 font-label font-bold uppercase tracking-widest text-sm transition-opacity active:opacity-90">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Cart Bar -->
+<div class="fixed bottom-20 left-4 right-4 z-50 bg-inverse-surface text-inverse-on-surface h-14 flex items-center px-4 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="font-label font-bold text-sm">2 ITEMS</span>
+</div>
+<div class="mx-auto h-4 w-px bg-surface-variant/20"></div>
+<span class="font-label text-sm font-bold">GH₵ 130.00</span>
+<button class="ml-auto bg-primary text-white h-full px-4 flex items-center gap-2 font-label font-bold text-xs uppercase tracking-wider">
+            View Cart <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-surface border-t border-stone-200">
+<a class="flex flex-col items-center justify-center text-stone-500 px-6 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-0 px-6 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 px-6 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 px-6 py-2" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label text-[10px] uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
