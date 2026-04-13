@@ -1,13 +1,28 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingCart, User, Menu, X } from 'lucide-react';
+import { ShoppingCart, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { createClient } from '@/lib/supabase/client';
+import type { User } from '@supabase/supabase-js';
+
+/** Returns up to 2 uppercase initials from a display name or email. */
+function getInitials(user: User): string {
+  const name =
+    user.user_metadata?.full_name ||
+    user.user_metadata?.name ||
+    user.email ||
+    '';
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return name.slice(0, 2).toUpperCase();
+}
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   const pathname = usePathname();
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -17,14 +32,30 @@ export function Navigation() {
     { name: 'Menu', href: '/menu' },
   ];
 
-  // Dummy authentication state (replace with actual backend auth check)
-  const isAuthenticated = false;
+  // Subscribe to the Supabase auth state so the navbar reacts instantly on
+  // sign-in / sign-out without a full page reload.
+  useEffect(() => {
+    const supabase = createClient();
+
+    // Hydrate immediately
+    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+
+    // Keep in sync
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const isAuthenticated = !!user;
+  const initials = user ? getInitials(user) : '';
 
   return (
     <>
       <nav className="fixed top-0 left-0 w-full z-[60] flex justify-between items-center px-4 md:px-6 py-3 md:py-4 bg-surface/90 backdrop-blur-md border-b border-surface-container shadow-sm">
         {/* Mobile Hamburger */}
-        <button onClick={toggleMenu} className="md:hidden w-10 h-10 flex items-center justify-center text-on-surface active-tap">
+        <button onClick={toggleMenu} className="md:hidden w-10 h-10 flex items-center justify-center rounded-2xl text-on-surface active-tap">
           <Menu size={24} />
         </button>
 
@@ -46,17 +77,54 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-3 md:gap-4">
+          {!isAuthenticated && (
+            <Link
+              href="/signup"
+              className="cta-sheen hidden md:inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3 font-dm-sans text-xs font-black uppercase tracking-[0.22em] text-on-primary shadow-lg shadow-primary/20 transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              Sign Up
+            </Link>
+          )}
+
           {isAuthenticated && (
             <>
               <Link href="/checkout" className="w-10 h-10 flex items-center justify-center text-primary active-tap transition-colors hover:bg-primary/5 rounded-full">
                 <ShoppingCart size={24} />
               </Link>
               
-              <Link href="/login" className="hidden md:block w-10 h-10 rounded-full border-2 border-primary overflow-hidden">
-                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhP4gI7-h3RK2aShKVIXxxA2qBmIKJ9kMPOx3w1mYyY5GCM4khYvmthSIkXfw0_6NA1Upd5PxAOMkCLurfdQ0sbILp2BY7FOrKz6y9BtHqcHNIE-ZSF7ER4DCK5qsPR3LPGB7qIyvfiOSEcEfPOSm8dIGNdtofhKkm3IswkbHDPYtmLbktcvK284oLrcMIp-SYi-Bau1SuZWuM3GEhVPoWOsV8JymW6RP_M6rJ90yu2B11nNBB9OgL6G7hnY-hF4fjuWqRBGZZt2c" alt="User" className="w-full h-full object-cover" />
+              {/* Avatar with initials — works for Google OAuth and email users */}
+              <Link
+                href="/account"
+                title={user?.email}
+                className="hidden md:flex w-10 h-10 rounded-full border-2 border-primary items-center justify-center bg-primary text-on-primary font-dm-sans font-black text-[13px] uppercase overflow-hidden hover:opacity-90 transition-opacity"
+              >
+                {user?.user_metadata?.avatar_url ? (
+                  <img
+                    src={user.user_metadata.avatar_url}
+                    alt={initials}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  initials
+                )}
               </Link>
-              <Link href="/login" className="md:hidden w-10 h-10 bg-surface-container-high flex items-center justify-center active-tap">
-                <User size={24} />
+
+              {/* Mobile: same avatar treatment */}
+              <Link
+                href="/account"
+                className="md:hidden flex w-10 h-10 rounded-full border-2 border-primary items-center justify-center bg-primary text-on-primary font-dm-sans font-black text-[13px] uppercase overflow-hidden"
+              >
+                {user?.user_metadata?.avatar_url ? (
+                  <img
+                    src={user.user_metadata.avatar_url}
+                    alt={initials}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  initials
+                )}
               </Link>
             </>
           )}
@@ -77,7 +145,7 @@ export function Navigation() {
               <span className="text-xl font-black tracking-tighter text-primary uppercase font-headline">
                 Menu
               </span>
-              <button onClick={toggleMenu} className="w-10 h-10 flex items-center justify-center text-on-surface active-tap">
+              <button onClick={toggleMenu} className="w-10 h-10 flex items-center justify-center rounded-2xl text-on-surface active-tap">
                 <X size={24} />
               </button>
             </div>
@@ -100,12 +168,27 @@ export function Navigation() {
               ))}
               
               <div className="mt-auto pb-12 flex flex-col gap-4 font-dm-sans">
-                <Link href="/login" onClick={toggleMenu} className="w-full border-2 border-primary text-primary font-bold px-6 py-4 text-center uppercase tracking-widest active-tap">
-                  Sign In
-                </Link>
-                <Link href="/signup" onClick={toggleMenu} className="w-full bg-primary text-on-primary font-bold px-6 py-4 text-center uppercase tracking-widest active-tap border-b-2 border-[#8B1A1E]">
-                  Create Account
-                </Link>
+                {isAuthenticated ? (
+                  <button
+                    onClick={async () => {
+                      const supabase = createClient();
+                      await supabase.auth.signOut();
+                      toggleMenu();
+                    }}
+                    className="w-full rounded-2xl border-2 border-primary text-primary font-bold px-6 py-4 text-center uppercase tracking-widest active-tap"
+                  >
+                    Sign Out
+                  </button>
+                ) : (
+                  <>
+                    <Link href="/login" onClick={toggleMenu} className="w-full rounded-2xl border-2 border-primary text-primary font-bold px-6 py-4 text-center uppercase tracking-widest active-tap">
+                      Sign In
+                    </Link>
+                    <Link href="/signup" onClick={toggleMenu} className="cta-sheen w-full rounded-2xl bg-primary text-on-primary font-bold px-6 py-4 text-center uppercase tracking-widest active-tap border-b-2 border-[#8B1A1E]">
+                      Create Account
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </motion.div>
