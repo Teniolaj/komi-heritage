@@ -3,9 +3,10 @@
 import { PageWrapper } from "@/components/PageWrapper";
 import { PrimaryButton, IconButton } from "@/components/ui/Button";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Plus, Minus, X, ArrowRight, ShoppingBag } from "lucide-react";
+import { Plus, Minus, X, ArrowRight, ShoppingBag, Lock } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
 
 // Mock Data
 const categories = ["All", "Kenkey Combos", "Street Sides", "Archive Drinks"];
@@ -69,20 +70,29 @@ const itemVariants: Variants = {
 };
 
 export default function MenuPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedItem, setSelectedItem] = useState<any>(null); // For mobile detail sheet
+  const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => setIsAuthenticated(!!data.user));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
+      setIsAuthenticated(!!session?.user);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <PageWrapper>
       {/* Hero Banner */}
-      <section className="relative h-[220px] md:h-[460px] flex items-end md:items-center justify-start md:justify-center p-6 md:p-0 overflow-hidden bg-black">
+      <section className="relative h-[292px] md:h-[540px] flex items-center md:items-center justify-center md:justify-center p-6 md:p-0 overflow-hidden bg-black -mt-[72px] md:-mt-[80px] pt-[72px] md:pt-[80px]">
         <img 
           className="absolute inset-0 w-full h-full object-cover grayscale md:brightness-100 brightness-50" 
           alt="Menu hero" 
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLWLr7RVO-lvUC-IdkXxyCiAaBbwIHTOsKByHz6vCiSWJLPkxvqH6oFUjbaXNvPkKV_1V3dBZPAYErtTGoaVfwBaQBghlHytJCkR7GAQTZv1UYYf3iq7eFPHFZ4-JChZXLw5dL2DtrmYp8Tg-wDtiGz4puWn6AUso113F-QtKFgXeNNC5mQdD3SpJl16Wuxm9IV_JPSvwrOxQNHwbOqg0mYNG3m3lutyY2TeCP05uQccPhaMzW0ZjLOCUUfhYX-1oTSCUjSUWFM6s"
         />
         <div className="absolute inset-0 bg-on-surface/40 hidden md:block"></div>
-        <div className="relative z-10 text-left md:text-center md:px-4 w-full">
+        <div className="relative z-10 text-center md:text-center md:px-4 w-full">
           <span className="font-dm-sans text-[10px] md:text-sm text-secondary-container block mb-1 md:mb-2 uppercase tracking-widest md:font-bold">The Heritage Kitchen</span>
           <h1 className="text-5xl md:text-7xl lg:text-9xl font-headline font-extrabold text-white md:tracking-tighter leading-none mb-0 md:mb-4 uppercase tracking-tighter">THE MENU</h1>
           <p className="hidden md:block text-surface-container-highest font-body text-xl md:text-2xl max-w-xl mx-auto">Choose your combo. We'll handle the rest.</p>
@@ -93,39 +103,39 @@ export default function MenuPage() {
         {/* Main Content Area */}
         <div className="flex-1 pb-32 md:pb-20 max-w-6xl mx-auto w-full px-6 md:px-6 lg:px-12 mt-4 md:mt-12">
           
-          {/* Filter Row */}
-          <div className="flex items-center gap-2 md:gap-4 mb-4 md:mb-16 overflow-x-auto pb-4 hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0">
-            {categories.map((c) => (
-              <button 
-                key={c}
-                onClick={() => setActiveCategory(c)}
-                className={`px-6 py-2 md:px-8 md:py-3 whitespace-nowrap font-dm-sans font-bold uppercase tracking-wider text-xs md:text-xs transition-colors border-0 ${
-                  activeCategory === c 
-                    ? "bg-primary text-white" 
-                    : "bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
-          </div>
-
           {/* Item Grid */}
           <motion.div 
             variants={containerVariants} 
             initial="hidden" 
             animate="show"
-            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-px md:gap-12 bg-surface-container-highest/20 md:bg-transparent -mx-6 px-6 md:mx-0 md:px-0"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-12 bg-surface-container-highest/20 md:bg-transparent -mx-6 px-6 md:mx-0 md:px-0 pt-4 md:pt-0"
           >
-            {menuItems.filter(item => activeCategory === "All" || item.category === activeCategory).map((item) => (
+            {menuItems.map((item) => (
               <motion.div key={item.id} variants={itemVariants}>
                 <motion.div 
-                  whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(0,0,0,0.12)' }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="bg-surface group h-full flex flex-col md:p-0 p-4 border border-surface-container-high md:border-0 cursor-pointer"
+                  initial="initial"
+                  whileHover="hovered"
+                  animate="initial"
+                  variants={{
+                    initial: { y: 0, boxShadow: '0 0px 0px rgba(0,0,0,0)' },
+                    hovered: { y: -4, boxShadow: '0 12px 32px rgba(0,0,0,0.12)', transition: { type: 'spring', stiffness: 300, damping: 20 } }
+                  }}
+                  className="bg-surface h-full flex flex-col p-1 md:p-[5px] border border-surface-container-high rounded-xl cursor-pointer relative group z-0"
                   onClick={() => setSelectedItem(item)}
                 >
-                  <div className="h-40 md:h-[280px] w-full bg-surface-container-low overflow-hidden relative mb-4 md:mb-0">
+                  {/* The animated gold border */}
+                  <div className="absolute inset-0 pointer-events-none rounded-xl overflow-hidden z-20">
+                     {/* Right Path */}
+                     <motion.div className="absolute bottom-0 left-1/2 h-[2px] bg-[#D4AF37]" variants={{ initial: { width: 0 }, hovered: { width: '50%', transition: { duration: 0.1, ease: "linear" } } }} />
+                     <motion.div className="absolute bottom-0 right-0 w-[2px] bg-[#D4AF37]" variants={{ initial: { height: 0 }, hovered: { height: '100%', transition: { duration: 0.25, delay: 0.1, ease: "linear" } } }} />
+                     <motion.div className="absolute top-0 right-0 h-[2px] bg-[#D4AF37]" variants={{ initial: { width: 0 }, hovered: { width: '50%', transition: { duration: 0.1, delay: 0.35, ease: "linear" } } }} />
+
+                     {/* Left Path */}
+                     <motion.div className="absolute bottom-0 right-1/2 h-[2px] bg-[#D4AF37]" variants={{ initial: { width: 0 }, hovered: { width: '50%', transition: { duration: 0.1, ease: "linear" } } }} />
+                     <motion.div className="absolute bottom-0 left-0 w-[2px] bg-[#D4AF37]" variants={{ initial: { height: 0 }, hovered: { height: '100%', transition: { duration: 0.25, delay: 0.1, ease: "linear" } } }} />
+                     <motion.div className="absolute top-0 left-0 h-[2px] bg-[#D4AF37]" variants={{ initial: { width: 0 }, hovered: { width: '50%', transition: { duration: 0.1, delay: 0.35, ease: "linear" } } }} />
+                  </div>
+                  <div className="h-40 md:h-[280px] w-full bg-surface-container-low overflow-hidden relative mb-4 rounded-lg shrink-0">
                     <motion.img 
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -140,7 +150,7 @@ export default function MenuPage() {
                     )}
                   </div>
                   
-                  <div className="md:py-6 flex flex-col flex-1">
+                  <div className="md:py-6 flex flex-col flex-1 px-3 pb-3 md:px-5">
                     <div className="flex flex-col md:flex-row md:justify-between items-start mb-2 md:mb-3 font-headline">
                       <h3 className="text-lg md:text-2xl font-bold text-on-surface leading-tight mb-1 md:mb-0">{item.name}</h3>
                       <span className="font-dm-sans text-sm md:text-base font-bold text-secondary md:ml-4 whitespace-nowrap">₵{item.price.toFixed(2)}</span>
@@ -149,13 +159,13 @@ export default function MenuPage() {
                       {item.description}
                     </p>
                     
-                    <div className="mt-auto hidden md:block space-y-4">
+                    <div className="mt-auto hidden md:block space-y-4 pt-4">
                       <PrimaryButton className="w-full py-4 text-xs shadow-none border-b-0" onClick={() => {}}>Add to Cart</PrimaryButton>
                     </div>
 
                     <div className="mt-auto flex justify-end md:hidden">
-                       <button className="w-10 h-10 bg-primary text-white flex items-center justify-center transition-transform active:scale-90">
-                         <span className="font-dm-sans font-light text-2xl">+</span>
+                       <button className="w-10 h-10 bg-primary text-white flex items-center justify-center transition-transform active:scale-90 rounded-full">
+                         <span className="font-dm-sans font-light text-2xl mb-1">+</span>
                        </button>
                     </div>
                   </div>
@@ -172,8 +182,19 @@ export default function MenuPage() {
         </div>
 
         {/* Sticky Cart Sidebar (Desktop) */}
-        <aside className="hidden lg:block w-[400px] h-[calc(100vh-80px)] sticky top-[80px] bg-surface-container-low p-8 border-l border-stone-200/40">
-          <div className="h-full flex flex-col">
+        <aside className="hidden lg:block w-[400px] h-[calc(100vh-80px)] sticky top-[80px] bg-surface-container-low p-8 border-l border-stone-200/40 relative">
+          {!isAuthenticated && (
+            <div className="absolute inset-0 z-10 bg-surface/80 backdrop-blur-sm flex flex-col items-center justify-center border-l border-stone-200/40">
+              <div className="w-16 h-16 bg-surface-container border border-stone-200/40 rounded-full flex items-center justify-center mb-4 text-stone-400">
+                <Lock size={24} />
+              </div>
+              <p className="font-headline font-bold text-xl text-on-surface mb-2">Sign in to order</p>
+              <Link href="/login">
+                <PrimaryButton className="text-sm py-3 px-8 shadow-sm">Login</PrimaryButton>
+              </Link>
+            </div>
+          )}
+          <div className={`h-full flex flex-col ${!isAuthenticated ? 'opacity-20 pointer-events-none' : ''}`}>
             <div className="flex justify-between items-baseline mb-8">
               <h2 className="text-3xl font-headline font-bold text-on-surface tracking-tight">Your Order</h2>
               <button className="text-stone-400 text-[10px] uppercase tracking-widest font-bold hover:text-primary transition-colors font-dm-sans">Clear Cart</button>
@@ -232,25 +253,37 @@ export default function MenuPage() {
       </div>
 
       {/* Floating Cart Bar (Mobile) */}
-      <div className="lg:hidden fixed bottom-6 left-4 right-4 z-40 bg-[#31302d] text-white h-14 flex items-center px-4 shadow-xl">
-        <div className="flex items-center gap-3">
-          <ShoppingBag size={20} />
-          <motion.span 
-            key="2"
-            initial={{ scale: 1.5 }}
-            animate={{ scale: 1 }}
-            transition={{ type: 'spring', stiffness: 500, damping: 15 }}
-            className="font-dm-sans font-bold text-sm"
-          >
-            2 ITEMS
-          </motion.span>
+      {isAuthenticated ? (
+        <div className="lg:hidden fixed bottom-6 left-4 right-4 z-40 bg-[#31302d] text-white h-14 flex items-center pl-5 pr-0 shadow-xl rounded-full border border-[#404040] overflow-hidden">
+          <div className="flex items-center gap-3">
+            <ShoppingBag size={20} />
+            <motion.span 
+              key="2"
+              initial={{ scale: 1.5 }}
+              animate={{ scale: 1 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 15 }}
+              className="font-dm-sans font-bold text-sm"
+            >
+              2 ITEMS
+            </motion.span>
+          </div>
+          <div className="mx-auto h-4 w-px bg-white/20"></div>
+          <span className="font-dm-sans text-sm font-bold">₵110.00</span>
+          <Link href="/checkout" className="ml-auto bg-primary text-white h-full px-6 flex items-center gap-2 font-dm-sans font-bold text-xs uppercase tracking-wider">
+            View Cart <ArrowRight size={16} />
+          </Link>
         </div>
-        <div className="mx-auto h-4 w-px bg-white/20"></div>
-        <span className="font-dm-sans text-sm font-bold">₵110.00</span>
-        <Link href="/checkout" className="ml-auto bg-primary text-white h-full px-4 flex items-center gap-2 font-dm-sans font-bold text-xs uppercase tracking-wider">
-          View Cart <ArrowRight size={16} />
-        </Link>
-      </div>
+      ) : (
+        <div className="lg:hidden fixed bottom-6 left-4 right-4 z-40 bg-surface-container/90 backdrop-blur-md text-on-surface h-14 flex items-center pl-5 pr-0 shadow-xl rounded-full border border-stone-200/40 overflow-hidden">
+          <div className="flex items-center gap-3 text-stone-500">
+            <Lock size={18} />
+            <span className="font-dm-sans font-bold text-sm text-on-surface">Sign in to order</span>
+          </div>
+          <Link href="/login" className="ml-auto bg-primary text-white h-full px-8 flex items-center gap-2 font-dm-sans font-bold text-xs uppercase tracking-wider">
+            Login
+          </Link>
+        </div>
+      )}
 
       {/* Mobile Detail Sheet */}
       <AnimatePresence>

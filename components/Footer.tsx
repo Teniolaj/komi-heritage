@@ -1,11 +1,17 @@
+"use client";
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
+  const pathname = usePathname();
+  const isMenuPage = pathname === '/menu';
+
   return (
-    <footer className="bg-zinc-950 text-white pt-16 pb-36 md:py-24 px-6 md:px-12 mt-auto">
+    <footer className={`bg-zinc-950 text-white pt-16 ${isMenuPage ? 'pb-36' : 'pb-16'} md:py-24 px-6 md:px-12 mt-auto`}>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16">
-        <div className="max-w-xs text-center md:text-left mx-auto md:mx-0">
-          <div className="text-3xl font-black text-primary uppercase font-headline mb-6">Komi Heritage</div>
+        <div className="max-w-xs text-left mx-0">
+          <div className="text-3xl font-black text-primary uppercase font-headline mb-4">Komi Heritage</div>
           <p className="text-zinc-500 font-medium leading-relaxed font-body">Accra's premier kenkey destination. Fusing timeless recipes with modern street culture.</p>
         </div>
         
@@ -25,16 +31,16 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center md:items-start gap-4 mx-auto md:mx-0 text-center md:text-left">
+        <div className="flex flex-col items-start gap-4 mx-0 text-left">
           <h5 className="text-primary font-bold uppercase tracking-widest text-sm mb-2">Find Us</h5>
-          <div className="flex flex-col justify-center md:justify-start gap-8 md:gap-3 text-zinc-400 mb-6 md:mb-0">
+          <div className="flex flex-col justify-start gap-6 md:gap-3 text-zinc-400 mb-6 md:mb-0">
             <div className="md:flex md:items-center md:gap-3">
-               <span className="md:hidden text-[9px] font-black tracking-[0.2em] text-zinc-500 uppercase mb-2 block text-center">Location</span>
-               <span className="text-[11px] md:text-base">Osu Oxford St.<br className="md:hidden"/>Accra, Ghana</span>
+               <span className="md:hidden text-[9px] font-black tracking-[0.2em] text-zinc-500 uppercase mb-2 block text-left">Location</span>
+               <span className="text-[14px] md:text-base">Osu Oxford St.<br className="md:hidden"/>Accra, Ghana</span>
             </div>
             <div className="md:hidden">
                <span className="text-[9px] font-black tracking-[0.2em] text-zinc-500 uppercase mb-2 block">Contact</span>
-               <span className="text-[11px]">+233 24 555 0123</span>
+               <span className="text-[14px]">+233 24 555 0123</span>
             </div>
           </div>
           <div className="hidden md:block mt-4 border-2 border-primary/20 p-1">

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Komi Heritage | Accra's Finest Kenkey</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Syne:wght@400..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#261900",
+                    "inverse-primary": "#ffb3ae",
+                    "on-surface-variant": "#5a403e",
+                    "on-primary-fixed-variant": "#930015",
+                    "surface-variant": "#e5e2e1",
+                    "surface-bright": "#fcf9f8",
+                    "secondary-fixed": "#ffdea1",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#4c4c4c",
+                    "inverse-surface": "#313030",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "background": "#fcf9f8",
+                    "surface-container": "#f0edec",
+                    "secondary": "#7a5900",
+                    "tertiary-fixed": "#e4e2e2",
+                    "primary-fixed": "#ffdad7",
+                    "surface": "#fcf9f8",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#646464",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "on-secondary-container": "#745500",
+                    "secondary-fixed-dim": "#f2bf50",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "on-primary-container": "#ffdad7",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#c0272d",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-container": "#e3e1e1",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "secondary-container": "#feca5a",
+                    "on-primary-fixed": "#410004",
+                    "surface-tint": "#b72028",
+                    "primary": "#9d0518",
+                    "outline-variant": "#e3bebb",
+                    "surface-container-high": "#ebe7e7",
+                    "outline": "#8f706d",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Syne", "sans-serif"],
+                    "body": ["DM Sans", "sans-serif"],
+                    "label": ["DM Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grain-texture {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ken-burns {
+            animation: kenburns 20s ease infinite alternate;
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .kente-divider {
+            height: 8px;
+            background-image: repeating-linear-gradient(45deg, #9d0518 0px, #9d0518 10px, #7a5900 10px, #7a5900 20px, #1c1b1b 20px, #1c1b1b 30px);
+            opacity: 0.15;
+        }
+        .perspective-card {
+            perspective: 1000px;
+        }
+        .spring-hover:hover {
+            transform: rotate3d(1, 1, 0, 10deg) scale(1.05);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-background selection:bg-primary selection:text-white">
+<!-- 1. Sticky Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-transparent backdrop-blur-md transition-all duration-500 px-6 py-4 flex justify-between items-center max-w-7xl mx-auto left-0 right-0" id="navbar">
+<div class="text-2xl font-bold tracking-tighter text-[#9D0518] font-[Syne]">
+            Komi Heritage
+        </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#C0272D] font-bold border-b-2 border-[#D4A437] pb-1 font-label" href="#">Home</a>
+<a class="text-stone-700 hover:text-[#C0272D] transition-colors font-label" href="#">Menu</a>
+<a class="text-stone-700 hover:text-[#C0272D] transition-colors font-label" href="#">About</a>
+</div>
+<button class="bg-[#9D0518] text-white px-6 py-2.5 rounded-full font-headline font-bold text-sm hover:opacity-90 active:scale-95 transition-all">
+            Order Now
+        </button>
+</nav>
+<!-- 2. Hero Section -->
+<header class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 z-0">
+<img alt="Kenkey Bowl" class="w-full h-full object-cover ken-burns" data-alt="Close-up of traditional Ghanaian Kenkey served with fried fish and spicy pepper sauce in a rustic wooden bowl with warm steam rising" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyxqre20ap9YHZ6JqvNiF9OFY8KPpjJzkFzdEAPvYtS2kiG9puFcgiDPibfUSqnUo93i-MyH2FI3Rzh2LvEkaXIyVtGMTgoIdG_hGeDUXJw22NVUjr05edk7jVDzfKy8BTUUKCgC6JpIUdQ1Hg54Nq4b8FlB5SwSe0kTpShxpeW0mUVqxQbMKTMcYJgAbKamU7J6vuwgE0LD5NmkZ6_AGKed2jXjl7ENm0jUFxMPfeOkj8lsujnRtbrQArSD0ZbVbmvs9Ym8GN7u0"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<div class="relative z-10 text-center px-6">
+<h1 class="font-headline font-extrabold text-6xl md:text-9xl text-white leading-none tracking-tighter mb-6">
+                ACCRA'S FINEST <br/> KENKEY
+            </h1>
+<p class="font-body text-lg md:text-2xl text-white/90 max-w-2xl mx-auto mb-10">
+                Steeped in tradition, crafted for the modern palate. Experience the authentic taste of the Gold Coast delivered to your doorstep.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-[#C0272D] text-white px-10 py-4 rounded-full font-headline font-bold text-lg flex items-center justify-center gap-2 hover:bg-[#9D0518] transition-colors group">
+                    Order Now 
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</header>
+<!-- 3. Marquee Ticker -->
+<section class="bg-[#111111] py-6 border-y border-[#D4A437]/20 relative overflow-hidden">
+<div class="marquee-container">
+<div class="marquee-content flex gap-12 items-center">
+<span class="font-headline font-bold text-[#D4A437] text-3xl">FRESH DAILY · TANTRA HILLS · ACCRA WIDE DELIVERY · AUTHENTIC GA FLAVORS · ORGANIC INGREDIENTS · THE HERITAGE WAY · </span>
+<span class="font-headline font-bold text-[#D4A437] text-3xl">FRESH DAILY · TANTRA HILLS · ACCRA WIDE DELIVERY · AUTHENTIC GA FLAVORS · ORGANIC INGREDIENTS · THE HERITAGE WAY · </span>
+</div>
+</div>
+</section>
+<!-- 4. By The Numbers -->
+<section class="bg-[#FAF7F2] py-24 relative overflow-hidden">
+<div class="absolute top-10 right-10 opacity-5 pointer-events-none">
+<img class="w-32 h-32 grayscale" data-alt="Geometric adinkra symbol pattern with intricate lines and heritage aesthetics in a monochrome minimalist style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBxOopYLLCdL9XhpPQaycTUAdYdDqPT2BxYK-LSJ2KyKTYp-5NC6UHCD1LQl1O700JWwfFFLc0c-b2qwSUtqACKprTFcTuPI6UO_2WEGDTk60DD6mZNk1yG0M0i68Ni519QbLCBQg8wTz9uXzu3sot7ENFqPjpV5i9jVUV0l-HrV8alutScxyxDNQgim2mzFDbABbm_hzznuIIlcFZejSFvFb2J7oKdMRd-vYxNfLWbOUNYbWju1bIZmEOTfEiaaC4WY_SVF0tGRk"/>
+</div>
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+<div>
+<div class="font-headline font-extrabold text-8xl text-[#9D0518] mb-2">6</div>
+<div class="kente-divider w-24 mx-auto mb-4"></div>
+<p class="font-label font-bold text-stone-600 uppercase tracking-widest">Secret Spices</p>
+</div>
+<div>
+<div class="font-headline font-extrabold text-8xl text-[#9D0518] mb-2">100%</div>
+<div class="kente-divider w-24 mx-auto mb-4"></div>
+<p class="font-label font-bold text-stone-600 uppercase tracking-widest">Corn Authenticity</p>
+</div>
+<div>
+<div class="font-headline font-extrabold text-8xl text-[#9D0518] mb-2">1</div>
+<div class="kente-divider w-24 mx-auto mb-4"></div>
+<p class="font-label font-bold text-stone-600 uppercase tracking-widest">Mission: Quality</p>
+</div>
+</div>
+</section>
+<!-- 5. Menu Tease -->
+<section class="bg-[#111111] py-32 relative overflow-hidden">
+<div class="grain-texture absolute inset-0"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline font-extrabold text-5xl text-white mb-4">THE CRAFTED LIST</h2>
+<div class="w-20 h-1 bg-[#D4A437]"></div>
+</div>
+<a class="text-[#D4A437] font-bold underline underline-offset-8 decoration-2 hover:text-[#9D0518] transition-colors" href="#">View All Menu</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 h-full md:h-[600px] items-center">
+<!-- Card 1 -->
+<div class="perspective-card spring-hover transform md:-rotate-3 translate-y-8 bg-[#1A1A1A] rounded-lg overflow-hidden group shadow-2xl">
+<img alt="One Man Kenkey" class="w-full h-64 object-cover" data-alt="Artistic high-angle shot of a single kenkey ball wrapped in corn husks with fried fish and bright red shito sauce on a ceramic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIt7wSokEtXKvmIAtemLqmLEX6yZjPtaNAWrZpYnDMhLbkndWBb6B8goEChAtTaI0KZu6xVldHtO_-qpXLVXEpQlSnQlCHwfJ4GApER1UOXEWKwBxuk6xXlpks2FehLdQyCrrqdL61IdRY_s0Fky9xV_I2mzyrEyM6pCy-RCTHm_NVwBYfRbkX0vUA2LtjFGZeaAd1y6vlHRLPc9XybaceQBJYodNVqEBPltrv9fw4wmKxFda64EMwzueBiwfb3B-BAP_9r_FMkbM"/>
+<div class="p-8">
+<h3 class="font-headline font-bold text-2xl text-white mb-2">One Man Kenkey</h3>
+<p class="text-stone-400 font-body mb-6">The essential classic. One perfectly fermented ball with prime fried fish and house shito.</p>
+<span class="text-[#D4A437] font-headline font-bold text-xl">GH₵ 45</span>
+</div>
+</div>
+<!-- Card 2 (Centered/Higher) -->
+<div class="perspective-card spring-hover z-20 bg-stone-900 rounded-lg overflow-hidden group border border-[#D4A437]/20 shadow-2xl scale-105">
+<img alt="Party Pack" class="w-full h-80 object-cover" data-alt="A large festive platter of multiple kenkey balls, various grilled fish, octopus, and sliced avocados on a dark wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTPIeaIyhBWSS_nzIWX6G9DJHbn6hDTxinKZS1XF7TqXAtSUcPlIPuGFZf_nXxVpfk-HMHntGB1ESNm4idME3Nm2H0AqlSVvoiMfs6iNQdUkKX8djrtrB2blj39o3j5PLzVjlAe86vurrILMIoE4h4CXIqiIxKrjyrMmurOVkwpjUBI9oYmpM38a35bQfz7HBLdoBEjUbhq3-9WsdKfxojbYIzXhlTRJdoO7wHG40TzQX6ub7WNmDtS1lAFsoNZyvmR5GKmw3i768"/>
+<div class="p-8">
+<h3 class="font-headline font-bold text-2xl text-white mb-2">The Heritage Platter</h3>
+<p class="text-stone-400 font-body mb-6">Designed for the table. Four balls, red &amp; green shito, grilled octopus, and fresh avocado.</p>
+<span class="text-[#D4A437] font-headline font-bold text-xl">GH₵ 180</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="perspective-card spring-hover transform md:rotate-6 -translate-y-8 bg-[#1A1A1A] rounded-lg overflow-hidden group shadow-2xl">
+<img alt="Classic Gold" class="w-full h-64 object-cover" data-alt="Modern gourmet presentation of Ghanaian Kenkey with succulent grilled prawns and gold-leaf garnish in a high-end restaurant setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv9c6243QvOPlQ_8RVqLBzu7to8OgAZ-OUGmS9KItYL60PGjGUJ-1bcxGkbmswNa1BUHGdJ9q_yUbmsy7RGWbHi50K9-M8gNYzjhZlEOeYwuQTYnoZZQioBc1g0V9wRt-XRb-nSKGn-FnTP7cXMfFyGS21fKYY373yWiCrGRXRgMxelRt5kNVMFKfe3zhRYrm7X3ebF63bhjm_2WNRVWmSuKHqCy4Mxv-foLsmIoAa-wLZ1SWJxj_o_5t8a-yTLGya7K6BbwN9HNY"/>
+<div class="p-8">
+<h3 class="font-headline font-bold text-2xl text-white mb-2">Classic Gold</h3>
+<p class="text-stone-400 font-body mb-6">A refined take. Smooth textured kenkey served with jumbo prawns and ginger-infused sauce.</p>
+<span class="text-[#D4A437] font-headline font-bold text-xl">GH₵ 95</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. How It Works -->
+<section class="bg-[#1A1A1A] py-32 border-t border-[#D4A437]/10">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-headline font-extrabold text-4xl text-white mb-20 text-center tracking-tight">THE RITUAL</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+<div class="relative pt-12 group">
+<span class="absolute top-0 left-0 text-9xl font-headline font-extrabold text-transparent stroke-text opacity-10 group-hover:opacity-30 transition-opacity" style="-webkit-text-stroke: 2px #C0272D;">01</span>
+<h4 class="font-headline font-bold text-2xl text-white mb-4 relative z-10">Choose Your Pack</h4>
+<p class="text-stone-400 leading-relaxed font-body relative z-10">Select from our curated heritage sets or build your own custom bowl from Accra's finest selections.</p>
+</div>
+<div class="relative pt-12 group">
+<span class="absolute top-0 left-0 text-9xl font-headline font-extrabold text-transparent stroke-text opacity-10 group-hover:opacity-30 transition-opacity" style="-webkit-text-stroke: 2px #C0272D;">02</span>
+<h4 class="font-headline font-bold text-2xl text-white mb-4 relative z-10">Direct Dispatch</h4>
+<p class="text-stone-400 leading-relaxed font-body relative z-10">Our riders navigate the pulse of Accra to bring you steaming fresh kenkey within minutes of order completion.</p>
+</div>
+<div class="relative pt-12 group">
+<span class="absolute top-0 left-0 text-9xl font-headline font-extrabold text-transparent stroke-text opacity-10 group-hover:opacity-30 transition-opacity" style="-webkit-text-stroke: 2px #C0272D;">03</span>
+<h4 class="font-headline font-bold text-2xl text-white mb-4 relative z-10">Pure Indulgence</h4>
+<p class="text-stone-400 leading-relaxed font-body relative z-10">Unwrap the corn husks, mix the shito, and partake in a centuries-old culinary tradition made new.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Brand Story -->
+<section class="bg-[#FAF7F2] py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-[#D4A437] flex items-center justify-center rounded-full z-10 shadow-xl rotate-12">
+<span class="font-headline font-bold text-white text-center leading-tight">Est.<br/>2020</span>
+</div>
+<img alt="Packaging" class="w-full aspect-square object-cover rounded-sm shadow-2xl" data-alt="Premium sustainable food packaging for Komi Heritage featuring minimalist earth-toned boxes and elegant brand typography with a traditional cloth texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsThQBjx7_Fk73I64WwNUK0pZ29igs7hsFVjT2kWxuMNOwuOPZjsMrV_l0b7z2GQZMGoTZtB-hWrnEOzb4dHoHxmVS88XJEJwaWZV3tNpoNOmt-MS80nXgIRO2tAE7PIf-N9D4vznCfOe1aNO4QbytIZRnJ2DB5ceXmCFp6dd_h2YoKW_CO-1XPG4iTq3rmhhsrW2Frd11iBmyWCcTJELkxpPySkfaJzob1_-UGIxCyybcBM4EaRH_PZ1GA0QyBr5P7T90nhASkt0"/>
+</div>
+<div>
+<h2 class="font-headline font-extrabold text-6xl text-[#1c1b1b] leading-[1.1] mb-8">SERVING HERITAGE SINCE DAY ONE</h2>
+<div class="kente-divider w-full mb-8"></div>
+<p class="font-body text-xl text-stone-700 leading-relaxed mb-8">
+                    What started in a small kitchen in Tantra Hills has evolved into a monument to Ghanaian street food. We believe that Kenkey isn't just food; it's a social fabric that connects the worker, the student, and the executive.
+                </p>
+<p class="font-body text-xl text-stone-700 leading-relaxed">
+                    Our process respects the 3-day fermentation ritual, ensuring the signature tang and texture that has defined our brand since we opened our first delivery hub in 2020.
+                </p>
+</div>
+</div>
+</section>
+<!-- 8. Join The Heritage -->
+<section class="bg-[#111111] py-32 relative text-center">
+<div class="grain-texture absolute inset-0"></div>
+<div class="relative z-10 px-6">
+<h2 class="font-headline font-extrabold text-6xl md:text-8xl text-white tracking-tighter mb-12">READY TO ORDER?</h2>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="bg-[#C0272D] text-white px-10 py-5 rounded-sm font-headline font-bold text-xl hover:bg-[#9D0518] transition-all transform hover:-translate-y-1 active:scale-95 shadow-xl">
+                    Create Account
+                </button>
+<button class="border-2 border-[#D4A437] text-[#D4A437] px-10 py-5 rounded-sm font-headline font-bold text-xl hover:bg-[#D4A437] hover:text-[#111111] transition-all transform hover:-translate-y-1">
+                    View Menu
+                </button>
+</div>
+</div>
+</section>
+<!-- 9. Footer -->
+<footer class="bg-[#111111] pt-24 pb-12 border-t border-[#D4A437]/10">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-16 mb-20">
+<div>
+<span class="text-3xl font-extrabold text-[#9D0518] font-[Syne] mb-4 block">Komi Heritage</span>
+<p class="text-stone-400 font-body leading-relaxed">
+                    Curating Ghanaian culinary craft. From the heart of Tantra Hills to the soul of Accra.
+                </p>
+</div>
+<div>
+<h5 class="font-headline font-bold text-white mb-6 uppercase tracking-widest text-sm">Quick Links</h5>
+<ul class="space-y-4">
+<li><a class="text-stone-400 hover:text-[#D4A437] transition-colors font-body" href="#">Privacy Policy</a></li>
+<li><a class="text-stone-400 hover:text-[#D4A437] transition-colors font-body" href="#">Terms of Service</a></li>
+<li><a class="text-stone-400 hover:text-[#D4A437] transition-colors font-body" href="#">Contact Us</a></li>
+<li><a class="text-stone-400 hover:text-[#D4A437] transition-colors font-body" href="#">Our Story</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold text-white mb-6 uppercase tracking-widest text-sm">Contact</h5>
+<p class="text-stone-400 font-body mb-2">Tantra Hills, Accra, Ghana</p>
+<p class="text-[#D4A437] font-body font-bold text-xl mb-6">+233 24 000 0000</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center text-stone-400 hover:border-[#D4A437] hover:text-[#D4A437] transition-all" href="#">
+<span class="material-symbols-outlined text-sm">language</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center text-stone-400 hover:border-[#D4A437] hover:text-[#D4A437] transition-all" href="#">
+<span class="material-symbols-outlined text-sm">camera</span>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 pt-8 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-stone-500 text-sm font-label">© 2024 Komi Heritage. Curating Ghanaian culinary craft.</p>
+<p class="text-stone-500 text-sm font-label">Design by Heritage Modernism Studio</p>
+</div>
+</footer>
+<script>
+        // Simple Navbar Scroll Logic
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-[#111111]', 'shadow-xl');
+                nav.classList.remove('bg-transparent');
+            } else {
+                nav.classList.remove('bg-[#111111]', 'shadow-xl');
+                nav.classList.add('bg-transparent');
+            }
+        });
+    </script>
+</body></html>
