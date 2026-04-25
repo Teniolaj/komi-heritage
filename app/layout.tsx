@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, Manrope, Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { AuthTransitionOverlay } from "@/components/AuthTransitionOverlay";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { ClientMain } from "@/components/ClientMain";
@@ -26,6 +27,7 @@ export default function RootLayout({
       className={`${newsreader.variable} ${manrope.variable} ${syne.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-manrope bg-surface text-on-surface">
+        <AuthTransitionOverlay />
         <Navigation />
         <ClientMain>
           {children}
