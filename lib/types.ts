@@ -106,37 +106,42 @@ export interface OperatingHours {
   is_open: boolean;
 }
 
+type SupabaseRow<T extends object> = T & Record<string, unknown>;
+
 export type Database = {
   public: {
     Tables: {
       profiles: {
-        Row: Profile;
-        Insert: Omit<Profile, "created_at" | "updated_at"> & {
+        Row: SupabaseRow<Profile>;
+        Insert: SupabaseRow<Omit<Profile, "created_at" | "updated_at"> & {
           created_at?: string;
           updated_at?: string;
-        };
-        Update: Partial<Profile>;
+        }>;
+        Update: SupabaseRow<Partial<Profile>>;
         Relationships: [];
       };
       menu_items: {
-        Row: MenuItem;
-        Insert: Omit<MenuItem, "id" | "created_at" | "updated_at"> & {
+        Row: SupabaseRow<MenuItem>;
+        Insert: SupabaseRow<
+          Omit<MenuItem, "id" | "created_at" | "updated_at" | "sort_order"> & {
           id?: string;
           created_at?: string;
           updated_at?: string;
-        };
-        Update: Partial<MenuItem>;
+          sort_order?: number;
+        }
+        >;
+        Update: SupabaseRow<Partial<MenuItem>>;
         Relationships: [];
       };
       orders: {
-        Row: Order;
-        Insert: Omit<Order, "id" | "order_number" | "created_at" | "updated_at"> & {
+        Row: SupabaseRow<Order>;
+        Insert: SupabaseRow<Omit<Order, "id" | "order_number" | "created_at" | "updated_at"> & {
           id?: string;
           order_number?: string;
           created_at?: string;
           updated_at?: string;
-        };
-        Update: Partial<Order>;
+        }>;
+        Update: SupabaseRow<Partial<Order>>;
         Relationships: [
           {
             foreignKeyName: "orders_user_id_fkey";
@@ -148,12 +153,12 @@ export type Database = {
         ];
       };
       order_items: {
-        Row: OrderItem;
-        Insert: Omit<OrderItem, "id" | "line_total"> & {
+        Row: SupabaseRow<OrderItem>;
+        Insert: SupabaseRow<Omit<OrderItem, "id" | "line_total"> & {
           id?: string;
           line_total?: number;
-        };
-        Update: Partial<OrderItem>;
+        }>;
+        Update: SupabaseRow<Partial<OrderItem>>;
         Relationships: [
           {
             foreignKeyName: "order_items_menu_item_id_fkey";
@@ -172,12 +177,12 @@ export type Database = {
         ];
       };
       payments: {
-        Row: Payment;
-        Insert: Omit<Payment, "id" | "created_at"> & {
+        Row: SupabaseRow<Payment>;
+        Insert: SupabaseRow<Omit<Payment, "id" | "created_at"> & {
           id?: string;
           created_at?: string;
-        };
-        Update: Partial<Payment>;
+        }>;
+        Update: SupabaseRow<Partial<Payment>>;
         Relationships: [
           {
             foreignKeyName: "payments_order_id_fkey";
@@ -189,12 +194,12 @@ export type Database = {
         ];
       };
       broadcast_emails: {
-        Row: BroadcastEmail;
-        Insert: Omit<BroadcastEmail, "id" | "sent_at"> & {
+        Row: SupabaseRow<BroadcastEmail>;
+        Insert: SupabaseRow<Omit<BroadcastEmail, "id" | "sent_at"> & {
           id?: string;
           sent_at?: string;
-        };
-        Update: Partial<BroadcastEmail>;
+        }>;
+        Update: SupabaseRow<Partial<BroadcastEmail>>;
         Relationships: [
           {
             foreignKeyName: "broadcast_emails_sent_by_fkey";
@@ -206,20 +211,20 @@ export type Database = {
         ];
       };
       business_settings: {
-        Row: BusinessSettings;
-        Insert: Omit<BusinessSettings, "id" | "updated_at"> & {
+        Row: SupabaseRow<BusinessSettings>;
+        Insert: SupabaseRow<Omit<BusinessSettings, "id" | "updated_at"> & {
           id?: string;
           updated_at?: string;
-        };
-        Update: Partial<BusinessSettings>;
+        }>;
+        Update: SupabaseRow<Partial<BusinessSettings>>;
         Relationships: [];
       };
       operating_hours: {
-        Row: OperatingHours;
-        Insert: Omit<OperatingHours, "id"> & {
+        Row: SupabaseRow<OperatingHours>;
+        Insert: SupabaseRow<Omit<OperatingHours, "id"> & {
           id?: string;
-        };
-        Update: Partial<OperatingHours>;
+        }>;
+        Update: SupabaseRow<Partial<OperatingHours>>;
         Relationships: [];
       };
     };

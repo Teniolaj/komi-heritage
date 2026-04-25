@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Newsreader, Manrope, Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { AuthTransitionOverlay } from "@/components/AuthTransitionOverlay";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { ClientMain } from "@/components/ClientMain";
 
 const newsreader = Newsreader({ subsets: ['latin'], variable: '--font-newsreader' });
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' });
@@ -25,10 +27,11 @@ export default function RootLayout({
       className={`${newsreader.variable} ${manrope.variable} ${syne.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-manrope bg-surface text-on-surface">
+        <AuthTransitionOverlay />
         <Navigation />
-        <main className="flex-1 flex flex-col mt-[72px] md:mt-[80px]">
+        <ClientMain>
           {children}
-        </main>
+        </ClientMain>
         <Footer />
       </body>
     </html>
