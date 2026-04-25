@@ -5,6 +5,11 @@ import { usePathname } from 'next/navigation';
 
 export function Footer() {
   const pathname = usePathname();
+  
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   const isMenuPage = pathname === '/menu';
 
   return (
@@ -18,10 +23,10 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 md:gap-12 w-full md:w-auto">
           <div className="flex flex-col gap-4">
             <h5 className="text-primary font-bold uppercase tracking-widest text-sm mb-2">Connect</h5>
-            <Link href="tel:+2330000000" className="text-zinc-400 hover:text-white transition-colors text-sm">Call Us</Link>
-            <Link href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">WhatsApp</Link>
-            <Link href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">Instagram</Link>
-            <Link href="#" className="text-zinc-400 hover:text-white transition-colors text-sm">TikTok</Link>
+            <Link href="tel:+233509432281" className="text-zinc-400 hover:text-white transition-colors text-sm">Call Us</Link>
+            <Link href="https://wa.me/+233247274909" className="text-zinc-400 hover:text-white transition-colors text-sm">WhatsApp</Link>
+            <Link href="https://www.instagram.com/komi_heritage/" className="text-zinc-400 hover:text-white transition-colors text-sm">Instagram</Link>
+            <Link href="https://www.tiktok.com/@komi_heritage2" className="text-zinc-400 hover:text-white transition-colors text-sm">TikTok</Link>
           </div>
           <div className="flex flex-col gap-4">
             <h5 className="text-primary font-bold uppercase tracking-widest text-sm mb-2">Quick Links</h5>

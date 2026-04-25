@@ -1,38 +1,49 @@
+"use client";
+
 import { ReactNode } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LayoutDashboard, Receipt, Users, Menu as MenuIcon, Settings, LogOut, Bell, UserCircle, Search, Home, MoreHorizontal } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/admin", label: "Overview", icon: LayoutDashboard },
+    { href: "/admin/orders", label: "Orders", icon: Receipt },
+    { href: "/admin/customers", label: "Customers", icon: Users },
+    { href: "/admin/menu", label: "Menu Manager", icon: MenuIcon },
+    { href: "/admin/settings", label: "Settings", icon: Settings },
+  ];
+
   return (
     <div className="bg-surface text-on-surface flex min-h-screen font-body">
       {/* SideNavBar (Desktop) */}
-      <aside className="bg-stone-950 h-screen w-64 hidden md:flex flex-col fixed z-50 p-6 transition-all duration-200 ease-in-out">
+      <aside className="bg-stone-950 h-screen w-64 hidden md:flex flex-col fixed left-0 top-0 z-50 p-6 transition-all duration-200 ease-in-out">
         <div className="mb-12 mt-2">
           <h1 className="text-white font-headline italic text-xl tracking-tighter">The Living Archive</h1>
           <p className="text-stone-500 font-dm-sans uppercase tracking-[0.2em] text-[8px] mt-1 font-bold">Cultural Monolith Admin</p>
         </div>
         
         <nav className="flex-1 space-y-2">
-          <Link href="/admin" className="flex items-center gap-4 px-4 py-3 text-white border-l-4 border-primary bg-stone-900/50 transition-all duration-200 ease-in-out group -ml-6 pl-10 w-[calc(100%+24px)]">
-            <LayoutDashboard size={18} className="text-primary" />
-            <span className="font-dm-sans uppercase tracking-widest text-[11px] font-bold">Overview</span>
-          </Link>
-          <Link href="/admin/orders" className="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group">
-            <Receipt size={18} />
-            <span className="font-dm-sans uppercase tracking-widest text-[11px] font-bold">Orders</span>
-          </Link>
-          <Link href="/admin/customers" className="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group">
-            <Users size={18} />
-            <span className="font-dm-sans uppercase tracking-widest text-[11px] font-bold">Customers</span>
-          </Link>
-          <Link href="/admin/menu" className="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group">
-            <MenuIcon size={18} />
-            <span className="font-dm-sans uppercase tracking-widest text-[11px] font-bold">Menu Manager</span>
-          </Link>
-          <Link href="/admin/settings" className="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-stone-100 hover:bg-stone-900 transition-all duration-200 ease-in-out group">
-            <Settings size={18} />
-            <span className="font-dm-sans uppercase tracking-widest text-[11px] font-bold">Settings</span>
-          </Link>
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            const Icon = link.icon;
+            return (
+              <Link 
+                key={link.href}
+                href={link.href} 
+                className={`flex items-center gap-4 py-3 transition-all duration-200 ease-in-out group ${
+                  isActive 
+                    ? "text-white border-l-4 border-primary bg-stone-900/50 -ml-6 pl-10 px-4 w-[calc(100%+24px)]" 
+                    : "text-stone-500 hover:text-stone-100 hover:bg-stone-900 px-4"
+                }`}
+              >
+                <Icon size={18} className={isActive ? "text-primary bg-transparent" : ""} />
+                <span className="font-dm-sans uppercase tracking-widest text-[11px] font-bold">{link.label}</span>
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="mt-auto pt-6 border-t border-stone-800/50">
@@ -89,19 +100,19 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 
       {/* Mobile Nav Bar (Bottom) */}
       <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-[#fcf9f4] border-t border-stone-200 md:hidden h-[60px] shadow-[0_-4px_24px_rgba(0,0,0,0.06)] px-2">
-        <Link href="/admin" className="flex flex-col items-center justify-center bg-primary text-white p-2 h-full w-full active:scale-95 duration-100">
+        <Link href="/admin" className={`flex flex-col items-center justify-center p-2 h-full w-full duration-100 ${pathname === '/admin' ? 'bg-primary text-white' : 'text-stone-500 active:bg-stone-200'}`}>
           <Home size={20} />
           <span className="font-dm-sans uppercase text-[9px] font-bold mt-1 tracking-widest">Home</span>
         </Link>
-        <Link href="/admin/orders" className="flex flex-col items-center justify-center text-stone-500 p-2 h-full w-full active:bg-stone-200 duration-100">
+        <Link href="/admin/orders" className={`flex flex-col items-center justify-center p-2 h-full w-full duration-100 ${pathname === '/admin/orders' ? 'bg-primary text-white' : 'text-stone-500 active:bg-stone-200'}`}>
           <Receipt size={20} />
           <span className="font-dm-sans uppercase text-[9px] font-bold mt-1 tracking-widest">Orders</span>
         </Link>
-        <Link href="/admin/menu" className="flex flex-col items-center justify-center text-stone-500 p-2 h-full w-full active:bg-stone-200 duration-100">
+        <Link href="/admin/menu" className={`flex flex-col items-center justify-center p-2 h-full w-full duration-100 ${pathname === '/admin/menu' ? 'bg-primary text-white' : 'text-stone-500 active:bg-stone-200'}`}>
           <MenuIcon size={20} />
           <span className="font-dm-sans uppercase text-[9px] font-bold mt-1 tracking-widest">Menu</span>
         </Link>
-        <Link href="/admin/more" className="flex flex-col items-center justify-center text-stone-500 p-2 h-full w-full active:bg-stone-200 duration-100">
+        <Link href="/admin/more" className={`flex flex-col items-center justify-center p-2 h-full w-full duration-100 ${pathname === '/admin/more' ? 'bg-primary text-white' : 'text-stone-500 active:bg-stone-200'}`}>
           <MoreHorizontal size={20} />
           <span className="font-dm-sans uppercase text-[9px] font-bold mt-1 tracking-widest">More</span>
         </Link>

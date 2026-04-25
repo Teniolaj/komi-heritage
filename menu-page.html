@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,700;6..72,800&amp;family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f3f0eb",
+                        "on-surface": "#1c1c19",
+                        "inverse-primary": "#ffb3ae",
+                        "background": "#fcf9f4",
+                        "surface": "#fcf9f4",
+                        "primary": "#9d0518",
+                        "on-primary-container": "#ffdad7",
+                        "surface-container-highest": "#e5e2dd",
+                        "tertiary-container": "#656464",
+                        "primary-fixed-dim": "#ffb3ae",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#5a403e",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "secondary-fixed-dim": "#f2bf50",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#b72028",
+                        "tertiary": "#4d4c4c",
+                        "secondary-container": "#feca5a",
+                        "surface-container-high": "#ebe8e3",
+                        "on-tertiary-container": "#e4e1e1",
+                        "on-secondary-container": "#745500",
+                        "surface-bright": "#fcf9f4",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#474646",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#930015",
+                        "secondary": "#7a5900",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#261900",
+                        "surface-container-low": "#f6f3ee",
+                        "surface-dim": "#dcdad5",
+                        "surface-container": "#f0ede9",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "outline": "#8f706d",
+                        "on-primary-fixed": "#410004",
+                        "on-background": "#1c1c19",
+                        "outline-variant": "#e3bebb",
+                        "inverse-surface": "#31302d",
+                        "primary-container": "#c0272d",
+                        "secondary-fixed": "#ffdea1",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdad7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(28, 28, 25, 0.06);
+        }
+        .premium-glow {
+            box-shadow: 0 0 0 2px #9d0518, 0 0 20px rgba(157, 5, 24, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Authority: JSON & Design System) -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#1a1a1a] flex flex-col py-8 px-4 z-50">
+<div class="mb-12 px-2">
+<h1 class="text-2xl font-black text-[#fcf9f4] uppercase font-headline tracking-tight">Komi Heritage</h1>
+<p class="font-['Manrope'] text-xs uppercase tracking-widest text-gray-500 mt-1">Heritage Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Nav Item: Overview -->
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-[#fcf9f4] hover:bg-white/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-['Newsreader'] tracking-tight">Overview</span>
+</a>
+<!-- Nav Item: Orders -->
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-[#fcf9f4] hover:bg-white/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+<span class="font-['Newsreader'] tracking-tight">Orders</span>
+</a>
+<!-- Nav Item: Customers -->
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-[#fcf9f4] hover:bg-white/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="font-['Newsreader'] tracking-tight">Customers</span>
+</a>
+<!-- Nav Item: Menu Manager (ACTIVE) -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#fcf9f4] bg-[#c0272d] font-bold border-r-4 border-[#c0272d] transition-all active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-xl">restaurant_menu</span>
+<span class="font-['Newsreader'] tracking-tight">Menu Manager</span>
+</a>
+<!-- Nav Item: Settings -->
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-[#fcf9f4] hover:bg-white/10 transition-colors group" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-['Newsreader'] tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-4 flex items-center gap-3 border-t border-white/5">
+<div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional African man in a minimalist office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1wO0Ns5HIM46ynbDQz6Ncm6jRg_IosFmb_0ck5hupp-1EdRXCi0fL9EwqW0aG-rseHxyREE8uvec8qcF_iHDXXuoQCebSt57gQpEYCne7jjfu91-13Btg5dv24V5JYKEfIlxIVL9a96zegBuToA7lvmNdsLHF5Zzut4VyAmtGA9WaHGfbgnSwY4Sm3I6KAIC1qprXWDXPqd4Gg3S4Dk8sVRfRFPa1prQLrP8qTZz7QnBsb5r7JWSHyx3ywEgwuFQ17p7M80vWgbI"/>
+</div>
+<div class="overflow-hidden">
+<p class="text-[#fcf9f4] text-sm font-bold truncate">Kwame Mensah</p>
+<p class="text-gray-500 text-xs truncate">Head of Operations</p>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-[#fcf9f4]/80 backdrop-blur-md border-b-2 border-[#1a1a1a]/5 flex justify-between items-center px-8 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<span class="material-symbols-outlined text-on-surface/40 mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-sm font-label placeholder-on-surface/30" placeholder="Search menu items..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-[#1a1a1a]/60 hover:text-[#9d0518] transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="text-[#1a1a1a]/60 hover:text-[#9d0518] transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-12 min-h-screen">
+<!-- Header Section -->
+<header class="mb-12 flex justify-between items-end">
+<div class="max-w-2xl">
+<p class="text-secondary font-label text-xs tracking-[0.2em] uppercase mb-2">Inventory Control</p>
+<h2 class="text-5xl font-headline font-extrabold text-on-surface leading-tight">Menu Manager</h2>
+<p class="text-on-surface-variant font-body text-lg mt-3">Add, edit and toggle menu items for the Accra flagship location.</p>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 font-label font-extrabold uppercase tracking-widest text-sm flex items-center gap-3 transition-all hover:bg-primary-container active:scale-95">
+<span class="material-symbols-outlined text-lg">add</span>
+                Add New Item
+            </button>
+</header>
+<!-- Menu Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Item 1: One Man Kenkey -->
+<div class="group relative bg-surface-container-low border border-transparent transition-all">
+<div class="aspect-square w-full bg-[#E07A5F] flex items-center justify-center overflow-hidden">
+<img alt="One Man Kenkey" class="w-full h-full object-cover" data-alt="close-up of traditional steamed corn dumpling with spicy pepper sauce and fried fish on a wooden platter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ2xnu1Y2RFrXMsyhpnawaYYDlWPul_q3NtCUmanFWBbXFzRN9TQ6QyE96TVqK8ORKc1gb7ztwcRDxyj_voCkmyQSkS8Eoic1k8NVMfcCwLzSvjztrLI7Y-zn8yMUfmJChF9JbhB--_yAH8NMzlx5H4dNn4EUiGlEa7vH_oYPOE7_TICRs95nKUOHr8tMSboNSAATOxnuAUNHrOMkXI_vsv2k-gxk_WFyBaN_sNcQLZ85rD51D04Ne8EAISZ2VoUOsfLxoqihhk-4"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-headline font-bold">One Man Kenkey</h3>
+<span class="text-secondary font-label font-bold">GHC 30</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body mb-6 line-clamp-2">Authentic Ga Kenkey served with grilled tilapia, hot shito, and fresh onion salsa.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface/60">Available</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 hover:bg-error/10 hover:text-error"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Golden Twist -->
+<div class="group relative bg-surface-container-low border border-transparent transition-all">
+<div class="aspect-square w-full bg-[#E07A5F] flex items-center justify-center overflow-hidden">
+<img alt="Golden Twist" class="w-full h-full object-cover" data-alt="crispy fried dough twists dusted with fine cinnamon sugar served in a minimalist ceramic bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT7WvQ8vGJkogEakTi8ltXHeIshjGDHokTGit6OLcRARm2v1pVF7blkXbqRWt4sFbpWtdB6XbD2ZjRK-dpArBh9HAepEt1UzTWUUVwX_eDi02TDhRDZmmb37KzT8oQxfVmcfrcebvcN76nRLmirBRSv4fy_x0lheMv-l4WdbtfeYo9R0AM6SZx9fQCxWNYgzu5Pf2t1rbZCxl_RbMamu6MD21czYttq5D3vxg-oaQFKiXQwNSBPGcH92yGE_b4_Nol9Tgcoh7P-tI"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-headline font-bold">Golden Twist</h3>
+<span class="text-secondary font-label font-bold">GHC 50</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body mb-6 line-clamp-2">Artisan sourdough twists fried to a golden crisp and glazed with honey nectar.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface/60">Available</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 hover:bg-error/10 hover:text-error"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3: Party Park -->
+<div class="group relative bg-surface-container-low border border-transparent transition-all">
+<div class="aspect-square w-full bg-[#E07A5F] flex items-center justify-center overflow-hidden">
+<img alt="Party Park" class="w-full h-full object-cover" data-alt="large sharing platter of jollof rice, plantains, and grilled chicken wings with vibrantly colored garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJQFk1uEnVsj452vSd4wBXstRA40zJ_by85h46nGHZUXXymIHp-Otgkk3-QkngGQlixPV5qSyqoYFWkkjjGq3vvhHwmNo2ZzVBX012ghZ2rGR9df4daXs5RuB7jY5CidzVpa9djMUp5DQO71zNIWZaX7AfTHsmM7W4flqDhX_HdglD7zlQxVDvjOjbmUQG5p3hzCL6BZJZ6Ox1hiOh17cClc-h6JgBD7Yi4HRXR38dCLH79qlVfqs1UXwIODoy7vuKeOXwXuSRGV0"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-headline font-bold">Party Park</h3>
+<span class="text-secondary font-label font-bold">GHC 65</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body mb-6 line-clamp-2">A celebratory platter of smoky Jollof, spicy plantain cubes, and heritage wings.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface/60">Available</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 hover:bg-error/10 hover:text-error"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 4: Apagya (UNAVAILABLE) -->
+<div class="group relative bg-surface-container border border-transparent grayscale opacity-75">
+<div class="aspect-square w-full bg-surface-dim flex items-center justify-center overflow-hidden relative">
+<div class="absolute inset-0 bg-on-surface/20 z-10 flex items-center justify-center">
+<div class="bg-on-surface text-surface text-[10px] font-bold tracking-[0.3em] px-4 py-2 uppercase">Out of Stock</div>
+</div>
+<img alt="Apagya" class="w-full h-full object-cover" data-alt="vibrant salad with exotic seeds and grains in a charcoal bowl with dim soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGF8fUnxjbhwKPMlaeiOEOrjee45iEMLGQfL6HoXuxqYUYgHwwkqLSc10gJ13Ul3z5NQd_gFrhWOBXQhMHe47jya5Cfitlyp_7ktqA7lFjst6fszrwZYn__OQPYQPnbo8JdZVoxGbYmm4MugTyUeiQL8rnoNl6X4WIz-PJYs6xP6SznsA817_-tcnTnYE9UipkRbaXh0KqVRjmayhWSvWPKEq9Do1YLl9PFuxqjI2lkpo3tWBBp7HIXSOYTDa6QpNBMZYoXqJrpDw"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-headline font-bold">Apagya</h3>
+<span class="text-secondary font-label font-bold">GHC 80</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body mb-6 line-clamp-2">Fire-roasted yams with savory spinach and egusi crumble. Currently out of season.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-surface-variant"></span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface/40">Unavailable</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest"><span class="material-symbols-outlined text-sm">visibility</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 5: Classic Gold -->
+<div class="group relative bg-surface-container-low border border-transparent transition-all">
+<div class="aspect-square w-full bg-[#E07A5F] flex items-center justify-center overflow-hidden">
+<img alt="Classic Gold" class="w-full h-full object-cover" data-alt="premium slices of charcoal-grilled beef on a stone plate with gold leaf accents and rosemary garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4BZpnG7ysGHH_HwFoYBTQ0RrfCOjeclRDB88RlOK4wgeHfgkt4GOFDFBLsMPIMg0tJcDUF1TJW_4Uobo6R3AWQ35q5GMpNO5FElP88A8__38FN48tLLgxaZ8lzdeL8ZTpF_A01AwmQCGCvYp62tVXEEksGTNaoXWmdGAKbgAiTgYh3ol70SOzyedDU5orGLQet5fb0VDxZ68I6FaGq2eWNcIIXhSfpN8hjXFZMh1RWClnEJgdlaskQcOEtFAS1AaA4RPO6U5u09w"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-headline font-bold">Classic Gold</h3>
+<span class="text-secondary font-label font-bold">GHC 120</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body mb-6 line-clamp-2">Prime cuts of slow-aged beef, charcoal grilled with secret heritage spice rub.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-on-surface/60">Available</span>
+</div>
+<div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-highest"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 hover:bg-error/10 hover:text-error"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 6: Spicy Heat (PREMIUM HERO) -->
+<div class="group relative bg-surface-container-lowest premium-glow z-10 transition-all scale-[1.02]">
+<div class="aspect-square w-full bg-[#9d0518] flex items-center justify-center overflow-hidden relative">
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 text-[10px] font-bold uppercase tracking-widest">Premium Choice</div>
+<img alt="Spicy Heat" class="w-full h-full object-cover" data-alt="dramatic shot of spicy glazed grilled ribs on a black plate with smoke and vibrant red chili garnishes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHomGR3eNSD25CD2vzy3tr8GHyiNFHe4WHLJM_Jcm1DR6VM7lGx95nE-dxjE7w7Ev84moJmJiDM4hoezV6ThnwGhybnWUsxhZk1aokQuRlSFg0frknxv36snEivBmoXwMy1pH7AO2HLlS52VxQQeGPPRGTaVd0_kJ5EWIBYB2tlA4-GWk6slM9IY8NT_4O35J50KQUKpnTK2aVroMLce5wPDHHC1-brkLTk2CMQ8IFu_m_yXwPPIQKTpIUWIQD_rBDHZ4q97DNwYQ"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-2xl font-headline font-extrabold text-primary">Spicy Heat</h3>
+<span class="text-secondary font-label font-black text-xl">GHC 260</span>
+</div>
+<p class="text-on-surface font-bold text-sm font-body mb-6">Ultra-tender signature ribs glazed in a scotch bonnet and heritage honey reduction.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-primary">Priority Item</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 text-primary hover:bg-primary/5 transition-colors"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 text-primary hover:bg-primary/5 transition-colors"><span class="material-symbols-outlined text-sm">insights</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section Transition -->
+<div class="mt-16 border-t-2 border-outline-variant/15 pt-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<!-- Quick Add / Edit Mini Form (Visualized) -->
+<div class="bg-surface-container p-8">
+<h4 class="text-xl font-headline font-bold mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                        Rapid Edit Context
+                    </h4>
+<div class="space-y-6">
+<div class="relative">
+<label class="absolute -top-2.5 left-2 bg-surface-container px-2 text-[10px] font-bold text-secondary tracking-widest uppercase">Item Name</label>
+<input class="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary px-0 py-2 font-headline text-lg focus:ring-0 outline-none" type="text" value="One Man Kenkey"/>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="relative">
+<label class="absolute -top-2.5 left-2 bg-surface-container px-2 text-[10px] font-bold text-secondary tracking-widest uppercase">Price (GHC)</label>
+<input class="w-full bg-transparent border-b-2 border-outline-variant focus:border-primary px-0 py-2 font-label text-lg focus:ring-0 outline-none" type="number" value="30"/>
+</div>
+<div class="flex items-center justify-between border-b-2 border-outline-variant py-2">
+<span class="text-[10px] font-bold text-secondary tracking-widest uppercase">Visibility</span>
+<button class="w-12 h-6 bg-primary flex items-center px-1">
+<div class="w-4 h-4 bg-white ml-auto"></div>
+</button>
+</div>
+</div>
+<div class="border-2 border-dashed border-outline-variant p-8 flex flex-col items-center justify-center gap-3 hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-3xl text-outline-variant group-hover:text-primary">upload_file</span>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant group-hover:text-primary">Replace Photo</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label font-bold uppercase tracking-[0.2em] hover:bg-primary-container transition-colors">Update Item Details</button>
+</div>
+</div>
+<!-- Guidance & Stats -->
+<div class="space-y-8">
+<div class="bg-surface-container-high p-8 border-l-4 border-secondary">
+<h4 class="text-lg font-headline font-bold mb-3">Menu Integrity</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Ensure all items have high-resolution photography and detailed ingredient disclosures. Our Street-Food Premium aesthetic relies on architectural clarity and authentic presentation.</p>
+<div class="flex gap-4">
+<div class="flex-1 bg-surface-container-low p-4">
+<p class="text-[10px] font-bold text-secondary tracking-widest uppercase mb-1">Items Online</p>
+<p class="text-3xl font-headline font-extrabold">24</p>
+</div>
+<div class="flex-1 bg-surface-container-low p-4">
+<p class="text-[10px] font-bold text-secondary tracking-widest uppercase mb-1">Avg Price</p>
+<p class="text-3xl font-headline font-extrabold">GHC 92</p>
+</div>
+</div>
+</div>
+<div class="p-4 flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<p class="text-xs font-label font-bold text-on-surface/80 uppercase tracking-widest mb-1">Immediate Sync</p>
+<p class="text-xs text-on-surface-variant font-body">Menu changes go live immediately across all digital kiosks and mobile ordering platforms. Please verify pricing before saving.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Note -->
+<footer class="ml-64 px-12 py-8 border-t border-outline-variant/10 text-center">
+<p class="text-[10px] font-label text-on-surface/40 tracking-[0.3em] uppercase">© 2024 Komi Heritage Systems. Archive Vol. 01</p>
+</footer>
+</body></html>

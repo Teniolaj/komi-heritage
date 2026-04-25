@@ -23,7 +23,12 @@ function getInitials(user: User): string {
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -45,7 +50,17 @@ export function Navigation() {
       setUser(session?.user ?? null);
     });
 
-    return () => subscription.unsubscribe();
+    // Scroll listener for dynamic navbar background
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const isAuthenticated = !!user;
@@ -53,13 +68,14 @@ export function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-[60] flex justify-between items-center px-4 md:px-6 py-3 md:py-4 bg-surface/90 backdrop-blur-md border-b border-surface-container shadow-sm">
+      <nav className={`fixed top-0 left-0 w-full z-[60] flex justify-between items-center px-4 md:px-6 py-3 md:py-4 transition-all duration-500 ease-in-out border-b ${scrolled ? 'bg-surface/90 backdrop-blur-md border-surface-container shadow-sm' : 'bg-surface/0 backdrop-blur-none border-transparent shadow-none py-4 md:py-5'}`}>
         {/* Mobile Hamburger */}
-        <button onClick={toggleMenu} className="md:hidden w-10 h-10 flex items-center justify-center rounded-2xl text-on-surface active-tap">
+        <button onClick={toggleMenu} className="md:hidden w-10 h-10 flex items-center justify-center rounded-2xl text-primary active-tap">
           <Menu size={24} />
         </button>
 
-        <Link href="/" className="text-xl md:text-2xl font-black tracking-tighter text-primary uppercase font-headline">
+        <Link href="/" className="flex items-center gap-2 md:gap-3 text-xl md:text-2xl font-black tracking-tighter text-primary uppercase font-headline">
+          <img src="/logo.jpg" alt="Komi Heritage Logo" className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover shadow-sm border border-surface-container" />
           Komi Heritage
         </Link>
         
@@ -88,7 +104,7 @@ export function Navigation() {
 
           {isAuthenticated && (
             <>
-              <Link href="/checkout" className="w-10 h-10 flex items-center justify-center text-primary active-tap transition-colors hover:bg-primary/5 rounded-full">
+              <Link href="/menu?cart=open" className="w-10 h-10 flex items-center justify-center text-primary active-tap transition-colors hover:bg-primary/5 rounded-full">
                 <ShoppingCart size={24} />
               </Link>
               

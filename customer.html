@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Komi Heritage Admin | Customers</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,700&amp;family=Manrope:wght@400;500;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "outline-variant": "#e3bebb",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#261900",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e5e2dd",
+                    "secondary": "#7a5900",
+                    "surface": "#fcf9f4",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "inverse-surface": "#31302d",
+                    "secondary-fixed": "#ffdea1",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "tertiary-fixed": "#e5e2e1",
+                    "on-primary-fixed-variant": "#930015",
+                    "secondary-fixed-dim": "#f2bf50",
+                    "inverse-on-surface": "#f3f0eb",
+                    "on-tertiary-container": "#e4e1e1",
+                    "primary-container": "#c0272d",
+                    "surface-bright": "#fcf9f4",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#ffb3ae",
+                    "surface-container": "#f0ede9",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "background": "#fcf9f4",
+                    "surface-container-low": "#f6f3ee",
+                    "outline": "#8f706d",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "surface-tint": "#b72028",
+                    "on-primary-container": "#ffdad7",
+                    "on-background": "#1c1c19",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#4d4c4c",
+                    "on-surface": "#1c1c19",
+                    "surface-dim": "#dcdad5",
+                    "primary": "#9d0518",
+                    "on-surface-variant": "#5a403e",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#feca5a",
+                    "primary-fixed": "#ffdad7",
+                    "surface-variant": "#e5e2dd",
+                    "on-secondary-container": "#745500",
+                    "surface-container-high": "#ebe8e3",
+                    "on-primary-fixed": "#410004",
+                    "tertiary-container": "#656464"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader", "serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Newsreader', serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex overflow-hidden">
+<!-- SideNavBar (Shared Component Execution) -->
+<aside class="fixed left-0 top-0 h-full w-72 bg-stone-900 dark:bg-black flex flex-col py-8 px-0 z-50">
+<div class="px-8 mb-12">
+<h1 class="text-2xl font-bold font-serif tracking-tighter text-[#fcf9f4]">The Living Archive</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-stone-500 font-bold mt-1">Admin Console</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center px-8 py-4 text-stone-400 font-medium hover:bg-stone-800 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-white">dashboard</span>
+                Dashboard
+            </a>
+<!-- Menu Archives -->
+<a class="flex items-center px-8 py-4 text-stone-400 font-medium hover:bg-stone-800 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-white">auto_stories</span>
+                Menu Archives
+            </a>
+<!-- Street Culture -->
+<a class="flex items-center px-8 py-4 text-stone-400 font-medium hover:bg-stone-800 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-white">map</span>
+                Street Culture
+            </a>
+<!-- Orders -->
+<a class="flex items-center px-8 py-4 text-stone-400 font-medium hover:bg-stone-800 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-white">shopping_bag</span>
+                Orders
+            </a>
+<!-- Analytics / Customers (Contextually Active) -->
+<a class="flex items-center px-8 py-4 text-[#fcf9f4] font-bold border-l-4 border-[#9d0518] bg-stone-800/50 group" href="#">
+<span class="material-symbols-outlined mr-4" style="font-variation-settings: 'FILL' 1;">group</span>
+                Customers
+            </a>
+<!-- Settings -->
+<a class="flex items-center px-8 py-4 text-stone-400 font-medium hover:bg-stone-800 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4 group-hover:text-white">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-8 mt-auto pt-8 border-t border-stone-800">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary-container flex items-center justify-center font-bold text-white">KH</div>
+<div>
+<p class="text-sm font-bold text-white">Komi Admin</p>
+<p class="text-xs text-stone-500">Super User</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar (Shared Component Execution) -->
+<header class="flex justify-between items-center w-full px-8 py-4 sticky top-0 z-40 bg-[#fcf9f4]/80 dark:bg-stone-900/80 backdrop-blur-md">
+<div class="flex items-center bg-surface-container px-4 py-2 w-96">
+<span class="material-symbols-outlined text-stone-400 mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-bold tracking-widest text-on-surface w-full uppercase" placeholder="SEARCH BY NAME, EMAIL OR PHONE..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative hover:text-[#c0272d] transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="hover:text-[#c0272d] transition-opacity">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-8 bg-surface space-y-12">
+<!-- Page Header -->
+<div class="space-y-2">
+<p class="font-bold text-xs uppercase tracking-[0.3em] text-secondary">Community</p>
+<h2 class="text-6xl font-bold font-serif text-on-surface">Customers</h2>
+<p class="text-stone-500 max-w-lg">Management console for all registered accounts on Komi Heritage. Oversee loyalty, activity, and customer lifecycles.</p>
+</div>
+<!-- Stats Row: Tonal Stepping -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/30">
+<div class="p-8 bg-surface-container-low border-r border-outline-variant/30">
+<p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Total Customers</p>
+<div class="flex items-baseline gap-3">
+<span class="text-4xl font-serif font-bold">1,892</span>
+<span class="text-secondary font-bold text-sm">↑ 84 NEW</span>
+</div>
+</div>
+<div class="p-8 bg-surface-container-low border-r border-outline-variant/30">
+<p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Repeat Customers</p>
+<div class="flex items-baseline gap-3">
+<span class="text-4xl font-serif font-bold">63%</span>
+<span class="text-stone-400 text-xs font-bold uppercase tracking-tighter">+2.4% FROM LAST MO.</span>
+</div>
+</div>
+<div class="p-8 bg-surface-container-low">
+<p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Avg. Orders</p>
+<div class="flex items-baseline gap-3">
+<span class="text-4xl font-serif font-bold">4.2</span>
+<span class="text-stone-400 text-xs font-bold uppercase tracking-tighter">PER USER</span>
+</div>
+</div>
+</div>
+<!-- Main Table Section -->
+<div class="space-y-6">
+<div class="flex justify-between items-end border-b-2 border-on-surface pb-4">
+<h3 class="text-2xl font-serif font-bold">Registered Users</h3>
+<p class="text-[10px] font-bold uppercase tracking-widest text-stone-400">Showing 8 of 1,892 customers</p>
+</div>
+<div class="w-full">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<th class="px-6 py-4">Customer</th>
+<th class="px-6 py-4">Contact Information</th>
+<th class="px-6 py-4">Location</th>
+<th class="px-6 py-4">Joined</th>
+<th class="px-6 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary text-white flex items-center justify-center font-bold text-lg">AO</div>
+<div>
+<p class="font-bold text-on-surface">Ama Owusu</p>
+<p class="text-xs text-secondary font-bold uppercase tracking-tighter">Heritage Member</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm">ama.owusu@email.com</p>
+<p class="text-xs text-stone-400">+233 24 555 0101</p>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm font-medium">East Legon</p>
+</td>
+<td class="px-6 py-6 text-sm text-stone-500">Oct 12, 2023</td>
+<td class="px-6 py-6 text-right">
+<button class="bg-on-surface text-surface text-[10px] font-bold uppercase tracking-widest px-4 py-2 hover:bg-primary transition-colors">View Details</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-stone-800 text-white flex items-center justify-center font-bold text-lg">KA</div>
+<div>
+<p class="font-bold text-on-surface">Kwame Asante</p>
+<p class="text-xs text-stone-400 font-bold uppercase tracking-tighter">New Contributor</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm">k.asante@domain.gh</p>
+<p class="text-xs text-stone-400">+233 50 123 4567</p>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm font-medium">Osu</p>
+</td>
+<td class="px-6 py-6 text-sm text-stone-500">Jan 05, 2024</td>
+<td class="px-6 py-6 text-right">
+<button class="bg-on-surface text-surface text-[10px] font-bold uppercase tracking-widest px-4 py-2 hover:bg-primary transition-colors">View Details</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container text-white flex items-center justify-center font-bold text-lg">AF</div>
+<div>
+<p class="font-bold text-on-surface">Abena Frimpong</p>
+<p class="text-xs text-secondary font-bold uppercase tracking-tighter">Street Legend</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm">abena.f@gmail.com</p>
+<p class="text-xs text-stone-400">+233 27 888 2211</p>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm font-medium">Tantra Hills</p>
+</td>
+<td class="px-6 py-6 text-sm text-stone-500">Nov 22, 2023</td>
+<td class="px-6 py-6 text-right">
+<button class="bg-on-surface text-surface text-[10px] font-bold uppercase tracking-widest px-4 py-2 hover:bg-primary transition-colors">View Details</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-stone-700 text-white flex items-center justify-center font-bold text-lg">YD</div>
+<div>
+<p class="font-bold text-on-surface">Yaw Darko</p>
+<p class="text-xs text-stone-400 font-bold uppercase tracking-tighter">Standard Account</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm">darko.yaw@outlook.com</p>
+<p class="text-xs text-stone-400">+233 24 999 0000</p>
+</td>
+<td class="px-6 py-6">
+<p class="text-sm font-medium">Cantonments</p>
+</td>
+<td class="px-6 py-6 text-sm text-stone-500">Feb 14, 2024</td>
+<td class="px-6 py-6 text-right">
+<button class="bg-on-surface text-surface text-[10px] font-bold uppercase tracking-widest px-4 py-2 hover:bg-primary transition-colors">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex justify-between items-center pt-8">
+<p class="text-xs font-bold uppercase tracking-widest text-stone-500">Page 1 of 24</p>
+<div class="flex gap-2">
+<button class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 bg-primary text-white flex items-center justify-center font-bold">1</button>
+<button class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors font-bold">2</button>
+<button class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors font-bold">3</button>
+<button class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Slide-over Panel (Active/Preview State) -->
+<div class="fixed inset-0 z-50 pointer-events-none">
+<!-- Overlay -->
+<div class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm pointer-events-auto"></div>
+<!-- Panel -->
+<div class="absolute right-0 top-0 h-full w-[480px] bg-surface pointer-events-auto shadow-2xl flex flex-col border-l border-outline-variant/30">
+<!-- Panel Header -->
+<div class="p-8 bg-stone-900 text-white flex justify-between items-start">
+<div class="flex items-center gap-6">
+<div class="w-20 h-20 bg-primary-container text-white flex items-center justify-center font-bold text-3xl">AO</div>
+<div>
+<h3 class="text-3xl font-serif font-bold">Ama Owusu</h3>
+<p class="text-xs font-bold uppercase tracking-widest text-secondary mt-1">Heritage Member since 2023</p>
+</div>
+</div>
+<button class="text-white/60 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-8 space-y-12">
+<!-- Mini Stats Tiles -->
+<div class="grid grid-cols-3 gap-0 border border-outline-variant/30">
+<div class="p-4 border-r border-outline-variant/30">
+<p class="text-[10px] font-bold uppercase tracking-tighter text-stone-500 mb-1">Total Orders</p>
+<p class="text-2xl font-serif font-bold">28</p>
+</div>
+<div class="p-4 border-r border-outline-variant/30">
+<p class="text-[10px] font-bold uppercase tracking-tighter text-stone-500 mb-1">Lifetime Value</p>
+<p class="text-2xl font-serif font-bold">GH₵4.2k</p>
+</div>
+<div class="p-4">
+<p class="text-[10px] font-bold uppercase tracking-tighter text-stone-500 mb-1">Last Activity</p>
+<p class="text-sm font-bold mt-2">2 HOURS AGO</p>
+</div>
+</div>
+<!-- Account Details -->
+<section class="space-y-6">
+<h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary border-b border-secondary/20 pb-2">Account Details</h4>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-1">Email Address</p>
+<p class="text-sm font-bold">ama.owusu@email.com</p>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-1">Phone Number</p>
+<p class="text-sm font-bold">+233 24 555 0101</p>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-1">Primary Address</p>
+<p class="text-sm font-bold">House 42, Liberation Rd,<br/>East Legon, Accra</p>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-1">Preferred Cuisine</p>
+<p class="text-sm font-bold">Traditional Fante Dishes</p>
+</div>
+</div>
+</section>
+<!-- Order History -->
+<section class="space-y-6">
+<div class="flex justify-between items-center border-b border-stone-200 pb-2">
+<h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface">Recent Order History</h4>
+<a class="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="space-y-4">
+<!-- Order Item 1 -->
+<div class="p-4 bg-surface-container-low border-l-4 border-primary flex justify-between items-center">
+<div>
+<p class="text-xs font-bold uppercase tracking-tighter">Order #KH-8821</p>
+<p class="text-sm font-serif italic text-stone-500">Jollof Festival Platter + Drinks</p>
+<p class="text-[10px] text-stone-400 mt-1">Mar 02, 2024 • GH₵185.00</p>
+</div>
+<span class="px-2 py-1 bg-secondary-fixed text-on-secondary-container text-[8px] font-bold uppercase">Delivered</span>
+</div>
+<!-- Order Item 2 -->
+<div class="p-4 bg-surface-container-low border-l-4 border-primary flex justify-between items-center">
+<div>
+<p class="text-xs font-bold uppercase tracking-tighter">Order #KH-8794</p>
+<p class="text-sm font-serif italic text-stone-500">Waakye Special (Archival Recipe)</p>
+<p class="text-[10px] text-stone-400 mt-1">Feb 24, 2024 • GH₵120.00</p>
+</div>
+<span class="px-2 py-1 bg-secondary-fixed text-on-secondary-container text-[8px] font-bold uppercase">Delivered</span>
+</div>
+<!-- Order Item 3 -->
+<div class="p-4 bg-surface-container-low border-l-4 border-stone-300 flex justify-between items-center">
+<div>
+<p class="text-xs font-bold uppercase tracking-tighter">Order #KH-8611</p>
+<p class="text-sm font-serif italic text-stone-500">Red Red with Fried Plantain</p>
+<p class="text-[10px] text-stone-400 mt-1">Feb 15, 2024 • GH₵95.00</p>
+</div>
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[8px] font-bold uppercase">Cancelled</span>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<div class="grid grid-cols-2 gap-4 pt-8">
+<button class="bg-primary text-white py-4 font-bold uppercase text-xs tracking-widest hover:bg-primary-container transition-colors">Edit Profile</button>
+<button class="bg-stone-200 text-stone-700 py-4 font-bold uppercase text-xs tracking-widest hover:bg-stone-300 transition-colors">Manage Access</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
