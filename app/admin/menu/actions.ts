@@ -13,6 +13,7 @@ type MenuItemInput = {
   image_url?: string | null;
   category?: string;
   is_available?: boolean;
+  extras?: { id: string; name: string; price: number; is_available: boolean }[] | null;
 };
 
 function normalizeMenuItemInput(input: MenuItemInput) {
@@ -22,6 +23,7 @@ function normalizeMenuItemInput(input: MenuItemInput) {
   const category = input.category?.trim() || "kenkey";
   const price = Number(input.price);
   const isAvailable = input.is_available ?? true;
+  const extras = input.extras || [];
 
   if (!name) {
     throw new Error("Menu item name is required.");
@@ -38,6 +40,7 @@ function normalizeMenuItemInput(input: MenuItemInput) {
     image_url: imageUrl,
     category,
     is_available: isAvailable,
+    extras,
   };
 }
 
@@ -57,6 +60,9 @@ export async function createMenuItem(input: MenuItemInput): Promise<MenuItem> {
     .single();
 
   if (error) {
+    if (error.message.includes('column "extras" of relation "menu_items" does not exist')) {
+      throw new Error("DATABASE SCHEMA MISMATCH: The 'extras' column is missing. Please run this in your Supabase SQL Editor: ALTER TABLE menu_items ADD COLUMN extras JSONB DEFAULT '[]'::jsonb;");
+    }
     throw new Error(`Failed to create menu item: ${error.message}`);
   }
 
@@ -84,6 +90,9 @@ export async function updateMenuItem(
     .single();
 
   if (error) {
+    if (error.message.includes('column "extras" of relation "menu_items" does not exist')) {
+      throw new Error("DATABASE SCHEMA MISMATCH: The 'extras' column is missing. Please run this in your Supabase SQL Editor: ALTER TABLE menu_items ADD COLUMN extras JSONB DEFAULT '[]'::jsonb;");
+    }
     throw new Error(`Failed to update menu item: ${error.message}`);
   }
 

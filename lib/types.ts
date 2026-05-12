@@ -25,6 +25,13 @@ export interface Profile {
   updated_at: string;
 }
 
+export interface MenuItemExtra {
+  id: string;
+  name: string;
+  price: number;
+  is_available: boolean;
+}
+
 export interface MenuItem {
   id: string;
   name: string;
@@ -34,6 +41,7 @@ export interface MenuItem {
   category: string;
   is_available: boolean;
   sort_order: number;
+  extras: MenuItemExtra[] | null;
   created_at: string;
   updated_at: string;
 }
@@ -61,6 +69,7 @@ export interface OrderItem {
   unit_price: number;
   quantity: number;
   line_total: number;
+  selected_extras: { name: string; price: number; quantity: number }[] | null;
 }
 
 export interface Payment {
