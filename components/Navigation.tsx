@@ -26,11 +26,12 @@ export function Navigation() {
   const [user, setUser] = useState<User | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const pathname = usePathname();
   const router = useRouter();
   const profileMenuRef = useRef<HTMLDivElement | null>(null);
 
-  if (pathname?.startsWith("/admin")) {
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/staff")) {
     return null;
   }
 
@@ -71,16 +72,39 @@ export function Navigation() {
       }
     };
 
+    const updateCartCount = () => {
+      try {
+        const savedCart = localStorage.getItem("komiCart");
+        if (savedCart) {
+          const items = JSON.parse(savedCart);
+          if (Array.isArray(items)) {
+            const count = items.reduce((sum, item) => sum + (item.quantity || 0), 0);
+            setCartCount(count);
+          }
+        } else {
+          setCartCount(0);
+        }
+      } catch (e) {
+        setCartCount(0);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("pointerdown", handlePointerDown);
     window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("storage", updateCartCount);
+    window.addEventListener("cart-updated", updateCartCount);
+    
     handleScroll();
+    updateCartCount();
 
     return () => {
       subscription.unsubscribe();
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("storage", updateCartCount);
+      window.removeEventListener("cart-updated", updateCartCount);
     };
   }, []);
 
@@ -162,9 +186,21 @@ export function Navigation() {
             <>
               <Link
                 href="/menu?cart=open"
-                className="w-10 h-10 flex items-center justify-center text-primary active-tap transition-colors hover:bg-primary/5 rounded-full"
+                className="group relative flex h-10 w-10 items-center justify-center rounded-full text-primary transition-colors hover:bg-primary/5 active-tap"
               >
                 <ShoppingCart size={24} />
+                <AnimatePresence>
+                  {cartCount > 0 && (
+                    <motion.span
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary font-dm-sans text-[10px] font-black text-on-primary shadow-sm"
+                    >
+                      {cartCount}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </Link>
 
               <div ref={profileMenuRef} className="relative hidden md:block">
@@ -174,7 +210,10 @@ export function Navigation() {
                   aria-haspopup="menu"
                   aria-expanded={isProfileMenuOpen}
                   aria-label="Open profile menu"
-                  onClick={() => setIsProfileMenuOpen((open) => !open)}
+                  onClick={() => {
+                    if (pathname === "/checkout") return;
+                    setIsProfileMenuOpen((open) => !open);
+                  }}
                   className="flex h-11 w-11 items-center justify-center rounded-full transition-transform duration-200 hover:scale-[1.03]"
                 >
                   <span className="flex h-11 w-11 rounded-full border-2 border-primary items-center justify-center bg-primary text-on-primary font-dm-sans font-black text-[13px] uppercase overflow-hidden shadow-sm">
@@ -217,6 +256,13 @@ export function Navigation() {
                         >
                           Account
                         </Link>
+                        <Link
+                          href="/orders"
+                          onClick={() => setIsProfileMenuOpen(false)}
+                          className="flex items-center rounded-2xl px-4 py-3 font-dm-sans text-sm font-bold text-on-surface transition-colors duration-200 hover:bg-primary/5 hover:text-primary"
+                        >
+                          Orders
+                        </Link>
                         <button
                           type="button"
                           onClick={handleSignOut}
@@ -231,21 +277,38 @@ export function Navigation() {
                 </AnimatePresence>
               </div>
 
-              <Link
-                href="/account"
-                className="md:hidden flex w-10 h-10 rounded-full border-2 border-primary items-center justify-center bg-primary text-on-primary font-dm-sans font-black text-[13px] uppercase overflow-hidden"
-              >
-                {user?.user_metadata?.avatar_url ? (
-                  <img
-                    src={user.user_metadata.avatar_url}
-                    alt={initials}
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                ) : (
-                  initials
-                )}
-              </Link>
+              {pathname === "/checkout" ? (
+                <div
+                  className="md:hidden flex w-10 h-10 rounded-full border-2 border-primary items-center justify-center bg-primary text-on-primary font-dm-sans font-black text-[13px] uppercase overflow-hidden"
+                >
+                  {user?.user_metadata?.avatar_url ? (
+                    <img
+                      src={user.user_metadata.avatar_url}
+                      alt={initials}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    initials
+                  )}
+                </div>
+              ) : (
+                <Link
+                  href="/account"
+                  className="md:hidden flex w-10 h-10 rounded-full border-2 border-primary items-center justify-center bg-primary text-on-primary font-dm-sans font-black text-[13px] uppercase overflow-hidden"
+                >
+                  {user?.user_metadata?.avatar_url ? (
+                    <img
+                      src={user.user_metadata.avatar_url}
+                      alt={initials}
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    initials
+                  )}
+                </Link>
+              )}
             </>
           )}
         </div>
@@ -291,12 +354,21 @@ export function Navigation() {
 
               <div className="mt-auto pb-12 flex flex-col gap-4 font-dm-sans">
                 {isAuthenticated ? (
-                  <button
-                    onClick={handleSignOut}
-                    className="w-full rounded-2xl border-2 border-primary text-primary font-bold px-6 py-4 text-center uppercase tracking-widest active-tap"
-                  >
-                    Sign Out
-                  </button>
+                  <>
+                    <Link
+                      href="/orders"
+                      onClick={toggleMenu}
+                      className="w-full rounded-2xl border-2 border-primary text-primary font-bold px-6 py-4 text-center uppercase tracking-widest active-tap"
+                    >
+                      My Orders
+                    </Link>
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full rounded-2xl border-2 border-outline-variant text-on-surface-variant font-bold px-6 py-4 text-center uppercase tracking-widest active-tap hover:border-[#9F1D23] hover:text-[#9F1D23] transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  </>
                 ) : (
                   <>
                     <Link

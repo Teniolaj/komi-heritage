@@ -1,4 +1,5 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import type { Order, OrderItem, Profile } from "@/lib/types";
 
 export type OrderWithItems = Order & {
@@ -26,7 +27,7 @@ export async function getOrderById(
     throw new Error("Authentication required to fetch an order.");
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from("orders")
     .select("*, order_items(*)")
     .eq("id", orderId)
@@ -41,9 +42,7 @@ export async function getOrderById(
 }
 
 export async function getUserOrders(userId: string): Promise<Order[]> {
-  const supabase = await createServerSupabaseClient();
-
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from("orders")
     .select("*")
     .eq("user_id", userId)
@@ -71,7 +70,7 @@ export async function getAllOrders(): Promise<OrderWithProfile[]> {
     throw new Error("Authentication required to fetch all orders.");
   }
 
-  const { data: currentProfileData, error: profileError } = await supabase
+  const { data: currentProfileData, error: profileError } = await supabaseAdmin
     .from("profiles")
     .select("role")
     .eq("id", user.id)
@@ -87,7 +86,7 @@ export async function getAllOrders(): Promise<OrderWithProfile[]> {
     throw new Error("Only staff and admins can fetch all orders.");
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from("orders")
     .select(
       "*, profile:profiles!orders_user_id_fkey(id, full_name, email, phone, role)",
