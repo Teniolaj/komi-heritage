@@ -56,3 +56,31 @@ export async function updateOrderStatus(
 
   return data as Order;
 }
+
+export async function updateMultipleOrderStatuses(
+  orderIds: string[],
+  newStatus: OrderStatus,
+): Promise<Order[]> {
+  await requireStaffOrAdmin();
+
+  const uniqueOrderIds = Array.from(new Set(orderIds.filter(Boolean)));
+  if (uniqueOrderIds.length === 0) {
+    throw new Error("At least one order ID is required.");
+  }
+
+  const { data, error } = await supabaseAdmin
+    .from("orders")
+    .update({ status: newStatus })
+    .in("id", uniqueOrderIds)
+    .select("*");
+
+  if (error) {
+    throw new Error(`Failed to update order statuses: ${error.message}`);
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/admin/orders");
+  revalidatePath("/staff");
+
+  return data as Order[];
+}

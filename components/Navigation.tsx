@@ -24,16 +24,13 @@ function getInitials(user: User): string {
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [isAuthLoaded, setIsAuthLoaded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const pathname = usePathname();
   const router = useRouter();
   const profileMenuRef = useRef<HTMLDivElement | null>(null);
-
-  if (pathname?.startsWith("/admin") || pathname?.startsWith("/staff")) {
-    return null;
-  }
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -45,12 +42,16 @@ export function Navigation() {
   useEffect(() => {
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+      setIsAuthLoaded(true);
+    });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
+      setIsAuthLoaded(true);
     });
 
     const handleScroll = () => {
@@ -110,6 +111,10 @@ export function Navigation() {
 
   const isAuthenticated = !!user;
   const initials = user ? getInitials(user) : "";
+
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/staff")) {
+    return null;
+  }
 
   async function handleSignOut() {
     const supabase = createClient();
@@ -173,7 +178,7 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-3 md:gap-4">
-          {!isAuthenticated && (
+          {isAuthLoaded && !isAuthenticated && (
             <Link
               href="/signup"
               className="cta-sheen hidden md:inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3 font-dm-sans text-xs font-black uppercase tracking-[0.22em] text-on-primary shadow-lg shadow-primary/20 transition-transform duration-300 hover:-translate-y-0.5"
@@ -353,7 +358,7 @@ export function Navigation() {
               ))}
 
               <div className="mt-auto pb-12 flex flex-col gap-4 font-dm-sans">
-                {isAuthenticated ? (
+                {isAuthLoaded && isAuthenticated ? (
                   <>
                     <Link
                       href="/orders"
@@ -369,7 +374,7 @@ export function Navigation() {
                       Sign Out
                     </button>
                   </>
-                ) : (
+                ) : isAuthLoaded ? (
                   <>
                     <Link
                       href="/login"
@@ -386,7 +391,7 @@ export function Navigation() {
                       Create Account
                     </Link>
                   </>
-                )}
+                ) : null}
               </div>
             </div>
           </motion.div>

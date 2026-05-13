@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { CustomerWithStats } from "@/lib/queries/admin";
 import { usePolling } from "@/lib/hooks/use-polling";
@@ -80,7 +80,10 @@ export default function AdminCustomersClient({
     [customers, page],
   );
 
-  const totalSpent = customers.reduce((sum, c) => sum + c.total_spent, 0);
+  useEffect(() => {
+    setPage((current) => Math.min(current, totalPages));
+  }, [totalPages]);
+
   const avgOrders =
     customers.length > 0
       ? (customers.reduce((sum, c) => sum + c.order_count, 0) / customers.length).toFixed(1)
@@ -212,7 +215,10 @@ export default function AdminCustomersClient({
               >
                 <ChevronLeft size={16} />
               </button>
-              {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => i + 1).map((p) => (
+              {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                const start = Math.min(Math.max(1, page - 2), Math.max(1, totalPages - 4));
+                return start + i;
+              }).map((p) => (
                 <button
                   key={p}
                   onClick={() => setPage(p)}
@@ -264,18 +270,22 @@ export default function AdminCustomersClient({
 
           <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 md:space-y-12">
             {/* Mini Stats Tiles */}
-            <div className="grid grid-cols-3 gap-4 border-0 bg-transparent">
-              <div className="p-3 md:p-4 border border-outline-variant/30 flex flex-col rounded-2xl bg-surface-container-lowest">
-                <p className="text-[9px] md:text-[10px] font-dm-sans font-bold uppercase tracking-widest text-on-surface-variant mb-1">Total Orders</p>
-                <p className="text-xl md:text-2xl font-headline font-black mt-auto">{selectedCustomer?.order_count ?? 0}</p>
+            <div className="grid grid-cols-2 gap-3 md:gap-4 border-0 bg-transparent">
+              <div className="p-4 border border-outline-variant/30 flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm">
+                <p className="text-[9px] md:text-[10px] font-dm-sans font-bold uppercase tracking-widest text-on-surface-variant mb-2">Total Orders</p>
+                <p className="text-2xl font-headline font-black mt-auto">{selectedCustomer?.order_count ?? 0}</p>
               </div>
-              <div className="p-3 md:p-4 border border-outline-variant/30 flex flex-col rounded-2xl bg-surface-container-lowest">
-                <p className="text-[9px] md:text-[10px] font-dm-sans font-bold uppercase tracking-widest text-on-surface-variant mb-1">Lifetime Value</p>
-                <p className="text-xl md:text-2xl font-headline font-black mt-auto">{selectedCustomer ? formatCurrency(selectedCustomer.total_spent) : "—"}</p>
+              <div className="p-4 border border-outline-variant/30 flex flex-col rounded-2xl bg-surface-container-lowest shadow-sm">
+                <p className="text-[9px] md:text-[10px] font-dm-sans font-bold uppercase tracking-widest text-on-surface-variant mb-2">Last Activity</p>
+                <p className="text-xs md:text-sm font-dm-sans font-bold mt-auto uppercase tracking-tighter text-secondary">
+                  {timeAgo(selectedCustomer?.last_order_at ?? null)}
+                </p>
               </div>
-              <div className="p-3 md:p-4 border border-outline-variant/30 flex flex-col rounded-2xl bg-surface-container-lowest">
-                <p className="text-[9px] md:text-[10px] font-dm-sans font-bold uppercase tracking-widest text-on-surface-variant mb-1">Last Activity</p>
-                <p className="text-xs md:text-sm font-dm-sans font-bold mt-auto uppercase tracking-tighter">{timeAgo(selectedCustomer?.last_order_at ?? null)}</p>
+              <div className="p-5 border-2 border-primary/10 flex flex-col rounded-2xl bg-primary/[0.02] shadow-sm col-span-2">
+                <p className="text-[9px] md:text-[10px] font-dm-sans font-bold uppercase tracking-widest text-primary mb-2">Lifetime Value</p>
+                <p className="text-3xl md:text-4xl font-headline font-black text-on-surface">
+                  {selectedCustomer ? formatCurrency(selectedCustomer.total_spent) : "—"}
+                </p>
               </div>
             </div>
 

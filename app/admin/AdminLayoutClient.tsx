@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -9,6 +9,23 @@ import { LayoutDashboard, Receipt, Users, Menu as MenuIcon, Settings, LogOut, Be
 export default function AdminLayoutClient({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [currentTime, setCurrentTime] = useState<Date | null>(null);
+
+  useEffect(() => {
+    setCurrentTime(new Date());
+    const timer = setInterval(() => setCurrentTime(new Date()), 60_000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formattedDateTime =
+    currentTime?.toLocaleString("en-GH", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    }) ?? "Loading current time...";
 
   async function handleSignOut() {
     const supabase = createClient();
@@ -79,7 +96,7 @@ export default function AdminLayoutClient({ children }: { children: ReactNode })
           <div className="flex items-center gap-8">
             <div className="flex flex-col">
               <h2 className="font-headline text-2xl md:text-3xl font-bold tracking-tight">Good morning, Boss 👋</h2>
-              <p className="text-on-surface-variant font-dm-sans text-[9px] md:text-[10px] uppercase tracking-widest mt-1 font-bold">October 24, 2023 | Tuesday</p>
+              <p className="text-on-surface-variant font-dm-sans text-[9px] md:text-[10px] uppercase tracking-widest mt-1 font-bold">{formattedDateTime}</p>
             </div>
           </div>
           

@@ -1,13 +1,14 @@
 "use client";
 
-import { Clock, AlertTriangle, Loader2 } from "lucide-react";
-import { useState, useTransition, useMemo, useCallback } from "react";
+import { Clock, Loader2 } from "lucide-react";
+import { useEffect, useState, useTransition, useMemo, useCallback } from "react";
 import type { OrderWithItemsAndProfile } from "@/lib/queries/admin";
 import type { OrderStatus } from "@/lib/types";
 import { updateOrderStatus } from "./actions";
 import { usePolling } from "@/lib/hooks/use-polling";
 
 type FilterKey = "all" | "received" | "preparing" | "ready" | "out_for_delivery" | "completed";
+const PAGE_SIZE = 10;
 
 function timeAgo(dateStr: string) {
   const diff = Date.now() - new Date(dateStr).getTime();
@@ -60,6 +61,7 @@ export default function AdminOrdersClient({
 }) {
   const [orders, setOrders] = useState(initialOrders);
   const [filter, setFilter] = useState<FilterKey>("all");
+  const [page, setPage] = useState(1);
   const [isPending, startTransition] = useTransition();
 
   usePolling<{ orders: OrderWithItemsAndProfile[] }>(
@@ -67,7 +69,7 @@ export default function AdminOrdersClient({
     useCallback((data) => {
       setOrders(data.orders);
     }, []),
-    10_000,
+    3_000,
   );
 
   const filteredOrders = useMemo(() => {
@@ -91,6 +93,20 @@ export default function AdminOrdersClient({
     }
     return c;
   }, [orders]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredOrders.length / PAGE_SIZE));
+  const paginatedOrders = useMemo(
+    () => filteredOrders.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [filteredOrders, page],
+  );
+
+  useEffect(() => {
+    setPage(1);
+  }, [filter]);
+
+  useEffect(() => {
+    setPage((current) => Math.min(current, totalPages));
+  }, [totalPages]);
 
   const handleStatusChange = (orderId: string, newStatus: OrderStatus) => {
     startTransition(async () => {
@@ -174,7 +190,7 @@ export default function AdminOrdersClient({
               </tr>
             </thead>
             <tbody className="divide-y divide-outline-variant/10">
-              {filteredOrders.map((order) => {
+              {paginatedOrders.map((order) => {
                 const nextStatus = getNextStatus(order.status);
                 const isCompleted = ["delivered", "picked_up", "cancelled"].includes(order.status);
                 return (
@@ -242,7 +258,7 @@ export default function AdminOrdersClient({
       </section>
 
       {/* Kitchen Status Bar */}
-      <footer className="h-16 px-6 md:px-8 border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between bg-surface-container mt-auto sm:flex shrink-0">
+      <footer className="min-h-16 px-6 md:px-8 py-4 border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-4 bg-surface-container mt-auto sm:flex shrink-0">
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-2">
             <span className="font-dm-sans text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Active:</span>
@@ -255,6 +271,29 @@ export default function AdminOrdersClient({
             <span className="font-dm-sans text-xs font-bold text-secondary">{counts.completed}</span>
           </div>
         </div>
+        {filteredOrders.length > PAGE_SIZE && (
+          <div className="flex items-center gap-3">
+            <span className="font-dm-sans text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+              Page {page} of {totalPages}
+            </span>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setPage((current) => Math.max(1, current - 1))}
+                disabled={page === 1}
+                className="h-9 px-3 rounded-lg border border-outline-variant/40 font-dm-sans text-[10px] font-bold uppercase tracking-widest disabled:opacity-40 hover:bg-surface-container-high cursor-pointer"
+              >
+                Prev
+              </button>
+              <button
+                onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
+                disabled={page === totalPages}
+                className="h-9 px-3 rounded-lg border border-outline-variant/40 font-dm-sans text-[10px] font-bold uppercase tracking-widest disabled:opacity-40 hover:bg-surface-container-high cursor-pointer"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
       </footer>
     </div>
   );

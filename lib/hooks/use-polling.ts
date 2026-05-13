@@ -11,7 +11,10 @@ export function usePolling<T>(
   intervalMs = 10_000,
 ) {
   const onDataRef = useRef(onData);
-  onDataRef.current = onData;
+
+  useEffect(() => {
+    onDataRef.current = onData;
+  }, [onData]);
 
   const poll = useCallback(async () => {
     try {
