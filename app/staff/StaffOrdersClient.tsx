@@ -1,15 +1,16 @@
 "use client";
 
 import { Clock, AlertTriangle, Loader2, MapPin, Store, LogOut } from "lucide-react";
-import { useState, useTransition, useMemo, useCallback } from "react";
+import { useEffect, useState, useTransition, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import type { OrderWithItemsAndProfile } from "@/lib/queries/admin";
 import type { OrderStatus } from "@/lib/types";
-import { updateOrderStatus } from "@/app/admin/orders/actions";
+import { updateMultipleOrderStatuses, updateOrderStatus } from "@/app/admin/orders/actions";
 import { usePolling } from "@/lib/hooks/use-polling";
 
 type FilterKey = "received" | "preparing" | "ready" | "out_for_delivery" | "completed";
+type BulkStatus = Extract<OrderStatus, "preparing" | "ready" | "out_for_delivery" | "delivered" | "picked_up" | "cancelled">;
 
 function timeAgo(dateStr: string) {
   const diff = Date.now() - new Date(dateStr).getTime();
@@ -51,6 +52,14 @@ export default function StaffOrdersClient({
   const [orders, setOrders] = useState(initialOrders);
   const [activeTab, setActiveTab] = useState<FilterKey>("received");
   const [isPending, startTransition] = useTransition();
+  const [now, setNow] = useState(() => Date.now());
+  const [selectedOrderIds, setSelectedOrderIds] = useState<string[]>([]);
+  const [bulkStatus, setBulkStatus] = useState<BulkStatus>("preparing");
+
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 60_000);
+    return () => clearInterval(timer);
+  }, []);
 
   async function handleSignOut() {
     const supabase = createClient();
@@ -63,7 +72,7 @@ export default function StaffOrdersClient({
     useCallback((data) => {
       setOrders(data.orders);
     }, []),
-    10_000,
+    3_000,
   );
 
   const counts = useMemo(() => {
@@ -96,6 +105,43 @@ export default function StaffOrdersClient({
         );
       } catch (err) {
         console.error("Failed to update order:", err);
+      }
+    });
+  };
+
+  const toggleOrderSelection = (orderId: string) => {
+    setSelectedOrderIds((prev) =>
+      prev.includes(orderId)
+        ? prev.filter((id) => id !== orderId)
+        : [...prev, orderId],
+    );
+  };
+
+  const selectVisibleOrders = () => {
+    setSelectedOrderIds(filteredOrders.map((order) => order.id));
+  };
+
+  const clearSelection = () => {
+    setSelectedOrderIds([]);
+  };
+
+  const handleBulkStatusChange = () => {
+    if (selectedOrderIds.length === 0) return;
+
+    const idsToUpdate = selectedOrderIds;
+    startTransition(async () => {
+      try {
+        const updatedOrders = await updateMultipleOrderStatuses(idsToUpdate, bulkStatus);
+        const updatedById = new Map(updatedOrders.map((order) => [order.id, order.status]));
+        setOrders((prev) =>
+          prev.map((order) => {
+            const nextStatus = updatedById.get(order.id);
+            return nextStatus ? { ...order, status: nextStatus } : order;
+          }),
+        );
+        setSelectedOrderIds([]);
+      } catch (err) {
+        console.error("Failed to update selected orders:", err);
       }
     });
   };
@@ -145,6 +191,48 @@ export default function StaffOrdersClient({
               </button>
             ))}
           </div>
+          <div className="flex flex-col md:flex-row md:items-center gap-3 rounded-2xl border border-white/5 bg-stone-950 p-3">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={selectVisibleOrders}
+                disabled={filteredOrders.length === 0}
+                className="rounded-lg border border-white/10 px-3 py-2 font-dm-sans text-[10px] font-bold uppercase tracking-widest text-stone-300 hover:text-white disabled:opacity-40 cursor-pointer"
+              >
+                Select Visible
+              </button>
+              <button
+                onClick={clearSelection}
+                disabled={selectedOrderIds.length === 0}
+                className="rounded-lg border border-white/10 px-3 py-2 font-dm-sans text-[10px] font-bold uppercase tracking-widest text-stone-500 hover:text-stone-200 disabled:opacity-40 cursor-pointer"
+              >
+                Clear
+              </button>
+            </div>
+            <div className="flex flex-1 flex-col sm:flex-row sm:items-center gap-3">
+              <span className="font-dm-sans text-[10px] font-bold uppercase tracking-widest text-stone-500">
+                {selectedOrderIds.length} selected
+              </span>
+              <select
+                value={bulkStatus}
+                onChange={(event) => setBulkStatus(event.target.value as BulkStatus)}
+                className="rounded-lg border border-white/10 bg-[#111111] px-3 py-2 font-dm-sans text-xs font-bold uppercase tracking-widest text-stone-200 outline-none"
+              >
+                <option value="preparing">Preparing</option>
+                <option value="ready">Ready</option>
+                <option value="out_for_delivery">Out for Delivery</option>
+                <option value="delivered">Delivered</option>
+                <option value="picked_up">Picked Up</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+              <button
+                onClick={handleBulkStatusChange}
+                disabled={selectedOrderIds.length === 0 || isPending}
+                className="rounded-lg bg-[#9d0518] px-4 py-2 font-dm-sans text-[10px] font-bold uppercase tracking-widest text-white hover:bg-red-800 disabled:opacity-40 cursor-pointer"
+              >
+                {isPending ? "Updating..." : "Update Selected"}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -166,13 +254,18 @@ export default function StaffOrdersClient({
               const isNew = order.status === "received";
               const isPreparing = order.status === "preparing";
               const isCompleted = ["delivered", "picked_up", "cancelled"].includes(order.status);
-              const elapsedMin = Math.floor((Date.now() - new Date(order.created_at).getTime()) / 60000);
+              const elapsedMin = Math.floor((now - new Date(order.created_at).getTime()) / 60000);
               const isUrgent = elapsedMin > 15 && (isNew || isPreparing);
+              const isSelected = selectedOrderIds.includes(order.id);
 
               return (
                 <div
                   key={order.id}
                   className={`flex flex-col md:flex-row group transition-all duration-300 rounded-2xl overflow-hidden ${
+                    isSelected
+                      ? "ring-2 ring-[#feca5a] border-[#feca5a]/60"
+                      : ""
+                  } ${
                     isUrgent
                       ? "bg-[#1a1515] border border-orange-900/30 hover:border-orange-500/50"
                       : isPreparing
@@ -186,6 +279,15 @@ export default function StaffOrdersClient({
                   <div className={`p-6 md:w-64 border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-center ${
                     isPreparing ? "bg-stone-950/80" : "bg-stone-950/50"
                   }`}>
+                    <label className="mb-4 flex items-center gap-2 font-dm-sans text-[10px] font-bold uppercase tracking-widest text-stone-500">
+                      <input
+                        type="checkbox"
+                        checked={isSelected}
+                        onChange={() => toggleOrderSelection(order.id)}
+                        className="h-4 w-4 accent-[#feca5a]"
+                      />
+                      Select
+                    </label>
                     <span className={`text-[9px] font-dm-sans font-bold uppercase tracking-[0.2em] mb-2 flex items-center gap-1.5 ${
                       isUrgent
                         ? "text-orange-500"

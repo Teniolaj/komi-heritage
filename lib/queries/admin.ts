@@ -67,8 +67,7 @@ export async function getAdminOverviewStats(): Promise<AdminOverviewStats> {
   const { count: totalCustomers, error: customerError } = await supabaseAdmin
     .from("profiles")
     .select("id", { count: "exact", head: true })
-    .not("role", "eq", "admin")
-    .not("role", "eq", "staff");
+    .or("role.is.null,role.eq.customer");
 
   if (customerError) {
     throw new Error(`Failed to count customers: ${customerError.message}`);
@@ -78,8 +77,7 @@ export async function getAdminOverviewStats(): Promise<AdminOverviewStats> {
   const { count: newCustomersToday, error: newCustError } = await supabaseAdmin
     .from("profiles")
     .select("id", { count: "exact", head: true })
-    .not("role", "eq", "admin")
-    .not("role", "eq", "staff")
+    .or("role.is.null,role.eq.customer")
     .gte("created_at", todayISO);
 
   if (newCustError) {
@@ -139,12 +137,11 @@ export async function getRecentOrders(limit = 5): Promise<OrderWithItemsAndProfi
 // ─── Customers list with stats ──────────────────────────────────────────────
 
 export async function getCustomersWithStats(): Promise<CustomerWithStats[]> {
-  // Get all profiles that are NOT admin or staff (i.e. customers, including null roles)
+  // Get registered customer profiles, including older accounts with no role set.
   const { data: profiles, error: profilesError } = await supabaseAdmin
     .from("profiles")
     .select("id, full_name, email, phone, saved_address, created_at")
-    .not("role", "eq", "admin")
-    .not("role", "eq", "staff")
+    .or("role.is.null,role.eq.customer")
     .order("created_at", { ascending: false });
 
   if (profilesError) {

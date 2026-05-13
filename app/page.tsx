@@ -8,6 +8,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
+type CraftedImageMap = Record<string, string>;
+
 const craftedListItems = [
   {
     title: "One Man Kenkey",
@@ -15,7 +17,7 @@ const craftedListItems = [
       "The essential classic. One perfectly fermented ball with prime fried fish and house shito.",
     price: "GH₵ 45",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAIt7wSokEtXKvmIAtemLqmLEX6yZjPtaNAWrZpYnDMhLbkndWBb6B8goEChAtTaI0KZu6xVldHtO_-qpXLVXEpQlSnQlCHwfJ4GApER1UOXEWKwBxuk6xXlpks2FehLdQyCrrqdL61IdRY_s0Fky9xV_I2mzyrEyM6pCy-RCTHm_NVwBYfRbkX0vUA2LtjFGZeaAd1y6vlHRLPc9XybaceQBJYodNVqEBPltrv9fw4wmKxFda64EMwzueBiwfb3B-BAP_9r_FMkbM",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCrUfr87McCDa2QdE9rW4vdqDKSoyyKfGUkrs5qPifd-i6mHfeW5NtuhALYbCn_ZhWl4V76yhLghUKJgTuhjqN-pzDqyiwj76MoR4rt2rhudunWPHv3DOS26Hjxi642Amp6nOWbkOtyLSXAy8FiKip_TQoGrhsyYbnSxE5vZuXAolF7ndd7mgH-fq92oD6p5JyL7e-gh32MCLBDFr2HUdZv7x49_iz4bVCQtXNQ_S6SHnAaWpCJjjff5hFeHYTeqVuLEYAxDQ42W4s",
     cardClassName: "bg-[#1A1A1A]",
     imageClassName: "h-64",
     style: {
@@ -31,7 +33,7 @@ const craftedListItems = [
       "Designed for the table. Four balls, red and green shito, grilled octopus, and fresh avocado.",
     price: "GH₵ 180",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBTPIeaIyhBWSS_nzIWX6G9DJHbn6hDTxinKZS1XF7TqXAtSUcPlIPuGFZf_nXxVpfk-HMHntGB1ESNm4idME3Nm2H0AqlSVvoiMfs6iNQdUkKX8djrtrB2blj39o3j5PLzVjlAe86vurrILMIoE4h4CXIqiIxKrjyrMmurOVkwpjUBI9oYmpM38a35bQfz7HBLdoBEjUbhq3-9WsdKfxojbYIzXhlTRJdoO7wHG40TzQX6ub7WNmDtS1lAFsoNZyvmR5GKmw3i768",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDwIuYPCmU2Gcrj2ACGjd9sxZD4sBDd0_orcCuwsEUUKMrlUbIld6IBvUxg7_Nh8cQ2_hJGl3yaG21fpBxtOJvE4xjh0C0zSsOeDW2PD35fmyAFpRJsBySaoySzJImZjZps4fWos-I1fVxWj67ZyKuRSUd2YAYFrqPPjDELjd9hTt1makEkkznS5CbV0mWVaT-kWB-8coqNaWSrk2m7y_G9Wnw_BNGja6pIECOnjmpviih8rJ6uxykUb6wmXJCpOFJeVaVmaxaKWn4",
     cardClassName:
       "z-20 border border-[#D4A437]/20 bg-stone-900",
     imageClassName: "h-80",
@@ -48,7 +50,7 @@ const craftedListItems = [
       "A refined take. Smooth textured kenkey served with jumbo prawns and ginger-infused sauce.",
     price: "GH₵ 95",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAv9c6243QvOPlQ_8RVqLBzu7to8OgAZ-OUGmS9KItYL60PGjGUJ-1bcxGkbmswNa1BUHGdJ9q_yUbmsy7RGWbHi50K9-M8gNYzjhZlEOeYwuQTYnoZZQioBc1g0V9wRt-XRb-nSKGn-FnTP7cXMfFyGS21fKYY373yWiCrGRXRgMxelRt5kNVMFKfe3zhRYrm7X3ebF63bhjm_2WNRVWmSuKHqCy4Mxv-foLsmIoAa-wLZ1SWJxj_o_5t8a-yTLGya7K6BbwN9HNY",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBoONJSdLS9UyXi7AFjDLnAVJmJ7s79oMAY404eJlRLhKiEmv7xXZSeE1lQW8vehXd5Iw0bGEtNA5_6TE_BM9R1F1fwYR40YpMWN5xzInPHJKEd65qKNebf91iKb3MaQ6q1CjKmIryHEzcwMzitGTLB3-JqtXGsRS2GIIz5EnKeBq0YW6SQMAvAmDBqu6pDwTOCTGUwlAwzZrKGv0iDYiVqbWHQcyiL1p5aMTHwEUx_7kTjW9EiTDPuRCXpHhAaipfo05epBSYJr3M",
     cardClassName: "bg-[#1A1A1A]",
     imageClassName: "h-64",
     style: {
@@ -59,6 +61,10 @@ const craftedListItems = [
     } as CSSProperties,
   },
 ];
+
+function normalizeMenuName(name: string) {
+  return name.trim().toLowerCase();
+}
 
 export default function Homepage() {
   const scrollRef = useRef(null);
@@ -71,13 +77,37 @@ export default function Homepage() {
   const isAboutInView = useInView(aboutRef, { once: true, margin: "-80px" });
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [craftedImages, setCraftedImages] = useState<CraftedImageMap>({});
+
   useEffect(() => {
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => setIsAuthenticated(!!data.user));
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
       setIsAuthenticated(!!session?.user);
     });
-    return () => subscription.unsubscribe();
+
+    let isActive = true;
+    supabase
+      .from("menu_items")
+      .select("name, image_url")
+      .in("name", craftedListItems.map((item) => item.title))
+      .then(({ data }) => {
+        if (!isActive || !data) return;
+
+        const nextImages = data.reduce<CraftedImageMap>((images, item) => {
+          if (item.name && item.image_url) {
+            images[normalizeMenuName(item.name)] = item.image_url;
+          }
+          return images;
+        }, {});
+
+        setCraftedImages(nextImages);
+      });
+
+    return () => {
+      isActive = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   return (
@@ -169,7 +199,7 @@ export default function Homepage() {
                 <img
                   alt={item.title}
                   className={`w-full object-cover ${item.imageClassName}`}
-                  src={item.image}
+                  src={craftedImages[normalizeMenuName(item.title)] ?? item.image}
                 />
                 <div className="crafted-card-body p-8">
                   <h3 className="font-headline font-bold text-2xl text-white mb-2">

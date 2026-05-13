@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { ShoppingCart, CircleDollarSign, Users, TrendingUp, ChevronDown } from "lucide-react";
+import { ShoppingCart, CircleDollarSign, Users, TrendingUp } from "lucide-react";
 import type { AdminOverviewStats, OrderWithItemsAndProfile } from "@/lib/queries/admin";
 import { usePolling } from "@/lib/hooks/use-polling";
 
@@ -55,7 +55,7 @@ export default function AdminOverviewClient({
       setStats(data.stats);
       setRecentOrders(data.recentOrders);
     }, []),
-    10_000,
+    3_000,
   );
 
   const inKitchenCount = stats.preparingCount;
